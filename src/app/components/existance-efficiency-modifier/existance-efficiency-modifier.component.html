@@ -1,0 +1,20 @@
+<div class="store">
+    <h1 *ngIf="record.accumulatedDespair === 0">Turn your stress into productivity to generate even more stress!</h1>
+    <hr *ngIf="record.accumulatedDespair === 0">
+    <div>
+        <label>Accumulate Despair</label>
+        <button (click)='accumulateDespair()'>Cost: {{ record.currentDespairPrice }}</button>
+    </div>
+    <div *ngIf='record.accumulatedDespair > 0'>
+        <label>Wallow in Dread</label>
+        <button (click)='wallowInDread()'>Cost: {{ record.currentDreadPrice }}</button>
+    </div>
+    <div *ngIf="record.unenthusiasticNihilists > 0">
+        <label>Browse the Internet</label>
+        <button (click)='browseTheInternet()'>Cost: {{ record.currentMemePrice }}</button>
+    </div>
+    <div *ngIf="record.nihilisticMemes > 0">
+        <label>Take Out Student Loans</label>
+        <button (click)='takeOutStudentLoans()'>Cost: {{ record.currentDebtPrice }}</button>
+    </div>
+  </div>

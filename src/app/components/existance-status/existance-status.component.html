@@ -1,0 +1,7 @@
+<div class="status-box">
+  <label>Stress: {{ record.stress }}</label>
+  <label *ngIf="record.accumulatedDespair > 0">Despair: {{ record.accumulatedDespair }}</label>
+  <label *ngIf="record.wallowedDread > 0">Dread: {{ record.wallowedDread }}</label>
+  <label *ngIf="record.nihilisticMemes > 0">Nihilistic Memes: {{ record.nihilisticMemes }}</label>
+  <label *ngIf="record.studentDebt > 0">Student Debt: {{ record.studentDebt }}</label>
+</div>

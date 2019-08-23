@@ -1,0 +1,10 @@
+<div class="store">
+  <h1 *ngIf="record.unenthusiasticNihilists === 0">Use your Stress to influence others to join your cause!</h1>
+  <hr *ngIf="record.accumulatedDespair === 0">
+  <label>Contemplate Nietcszhe</label>
+  <button (click)="contemplateNietchzhe()">Cost: {{ record.currentNihilistPrice }}</button>
+  <div>
+      <label>Lend Someone a Cigarette</label>
+      <button (click)="lendSomeoneACigarette()">Cost: {{ record.currentChainsmokerPrice }}</button>
+  </div>
+</div>
