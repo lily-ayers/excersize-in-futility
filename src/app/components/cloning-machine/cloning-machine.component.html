@@ -5,19 +5,22 @@
     <button *ngIf="active" class="button" (click)="createLife()" [disabled]='ultimatelyPointlessExertion!==0'>
       Create Life
     </button>
-    <div *ngIf="ultimatelyPointlessExertion > 0" class="progress-bar">
+    <div *ngIf="ultimatelyPointlessExertion > 0 && !active" class="progress-bar">
         <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress">Building Cloning Machine</div>
     </div>
+    <div *ngIf="ultimatelyPointlessExertion > 0 && active" class="progress-bar">
+        <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress">Cloning...</div>
+    </div>
     <div *ngIf="active">
+        <label>Clone the First Loser You Think Of</label>
+        <button (click)="influence('wokeclone')">Cost: {{ record.currentWokeCloneCost }} stress, {{ record.currentWokeCloneCloneCost }} clones</button>
+    </div>
+    <div *ngIf="record.clonesThatKnowTheyAreAClone > 0">
         <label>Talk to a Clone About How Great Their Original Is</label>
         <button (click)="influence('sadclone')">Cost: {{ record.currentSadCloneCost }} stress, {{ record.currentSadCloneCloneCost }} clones</button>
     </div>
     <div *ngIf="record.clonesThatWishTheyWereAsGoodAsTheOriginals > 0">
         <label>Get a Clone Therapy and Show the Original the Result</label>
         <button (click)="influence('loser')">Cost: {{ record.currentLoserCost }} stress, {{ record.currentLoserCloneCost }} clones</button>
-    </div>
-    <div *ngIf="record.peopleWithClonesThatHaveSurpassedThem > 0">
-        <label>Clone the First Loser You Think Of</label>
-        <button (click)="influence('nietzsche')">Cost: {{ record.currentNietzscheCost }} stress, {{ record.currentNietzscheCloneCost }} clones, {{ record.currentNietzscheWatchCost }} watches</button>
     </div>
   </div>
