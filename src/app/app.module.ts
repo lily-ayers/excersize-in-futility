@@ -8,6 +8,10 @@ import { ExistanceStatusComponent } from './components/existance-status/existanc
 import { ExistanceOutsourcingComponent } from './components/existance-outsourcing/existance-outsourcing.component';
 import { ExistanceOutsourcingStatusComponent } from './components/existance-outsourcing-status/existance-outsourcing-status.component';
 import { ExistanceEfficiencyModifierComponent } from './components/existance-efficiency-modifier/existance-efficiency-modifier.component';
+import { CloningMachineComponent } from './components/cloning-machine/cloning-machine.component';
+import { TimeMachineComponent } from './components/time-machine/time-machine.component';
+import { MatCheckboxModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,16 @@ import { ExistanceEfficiencyModifierComponent } from './components/existance-eff
     ExistanceStatusComponent,
     ExistanceOutsourcingComponent,
     ExistanceOutsourcingStatusComponent,
-    ExistanceEfficiencyModifierComponent
+    ExistanceEfficiencyModifierComponent,
+    CloningMachineComponent,
+    TimeMachineComponent
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

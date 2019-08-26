@@ -1,0 +1,11 @@
+<div class="button-viewport">
+    <button *ngIf="!active" class="button" (click)="ascendTheThirdDimension()" [disabled]='completeWasteOfEffort!==0'>
+      Ascend the Third Dimension
+    </button>
+    <button *ngIf="active" class="button" (click)="testItOnAPocketWatch()" [disabled]='completeWasteOfEffort!==0'>
+      Test it on a Pocket Watch
+    </button>
+    <div *ngIf="completeWasteOfEffort > 0" class="progress-bar">
+        <div [ngStyle]="{'width.vw':.15*completeWasteOfEffort}" class="progress">Building Time Machine</div>
+    </div>
+  </div>

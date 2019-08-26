@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RegistrarService } from './registrar.service';
-import { interval } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-root',

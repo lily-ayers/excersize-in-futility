@@ -9,11 +9,19 @@
     <td *ngIf="record.triggerEfficiency">
         <app-existance-efficiency-modifier [record]=record></app-existance-efficiency-modifier>
     </td>
-    <td *ngIf="record.triggerInfluence">
+    <td *ngIf="record.triggerInfluence" rowspan="2">
         <app-existance-outsourcing [record]=record></app-existance-outsourcing>
     </td>
     <td *ngIf="record.triggerOutsourcing">
         <app-existance-outsourcing-status [record]=record></app-existance-outsourcing-status>
+    </td>
+  </tr>
+  <tr>
+    <td *ngIf="record.triggerCloningMachine">
+        <app-cloning-machine [record]=record></app-cloning-machine>
+    </td>
+    <td *ngIf="record.triggerTimeMachine">
+        <app-time-machine [record]=record></app-time-machine>
     </td>
   </tr>
 </table>

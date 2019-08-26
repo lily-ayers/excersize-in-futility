@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { RegistrarService } from 'src/app/registrar.service';
 
 @Component({
@@ -7,12 +7,9 @@ import { RegistrarService } from 'src/app/registrar.service';
   styleUrls: ['./manual-existance.component.scss']
 })
 export class ManualExistanceComponent implements OnInit {
-  // Bool to control progress bar's hidden state
-  attemptingExistance = false;
   // Percentage tracker for progress bar
   futileProgress = 0;
-  ultimatelyPointlessProgress = 0;
-  completeWasteOfEffort = 0;
+  automateAgony = false;
 
   constructor(private registrar: RegistrarService) {
     registrar.continuePitifulExistance();
@@ -22,15 +19,15 @@ export class ManualExistanceComponent implements OnInit {
   }
 
   async attemptExistance() {
-    this.attemptingExistance = true;
     this.futileProgress = 1;
     for (this.futileProgress; this.futileProgress < 101; this.futileProgress++) {
       await this.delayTheInevitable(this.registrar.record.accumulatedDespair + 1);
     }
-    this.attemptingExistance = false;
-    console.log('Existed successfully!');
+    this.futileProgress = 0;
     this.registrar.record.stress += (this.registrar.record.wallowedDread + 1);
-    this.registrar.recordPitifulExistance();
+    if (this.automateAgony) {
+      this.attemptExistance();
+    }
   }
 
   private delayTheInevitable(accumulatedDespair: number) {
@@ -41,3 +38,4 @@ export class ManualExistanceComponent implements OnInit {
   }
 
 }
+

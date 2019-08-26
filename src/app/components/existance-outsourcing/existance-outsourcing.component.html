@@ -2,9 +2,37 @@
   <h1 *ngIf="record.unenthusiasticNihilists === 0">Use your Stress to influence others to join your cause!</h1>
   <hr *ngIf="record.accumulatedDespair === 0">
   <label>Contemplate Nietcszhe</label>
-  <button (click)="contemplateNietchzhe()">Cost: {{ record.currentNihilistPrice }}</button>
-  <div>
+  <button (click)="influence('nihilist')">Cost: {{ record.currentNihilistPrice }}</button>
+  <div *ngIf="record.unenthusiasticNihilists > 0">
       <label>Lend Someone a Cigarette</label>
-      <button (click)="lendSomeoneACigarette()">Cost: {{ record.currentChainsmokerPrice }}</button>
+      <button (click)="influence('chainsmoker')">Cost: {{ record.currentChainsmokerPrice }}</button>
+  </div>
+  <div *ngIf="record.chainsmokingTeenagers > 0">
+      <label>Quote Sartre in a Coffee Shop</label>
+      <button (click)="influence('dropout')">Cost: {{ record.currentDropoutCost }}</button>
+  </div>
+  <div *ngIf="record.dropoutPhilosophyMajors > 0">
+      <label>Misquote Shakespeare</label>
+      <button (click)="influence('actor')">Cost: {{ record.currentActorCost }}</button>
+  </div>
+  <div *ngIf="record.methodActors > 0">
+      <label>Attend Local Concert</label>
+      <button (click)="influence('drummer')">Cost: {{ record.currentDrummerCost }}</button>
+  </div>
+  <div *ngIf="record.upAndComingDrummers > 0">
+      <label>Get Therapy</label>
+      <button (click)="influence('psychologist')">Cost: {{ record.currentPsychologistCost }}</button>
+  </div>
+  <div *ngIf="record.overlySelfAwarePsychologists > 0">
+      <label>Reply to Everything with "Why?"</label>
+      <button (click)="influence('major')">Cost: {{ record.currentMajorCost }}</button>
+  </div>
+  <div *ngIf="record.philosophyMajors > 0">
+      <label>Bring Whiskey to a Book Signing</label>
+      <button (click)="influence('writer')">Cost: {{ record.currentWriterCost }}</button>
+  </div>
+  <div *ngIf="record.alcoholicWriters > 0">
+      <label>Speed Date at a Local Bar</label>
+      <button (click)="influence('lawyer')">Cost: {{ record.currentLawyerCost }}</button>
   </div>
 </div>

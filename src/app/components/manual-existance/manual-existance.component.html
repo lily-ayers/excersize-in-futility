@@ -1,18 +1,9 @@
 <div class="button-viewport">
-  <button class="button" (click)="attemptExistance()" [disabled]='attemptingExistance'>
+  <button class="button" (click)="attemptExistance()" [disabled]='futileProgress!==0'>
     Try to Exist
   </button>
   <div class="progress-bar">
     <div [ngStyle]="{'width.vw':.15*futileProgress}" class="progress"></div>
   </div>
-  <br/>
-  <br/>
-  <div class="progress-bar">
-      <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessProgress}" class="progress">Building Cloning Machine</div>
-    </div>
-    <br/>
-  <br/>
-  <div class="progress-bar">
-      <div [ngStyle]="{'width.vw':.15*completeWasteOfEffort}" class="progress">Building Time Machine</div>
-    </div>
+  <mat-checkbox [(ngModel)]="automateAgony">Automate Agony</mat-checkbox>
 </div>
