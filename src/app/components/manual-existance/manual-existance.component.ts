@@ -24,17 +24,20 @@ export class ManualExistanceComponent implements OnInit {
       await this.delayTheInevitable(this.registrar.record.accumulatedDespair + 1);
     }
     this.futileProgress = 0;
-    this.registrar.record.stress += (this.registrar.record.wallowedDread + 1);
-    if (this.automateAgony) {
+    this.registrar.record.stress += (this.registrar.record.wallowedDread + 100)
+      * (1 + (Math.pow(this.registrar.record.dejaVu, this.registrar.record.eternalSuffering + 1) / 10));
+    if (this.automateAgony && !this.registrar.reinitializingDespair) {
       this.attemptExistance();
+    } else {
+      this.automateAgony = false;
     }
   }
 
   private delayTheInevitable(accumulatedDespair: number) {
     if (accumulatedDespair > 1) {
-      return new Promise(resolve => setTimeout(resolve, (100 / accumulatedDespair)));
+      return new Promise(resolve => setTimeout(resolve, (1 / accumulatedDespair)));
     }
-    return new Promise(resolve => setTimeout(resolve, 100));
+    return new Promise(resolve => setTimeout(resolve, 1));
   }
 
 }

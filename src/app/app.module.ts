@@ -12,6 +12,8 @@ import { CloningMachineComponent } from './components/cloning-machine/cloning-ma
 import { TimeMachineComponent } from './components/time-machine/time-machine.component';
 import { MatCheckboxModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AscendExistanceComponent } from './components/ascend-existance/ascend-existance.component';
+import { TranscendExistanceComponent } from './components/transcend-existance/transcend-existance.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ExistanceOutsourcingStatusComponent,
     ExistanceEfficiencyModifierComponent,
     CloningMachineComponent,
-    TimeMachineComponent
+    TimeMachineComponent,
+    AscendExistanceComponent,
+    TranscendExistanceComponent
     ],
   imports: [
     BrowserModule,

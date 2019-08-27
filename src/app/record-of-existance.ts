@@ -6,6 +6,8 @@ export interface RecordOfExistance {
   brokenPocketWatches: number;
   // Ascension Currency
   dejaVu: number;
+  // Transcension Currency
+  eternalSuffering: number;
   // Manual Speed Modifier
   accumulatedDespair: number;
   currentDespairPrice: number;
@@ -80,4 +82,6 @@ export interface RecordOfExistance {
   triggerMarriage: boolean;
   triggerCloningMachine: boolean;
   triggerTimeMachine: boolean;
+  triggerAscension: boolean;
+  triggerTranscension: boolean;
 }

@@ -17,6 +17,12 @@
     </td>
   </tr>
   <tr>
+    <td *ngIf="record.triggerAscension && (record.stress - (1000 * record.dejaVu)) / 100 > 0">
+      <app-ascend-existance [record]=record></app-ascend-existance>
+    </td>
+    <td *ngIf="record.triggerTranscension">
+        <app-transcend-existance [record]=record></app-transcend-existance>
+      </td>
     <td *ngIf="record.triggerCloningMachine">
         <app-cloning-machine [record]=record></app-cloning-machine>
     </td>
