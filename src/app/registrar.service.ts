@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RecordOfExistance } from './record-of-existance';
-import { interval, Observable, Subscription } from 'rxjs';
-import { MultiplyAnguishService } from './multiply-anguish.service';
-
+import { interval, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +32,7 @@ export class RegistrarService {
       if (!this.record.triggerEfficiency && this.record.stress >= 10) {
         this.record.triggerEfficiency = true;
       }
-      if (!this.record.triggerInfluence && this.record.stress >= 100) {
+      if (!this.record.triggerInfluence && this.record.multipliersOwned[1] >= 1) {
         this.record.triggerInfluence = true;
       }
       if (!this.record.triggerOutsourcing && this.record.influenced[0] >= 1) {

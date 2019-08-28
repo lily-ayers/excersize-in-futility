@@ -44,7 +44,7 @@ export class ManualExistanceComponent implements OnInit {
   }
 
   private delayTheInevitable(accumulatedDespair: number) {
-    return new Promise(resolve => setTimeout(resolve, (100 / accumulatedDespair)));
+    return new Promise(resolve => setTimeout(resolve, (100 / (1 + (accumulatedDespair / 2)))));
   }
 
   automate() {

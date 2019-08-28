@@ -1,10 +1,22 @@
 <div class="status-box">
   <label>Stress: {{ record.stress | bigNum: 2 }}</label>
   <hr>
-  <label *ngIf="record.multipliersOwned[0] > 0">Despair: {{ record.multipliersOwned[0] }}</label>
+  <div class="tooltipZone">
+    <label *ngIf="record.multipliersOwned[0] > 0">Despair: {{ record.multipliersOwned[0] }}</label>
+    <span class="tooltip">Increases speed of Manual Existance</span>
+  </div>
+  <div class="tooltipZone">
   <label *ngIf="record.multipliersOwned[1] > 0">Dread: {{ record.multipliersOwned[1] }}</label>
-  <label *ngIf="record.multipliersOwned[2] > 0">Nihilistic Memes: {{ record.multipliersOwned[2] }}</label>
-  <label *ngIf="record.multipliersOwned[3] > 0">Student Debt: {{ record.multipliersOwned[3] }}</label>
+  <span class="tooltip">Increases Stress gained from Manual Existance</span>
+</div>
+  <div class="tooltipZone">
+    <label *ngIf="record.multipliersOwned[2] > 0">Nihilistic Memes: {{ record.multipliersOwned[2] }}</label>
+    <span class="tooltip">Increases Tick Speed per Second</span>
+  </div>
+  <div class="tooltipZone">
+    <label *ngIf="record.multipliersOwned[3] > 0">Student Debt: {{ record.multipliersOwned[3] }}</label>
+    <span class="tooltip">Increases Influenced Parties' Produced Stress per Tick</span>
+  </div>
   <hr>
   <label *ngIf="record.influenced[0] > 0">Stress per Tick: {{ record.stressPerTick | bigNum: 2 }}</label>
   <label *ngIf="record.influenced[0] > 0">Stress per Second: {{ record.stressPerSecond | bigNum: 2 }}</label>
