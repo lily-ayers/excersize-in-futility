@@ -17,19 +17,13 @@ export class CloningMachineComponent implements OnInit {
   ngOnInit() {
   }
 
-  influence(influencee: string) {
-    switch (influencee) {
-      case 'wokeclone':
-        this.registrar.tellACloneThatTheyreAClone();
-        break;
-      case 'sadclone':
-        this.registrar.talkToACloneAboutHowGreatTheirOriginalIs();
-        break;
-      case 'loser':
-        this.registrar.getACloneTherapyAndShowTheOriginalTheResult();
-        break;
-      default:
-        break;
+  influence(index: number, event) {
+    if (event.shiftKey) {
+      this.registrar.influence(index, 10);
+    } else if (event.ctrlKey) {
+        this.registrar.influence(index, 25);
+    } else {
+        this.registrar.influence(index);
     }
   }
 
@@ -46,7 +40,7 @@ export class CloningMachineComponent implements OnInit {
   async defyNature() {
     this.ultimatelyPointlessExertion = 1;
     for (this.ultimatelyPointlessExertion; this.ultimatelyPointlessExertion < 101; this.ultimatelyPointlessExertion++) {
-      await this.delayTheInevitable(this.registrar.record.dejaVu + 1, .1);
+      await this.delayTheInevitable(this.registrar.record.dejaVu + 1, 10);
     }
     this.ultimatelyPointlessExertion = 0;
     this.active = true;

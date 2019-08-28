@@ -5,5 +5,6 @@
   <div class="progress-bar">
     <div [ngStyle]="{'width.vw':.15*futileProgress}" class="progress"></div>
   </div>
-  <mat-checkbox [(ngModel)]="automateAgony">Automate Agony</mat-checkbox>
+  <button *ngIf="record.stress > 10000000 && !record.triggerAutomation" (click)="automate()">Improve Stress Efficiency</button>
+  <mat-checkbox *ngIf="record.triggerAutomation" [(ngModel)]="automateAgony">Automate Agony</mat-checkbox>
 </div>

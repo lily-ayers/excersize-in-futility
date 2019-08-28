@@ -1,7 +1,13 @@
 <div class="status-box">
-  <label>Stress: {{ record.stress | number: '1.0-0'  }}</label>
-  <label *ngIf="record.accumulatedDespair > 0">Despair: {{ record.accumulatedDespair }}</label>
-  <label *ngIf="record.wallowedDread > 0">Dread: {{ record.wallowedDread }}</label>
-  <label *ngIf="record.nihilisticMemes > 0">Nihilistic Memes: {{ record.nihilisticMemes }}</label>
-  <label *ngIf="record.studentDebt > 0">Student Debt: {{ record.studentDebt }}</label>
+  <label>Stress: {{ record.stress | bigNum: 2 }}</label>
+  <hr>
+  <label *ngIf="record.multipliersOwned[0] > 0">Despair: {{ record.multipliersOwned[0] }}</label>
+  <label *ngIf="record.multipliersOwned[1] > 0">Dread: {{ record.multipliersOwned[1] }}</label>
+  <label *ngIf="record.multipliersOwned[2] > 0">Nihilistic Memes: {{ record.multipliersOwned[2] }}</label>
+  <label *ngIf="record.multipliersOwned[3] > 0">Student Debt: {{ record.multipliersOwned[3] }}</label>
+  <hr>
+  <label *ngIf="record.influenced[0] > 0">Stress per Tick: {{ record.stressPerTick | bigNum: 2 }}</label>
+  <label *ngIf="record.influenced[0] > 0">Stress per Second: {{ record.stressPerSecond | bigNum: 2 }}</label>
+  <label *ngIf="record.dejaVu > 0">Deja Vu: {{ record.dejaVu | bigNum: 2 }}</label>
+  <label *ngIf="record.eternalSuffering > 0">Eternal Suffering: {{ record.eternalSuffering | bigNum: 2 }}</label>
 </div>

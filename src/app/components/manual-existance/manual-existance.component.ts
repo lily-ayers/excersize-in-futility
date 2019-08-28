@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { RegistrarService } from 'src/app/registrar.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { RegistrarService } from 'src/app/registrar.service';
   styleUrls: ['./manual-existance.component.scss']
 })
 export class ManualExistanceComponent implements OnInit {
+  @Input() record;
   // Percentage tracker for progress bar
   futileProgress = 0;
   automateAgony = false;
@@ -20,12 +21,21 @@ export class ManualExistanceComponent implements OnInit {
 
   async attemptExistance() {
     this.futileProgress = 1;
-    for (this.futileProgress; this.futileProgress < 101; this.futileProgress++) {
-      await this.delayTheInevitable(this.registrar.record.accumulatedDespair + 1);
+    if (this.record.multipliersOwned[0] < 25) {
+      for (this.futileProgress; this.futileProgress < 101; this.futileProgress++) {
+        await this.delayTheInevitable(this.record.multipliersOwned[0] + 1);
+      }
+    } else if (this.record.multipliersOwned[0] < 100) {
+      for (this.futileProgress; this.futileProgress < 101; this.futileProgress += 20) {
+        await this.delayTheInevitable((this.record.multipliersOwned[0] + 1) / 20);
+      }
+    } else if (this.record.multipliersOwned[0] >= 100) {
+      this.futileProgress = 100;
+      await this.delayTheInevitable((this.record.multipliersOwned[0] + 1) / 100);
     }
     this.futileProgress = 0;
-    this.registrar.record.stress += (this.registrar.record.wallowedDread + 100)
-      * (1 + (Math.pow(this.registrar.record.dejaVu, this.registrar.record.eternalSuffering + 1) / 10));
+    this.record.stress += Math.floor((this.record.multipliersOwned[1] + 1)
+      * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10)));
     if (this.automateAgony && !this.registrar.reinitializingDespair) {
       this.attemptExistance();
     } else {
@@ -34,10 +44,11 @@ export class ManualExistanceComponent implements OnInit {
   }
 
   private delayTheInevitable(accumulatedDespair: number) {
-    if (accumulatedDespair > 1) {
-      return new Promise(resolve => setTimeout(resolve, (1 / accumulatedDespair)));
-    }
-    return new Promise(resolve => setTimeout(resolve, 1));
+    return new Promise(resolve => setTimeout(resolve, (100 / accumulatedDespair)));
+  }
+
+  automate() {
+    this.record.triggerAutomation = true;
   }
 
 }

@@ -1,20 +1,21 @@
 <div class="store">
-    <h1 *ngIf="record.accumulatedDespair === 0">Turn your stress into productivity to generate even more stress!</h1>
-    <hr *ngIf="record.accumulatedDespair === 0">
+    <h1 *ngIf="record.multipliersOwned[0] !== 0">Multiply</h1>
+    <h1 *ngIf="record.multipliersOwned[0] === 0">Turn your stress into productivity to generate even more stress!</h1>
+    <hr>
     <div>
         <label>Accumulate Despair</label>
-        <button (click)='accumulateDespair()'>Cost: {{ record.currentDespairPrice }}</button>
+        <button (click)='accumulate(0, $event)'>Cost: {{ record.multiplierPrices[0] | bigNum: 2 }}</button>
     </div>
-    <div *ngIf='record.accumulatedDespair > 0'>
+    <div *ngIf='record.multipliersOwned[0] > 0'>
         <label>Wallow in Dread</label>
-        <button (click)='wallowInDread()'>Cost: {{ record.currentDreadPrice }}</button>
+        <button (click)='accumulate(1, $event)'>Cost: {{ record.multiplierPrices[1] | bigNum: 2 }}</button>
     </div>
-    <div *ngIf="record.unenthusiasticNihilists > 0">
+    <div *ngIf="record.multipliersOwned[1] > 0">
         <label>Browse the Internet</label>
-        <button (click)='browseTheInternet()'>Cost: {{ record.currentMemePrice }}</button>
+        <button (click)='accumulate(2, $event)'>Cost: {{ record.multiplierPrices[2] | bigNum: 2 }}</button>
     </div>
-    <div *ngIf="record.nihilisticMemes > 0">
+    <div *ngIf="record.multipliersOwned[2] > 0">
         <label>Take Out Student Loans</label>
-        <button (click)='takeOutStudentLoans()'>Cost: {{ record.currentDebtPrice }}</button>
+        <button (click)='accumulate(3, $event)'>Cost: {{ record.multiplierPrices[3] | bigNum: 2 }}</button>
     </div>
   </div>

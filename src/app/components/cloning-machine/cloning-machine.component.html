@@ -13,14 +13,14 @@
     </div>
     <div *ngIf="active">
         <label>Clone the First Loser You Think Of</label>
-        <button (click)="influence('wokeclone')">Cost: {{ record.currentWokeCloneCost }} stress, {{ record.currentWokeCloneCloneCost }} clones</button>
+        <button (click)="influence(9, $event)">Cost: {{ record.influencePrices[9] }} stress, {{ record.clonePrices[0] }} clones</button>
     </div>
-    <div *ngIf="record.clonesThatKnowTheyAreAClone > 0">
+    <div *ngIf="record.influenced[9] > 0">
         <label>Talk to a Clone About How Great Their Original Is</label>
-        <button (click)="influence('sadclone')">Cost: {{ record.currentSadCloneCost }} stress, {{ record.currentSadCloneCloneCost }} clones</button>
+        <button (click)="influence(10, $event)">Cost: {{ record.influencePrices[10] }} stress, {{ record.clonePrices[1] }} clones</button>
     </div>
-    <div *ngIf="record.clonesThatWishTheyWereAsGoodAsTheOriginals > 0">
+    <div *ngIf="record.influenced[10] > 0">
         <label>Get a Clone Therapy and Show the Original the Result</label>
-        <button (click)="influence('loser')">Cost: {{ record.currentLoserCost }} stress, {{ record.currentLoserCloneCost }} clones</button>
+        <button (click)="influence(11, $event)">Cost: {{ record.influencePrices[11] }} stress, {{ record.clonePrices[2] }} clones</button>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer2 } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { MatCheckboxModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AscendExistanceComponent } from './components/ascend-existance/ascend-existance.component';
 import { TranscendExistanceComponent } from './components/transcend-existance/transcend-existance.component';
+import { BigNumPipe } from './big-num.pipe';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { TranscendExistanceComponent } from './components/transcend-existance/tr
     CloningMachineComponent,
     TimeMachineComponent,
     AscendExistanceComponent,
-    TranscendExistanceComponent
+    TranscendExistanceComponent,
+    BigNumPipe,
     ],
   imports: [
     BrowserModule,

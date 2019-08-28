@@ -1,38 +1,39 @@
 <div class="store">
-  <h1 *ngIf="record.unenthusiasticNihilists === 0">Use your Stress to influence others to join your cause!</h1>
-  <hr *ngIf="record.accumulatedDespair === 0">
+  <h1 *ngIf="record.influenced[0] !== 0">Influence</h1>
+  <h1 *ngIf="record.influenced[0] === 0">Use your Stress to influence others to join your cause!</h1>
+  <hr>
   <label>Contemplate Nietcszhe</label>
-  <button (click)="influence('nihilist')">Cost: {{ record.currentNihilistPrice }}</button>
-  <div *ngIf="record.unenthusiasticNihilists > 0">
+  <button (click)="influence(0, $event)">Cost: {{ record.influencePrices[0] | bigNum: 2 }}</button>
+  <div *ngIf="record.influenced[0] > 0">
       <label>Lend Someone a Cigarette</label>
-      <button (click)="influence('chainsmoker')">Cost: {{ record.currentChainsmokerPrice }}</button>
+      <button (click)="influence(1, $event)">Cost: {{ record.influencePrices[1] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.chainsmokingTeenagers > 0">
+  <div *ngIf="record.influenced[1] > 0">
       <label>Quote Sartre in a Coffee Shop</label>
-      <button (click)="influence('dropout')">Cost: {{ record.currentDropoutCost }}</button>
+      <button (click)="influence(2, $event)">Cost: {{ record.influencePrices[2] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.dropoutPhilosophyMajors > 0">
+  <div *ngIf="record.influenced[2] > 0">
       <label>Misquote Shakespeare</label>
-      <button (click)="influence('actor')">Cost: {{ record.currentActorCost }}</button>
+      <button (click)="influence(3, $event)">Cost: {{ record.influencePrices[3] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.methodActors > 0">
+  <div *ngIf="record.influenced[3] > 0">
       <label>Attend Local Concert</label>
-      <button (click)="influence('drummer')">Cost: {{ record.currentDrummerCost }}</button>
+      <button (click)="influence(4, $event)">Cost: {{ record.influencePrices[4] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.upAndComingDrummers > 0">
+  <div *ngIf="record.influenced[4] > 0">
       <label>Get Therapy</label>
-      <button (click)="influence('psychologist')">Cost: {{ record.currentPsychologistCost }}</button>
+      <button (click)="influence(5, $event)">Cost: {{ record.influencePrices[5] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.overlySelfAwarePsychologists > 0">
+  <div *ngIf="record.influenced[5] > 0">
       <label>Reply to Everything with "Why?"</label>
-      <button (click)="influence('major')">Cost: {{ record.currentMajorCost }}</button>
+      <button (click)="influence(6, $event)">Cost: {{ record.influencePrices[6] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.philosophyMajors > 0">
+  <div *ngIf="record.influenced[6] > 0">
       <label>Bring Whiskey to a Book Signing</label>
-      <button (click)="influence('writer')">Cost: {{ record.currentWriterCost }}</button>
+      <button (click)="influence(7, $event)">Cost: {{ record.influencePrices[7] | bigNum: 2 }}</button>
   </div>
-  <div *ngIf="record.alcoholicWriters > 0">
+  <div *ngIf="record.influenced[7] > 0">
       <label>Speed Date at a Local Bar</label>
-      <button (click)="influence('lawyer')">Cost: {{ record.currentLawyerCost }}</button>
+      <button (click)="influence(8, $event)">Cost: {{ record.influencePrices[8] | bigNum: 2 }}</button>
   </div>
 </div>

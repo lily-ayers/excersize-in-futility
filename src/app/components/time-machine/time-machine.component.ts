@@ -17,26 +17,20 @@ export class TimeMachineComponent implements OnInit {
   ngOnInit() {
   }
 
-  influence(influencee: string) {
-    switch (influencee) {
-      case 'nietzsche':
-        this.registrar.cloneTheFirstLoserYouThinkOf();
-        break;
-      case 'beckett':
-        this.registrar.cloneSomeoneLessLame();
-        break;
-      case 'sartre':
-        this.registrar.cloneSomeoneLessSexist();
-        break;
-      default:
-        break;
+  influence(index: number, event) {
+    if (event.shiftKey) {
+      this.registrar.influence(index, 10);
+    } else if (event.ctrlKey) {
+        this.registrar.influence(index, 25);
+    } else {
+        this.registrar.influence(index);
     }
   }
 
   async testItOnAPocketWatch() {
     this.completeWasteOfEffort = 1;
     for (this.completeWasteOfEffort; this.completeWasteOfEffort < 101; this.completeWasteOfEffort++) {
-      await this.delayTheInevitable(this.registrar.record.dejaVu + 1, 1200);
+      await this.delayTheInevitable(this.registrar.record.dejaVu + 1, 60);
     }
     this.completeWasteOfEffort = 0;
     this.registrar.record.brokenPocketWatches++;

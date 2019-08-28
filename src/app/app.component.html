@@ -1,7 +1,7 @@
 <table class="tabs">
   <tr>
     <td>
-        <app-manual-existance></app-manual-existance>
+        <app-manual-existance [record]=record></app-manual-existance>
     </td>
     <td *ngIf="record.triggerStatus">
         <app-existance-status [record]=record></app-existance-status>
@@ -28,6 +28,12 @@
     </td>
     <td *ngIf="record.triggerTimeMachine">
         <app-time-machine [record]=record></app-time-machine>
+    </td>
+    <td *ngIf="multiply.multTen">
+      (Buy 10)
+    </td>
+    <td *ngIf="multiply.multTwentyFive">
+      (Buy 25)
     </td>
   </tr>
 </table>

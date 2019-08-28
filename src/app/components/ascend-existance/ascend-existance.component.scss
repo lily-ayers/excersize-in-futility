@@ -1,0 +1,17 @@
+.button-viewport {
+  height: 40vh;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 1.2vw;
+  top: 0;
+  h1 {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.5vw;
+  }
+  button {
+    height: 3vh;
+    font-size: 1.2vw;
+    margin-top: 1vh;
+  }
+}
