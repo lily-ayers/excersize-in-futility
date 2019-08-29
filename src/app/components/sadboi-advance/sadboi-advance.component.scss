@@ -1,0 +1,29 @@
+.sadboiConsole {
+  height: 40vh;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 1.2vw;
+  top: 0;
+  .sadboiDisplay {
+    height: 32vh;
+    text-align: center;
+    font-size: 1.2vw;
+    top: 0;
+    overflow-y: scroll;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .sadboiInput {
+    display: inline;
+    text-align: center;
+    font-size: 1.2vw;
+    top: 0;
+    button {
+      width: 3vw;
+      height: 3vh;
+      font-size: 1vw;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}

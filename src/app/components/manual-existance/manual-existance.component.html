@@ -3,7 +3,7 @@
   <button class="button" (click)="attemptExistance()" [disabled]='futileProgress!==0'>
     Try to Exist
   </button>
-  <span class="tooltip">Click to Manually Exist, you currently gain {{ existManually() | bigNum: 2}} Stress per click!</span>
+  <span class="tooltip">Click to Manually Exist for {{ existManually() | bigNum: 2}} Stress</span>
   </div>
   <div class="progress-bar">
     <div [ngStyle]="{'width.vw':.15*futileProgress}" class="progress"></div>

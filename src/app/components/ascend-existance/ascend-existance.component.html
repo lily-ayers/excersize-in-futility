@@ -1,9 +1,15 @@
 <div class="button-viewport">
   <h1>Ascend for {{ record.lifeExperience | number: '1.0-0'}} Deja Vu!</h1>
   <div class="tooltip-zone">
-    <button [disabled]="record.lifeExperience >= 1" (click)="ascend()">
+    <button [disabled]="record.lifeExperience <= 1" (click)="ascend()">
       ASCEND!
     </button>
     <span class="tooltip">You will lose all progress, but gain Deja Vu, which increases all earnings by 10% each!</span>
   </div>
 </div>
+<div *ngIf="record.triggerTranscension" class="button-viewport">
+    <h1>Transcend for {{ record.temporaryAnguish | number: '1.0-0'}} Eternal Suffering!</h1>
+    <button [disabled]="record.temporaryAnguish <= 1" (click)="transcend()">
+      TRANSCEND!
+    </button>
+  </div>

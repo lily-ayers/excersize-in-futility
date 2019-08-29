@@ -20,4 +20,8 @@ export class AscendExistanceComponent implements OnInit {
   ascend() {
     this.registrar.ascend();
   }
+
+  transcend() {
+    this.registrar.transcend();
+  }
 }

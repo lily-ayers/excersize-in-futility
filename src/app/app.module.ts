@@ -12,8 +12,9 @@ import { TimeMachineComponent } from './components/time-machine/time-machine.com
 import { MatCheckboxModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AscendExistanceComponent } from './components/ascend-existance/ascend-existance.component';
-import { TranscendExistanceComponent } from './components/transcend-existance/transcend-existance.component';
 import { BigNumPipe } from './big-num.pipe';
+import { SadboiAdvanceComponent } from './components/sadboi-advance/sadboi-advance.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,14 +28,15 @@ import { BigNumPipe } from './big-num.pipe';
     CloningMachineComponent,
     TimeMachineComponent,
     AscendExistanceComponent,
-    TranscendExistanceComponent,
-    BigNumPipe
+    BigNumPipe,
+    SadboiAdvanceComponent
     ],
   imports: [
     BrowserModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

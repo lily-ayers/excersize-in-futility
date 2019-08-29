@@ -1,0 +1,25 @@
+{
+  "encounters": [
+    {
+      "message": "You come across a rock. Of course, by 'come across', I mean you tripped over it. Smooth move. (-1 Health)",
+      "affectedStat": "health",
+      "statChange": -1,
+      "followUps": [1]
+    },
+    {
+      "message": "Fight the rock? (Y/N)",
+      "actions": ["y", "n"],
+      "followUps": [2, 3]
+    },
+    {
+      "message": "The rock doesn't really fight back, but you certainly feel stronger after punching it. (+1 Damage)",
+      "affectedStat": "damage",
+      "statChange": 1
+    },
+    {
+      "message": "You're right, that rock is more trouble than it's worth. You put in your pocket though, now 0.1% of your body is armored! (+1 Defense)",
+      "affectedStat": "defense",
+      "statChange": 1
+    }
+  ]
+}

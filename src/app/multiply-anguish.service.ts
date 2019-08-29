@@ -57,11 +57,11 @@ export class MultiplyAnguishService {
 
   onUnMultiply() {
     for (let p = 0; p < this.registrar.record.multiplierPrices.length; p++) {
-      this.registrar.record.multiplierPrices[p] = (this.registrar.record.multiplierBasePrices[p]
+      this.registrar.record.multiplierPrices[p] = Math.floor(this.registrar.record.multiplierBasePrices[p]
         * Math.pow(1.1, this.registrar.record.multipliersOwned[p]));
     }
     for (let p = 0; p < this.registrar.record.influencePrices.length; p++) {
-      this.registrar.record.influencePrices[p] = (this.registrar.record.influenceBasePrices[p]
+      this.registrar.record.influencePrices[p] = Math.floor(this.registrar.record.influenceBasePrices[p]
         * Math.pow(1.1, this.registrar.record.influenced[p]));
     }
     this.multTen = false;

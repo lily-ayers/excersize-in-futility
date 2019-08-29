@@ -2,38 +2,49 @@
   <h1 *ngIf="record.influenced[0] !== 0">Influence</h1>
   <h1 *ngIf="record.influenced[0] === 0">Use your Stress to influence others to join your cause!</h1>
   <hr>
-  <label>Contemplate Nietcszhe</label>
-  <button (click)="influence(0, $event)">Cost: {{ record.influencePrices[0] | bigNum: 2 }}</button>
-  <div *ngIf="record.influenced[0] > 0">
+  <div class="tooltip-zone">
+    <label>Contemplate Nietcszhe</label>
+    <button (click)="influence(0, $event)">Cost: {{ record.influencePrices[0] | bigNum: 2 }}</button>
+    <span class="tooltip">Influence an Unenthusiastic Nihilist</span>
+  </div>
+  <div *ngIf="record.influenced[0] > 0" class="tooltip-zone">
       <label>Lend Someone a Cigarette</label>
       <button (click)="influence(1, $event)">Cost: {{ record.influencePrices[1] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence an Chainsmoking Teenager</span>
   </div>
-  <div *ngIf="record.influenced[1] > 0">
+  <div *ngIf="record.influenced[1] > 0" class="tooltip-zone">
       <label>Quote Sartre in a Coffee Shop</label>
       <button (click)="influence(2, $event)">Cost: {{ record.influencePrices[2] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence a Dropout Philosophy Major</span>
   </div>
-  <div *ngIf="record.influenced[2] > 0">
+  <div *ngIf="record.influenced[2] > 0" class="tooltip-zone">
       <label>Misquote Shakespeare</label>
       <button (click)="influence(3, $event)">Cost: {{ record.influencePrices[3] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence a Method Actor</span>
   </div>
-  <div *ngIf="record.influenced[3] > 0">
+  <div *ngIf="record.influenced[3] > 0" class="tooltip-zone">
       <label>Attend Local Concert</label>
       <button (click)="influence(4, $event)">Cost: {{ record.influencePrices[4] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence an Up and Coming Drummer</span>
   </div>
-  <div *ngIf="record.influenced[4] > 0">
+  <div *ngIf="record.influenced[4] > 0" class="tooltip-zone">
       <label>Get Therapy</label>
       <button (click)="influence(5, $event)">Cost: {{ record.influencePrices[5] | bigNum: 2 }}</button>
-  </div>
-  <div *ngIf="record.influenced[5] > 0">
+      <span class="tooltip">Influence an Overly Self Aware Psychologist</span>
+    </div>
+  <div *ngIf="record.influenced[5] > 0" class="tooltip-zone">
       <label>Reply to Everything with "Why?"</label>
       <button (click)="influence(6, $event)">Cost: {{ record.influencePrices[6] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence a Philosophy Major</span>
   </div>
-  <div *ngIf="record.influenced[6] > 0">
+  <div *ngIf="record.influenced[6] > 0" class="tooltip-zone">
       <label>Bring Whiskey to a Book Signing</label>
       <button (click)="influence(7, $event)">Cost: {{ record.influencePrices[7] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence an Alcoholic Writer</span>
   </div>
-  <div *ngIf="record.influenced[7] > 0">
+  <div *ngIf="record.influenced[7] > 0" class="tooltip-zone">
       <label>Speed Date at a Local Bar</label>
       <button (click)="influence(8, $event)">Cost: {{ record.influencePrices[8] | bigNum: 2 }}</button>
+      <span class="tooltip">Influence a Recently Divorced Divorce Lawyer</span>
   </div>
 </div>

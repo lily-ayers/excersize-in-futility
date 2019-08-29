@@ -1,0 +1,12 @@
+<div class="sadboiConsole">
+    <div class="sadboiDisplay">
+      <div *ngFor="let print of sadboi.consoleHistory">
+          <span>{{ print }}</span>
+      </div>
+    </div>
+    <hr>
+      <div class="sadboiInput">
+        <input [formControl]="sadboiConsoleInput" type="text">
+        <button [disabled]=sadboi.instance (click)="submit()">Enter</button>
+      </div>
+</div>

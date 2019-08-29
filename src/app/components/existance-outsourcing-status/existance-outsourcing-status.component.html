@@ -1,17 +1,6 @@
 <div class="status-box">
-    <label>Unenthusiastic Nihilists: {{ record.influenced[0] }}</label>
-    <label *ngIf="record.influenced[1] > 0">Chainsmoking Teenagers: {{ record.influenced[1] }}</label>
-    <label *ngIf="record.influenced[2] > 0">Dropout Philosophy Majors: {{ record.influenced[2] }}</label>
-    <label *ngIf="record.influenced[3] > 0">Method Actors: {{ record.influenced[3] }}</label>
-    <label *ngIf="record.influenced[4] > 0">Up and Coming Drummers: {{ record.influenced[4] }}</label>
-    <label *ngIf="record.influenced[5] > 0">Overly Self Aware Psychologists: {{ record.influenced[5] }}</label>
-    <label *ngIf="record.influenced[6] > 0">Philosophy Majors: {{ record.influenced[6] }}</label>
-    <label *ngIf="record.influenced[7] > 0">Alcoholic Writers: {{ record.influenced[7] }}</label>
-    <label *ngIf="record.influenced[8] > 0">Recently Divorced Divorce Lawyers: {{ record.influenced[8] }}</label>
-    <label *ngIf="record.influenced[9] > 0">Clones That Know They're a Clone: {{ record.influenced[9] }}</label>
-    <label *ngIf="record.influenced[10] > 0">Clones That Wish They Were As Good As The Original: {{ record.influenced[10] }}</label>
-    <label *ngIf="record.influenced[11] > 0">People With Clones That Have Surpassed Them: {{ record.influenced[11] }}</label>
-    <label *ngIf="record.influenced[12] > 0">Clones of Nietzsche: {{ record.influenced[12] }}</label>
-    <label *ngIf="record.influenced[13] > 0">Clones of Samuel Beckett: {{ record.influenced[13] }}</label>
-    <label *ngIf="record.influenced[14] > 0">Clones of Jean-Paul Sartre: {{ record.influenced[14] }}</label>
+  <div class="tooltip-zone" *ngFor="let amount of record.influenced; let i = index">
+    <label *ngIf="amount >= 1">{{ influencedNames[i] }}: {{ amount }}</label>
+    <span class="tooltip">{{ influenceDetails[i] }}</span>
+  </div>
 </div>

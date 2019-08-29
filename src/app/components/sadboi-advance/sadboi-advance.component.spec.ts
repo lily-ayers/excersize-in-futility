@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TranscendExistanceComponent } from './transcend-existance.component';
+import { SadboiAdvanceComponent } from './sadboi-advance.component';
 
-describe('TranscendExistanceComponent', () => {
-  let component: TranscendExistanceComponent;
-  let fixture: ComponentFixture<TranscendExistanceComponent>;
+describe('SadboiAdvanceComponent', () => {
+  let component: SadboiAdvanceComponent;
+  let fixture: ComponentFixture<SadboiAdvanceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TranscendExistanceComponent ]
+      declarations: [ SadboiAdvanceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TranscendExistanceComponent);
+    fixture = TestBed.createComponent(SadboiAdvanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
