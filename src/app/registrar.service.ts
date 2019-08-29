@@ -107,7 +107,8 @@ export class RegistrarService {
   }
 
   reimburse() {
-    //calculate offline earnings
+    // calculate offline earnings
+    // also fix Automate Agony inline display
   }
 
   ascend() {
