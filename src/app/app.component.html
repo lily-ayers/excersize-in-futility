@@ -17,7 +17,7 @@
     </td>
   </tr>
   <tr>
-    <td *ngIf="record.triggerAscension && (record.stress - (1000 * record.dejaVu)) / 100 > 0">
+    <td *ngIf="record.triggerAscension && record.lifeExperience > 0">
       <app-ascend-existance [record]=record></app-ascend-existance>
     </td>
     <td *ngIf="record.triggerTranscension">

@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { RegistrarService } from 'src/app/registrar.service';
+import { RecordOfExistance } from 'src/app/record-of-existance';
 
 @Component({
   selector: 'app-manual-existance',
@@ -7,7 +8,7 @@ import { RegistrarService } from 'src/app/registrar.service';
   styleUrls: ['./manual-existance.component.scss']
 })
 export class ManualExistanceComponent implements OnInit {
-  @Input() record;
+  @Input() record: RecordOfExistance;
   // Percentage tracker for progress bar
   futileProgress = 0;
   automateAgony = false;
@@ -34,13 +35,19 @@ export class ManualExistanceComponent implements OnInit {
       await this.delayTheInevitable((this.record.multipliersOwned[0] + 1) / 100);
     }
     this.futileProgress = 0;
-    this.record.stress += Math.floor((this.record.multipliersOwned[1] + 1)
-      * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10)));
+    this.record.stress += this.existManually();
     if (this.automateAgony && !this.registrar.reinitializingDespair) {
       this.attemptExistance();
     } else {
       this.automateAgony = false;
     }
+  }
+
+  existManually(): number {
+    return Math.floor(((this.record.multipliersOwned[1] + 1)
+      + ((this.record.multipliersOwned[4]) * 10)
+      /*+ ((this.record.multipliersOwned[5]) * 100)*/)
+      * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10)));
   }
 
   private delayTheInevitable(accumulatedDespair: number) {

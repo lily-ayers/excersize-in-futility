@@ -18,4 +18,12 @@
         <label>Take Out Student Loans</label>
         <button (click)='accumulate(3, $event)'>Cost: {{ record.multiplierPrices[3] | bigNum: 2 }}</button>
     </div>
+    <div *ngIf="record.multipliersOwned[3] > 0">
+        <label>Refuse to Take Painkillers</label>
+        <button (click)='accumulate(4, $event)'>Cost: {{ record.multiplierPrices[4] | bigNum: 2 }}</button>
+    </div>
+    <div *ngIf="record.multipliersOwned[4] > 0">
+        <label>Pull an All Nighter</label>
+        <button (click)='accumulate(5, $event)'>Cost: {{ record.multiplierPrices[5] | bigNum: 2 }}</button>
+    </div>
   </div>

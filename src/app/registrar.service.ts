@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RecordOfExistance } from './record-of-existance';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscription, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -112,9 +112,9 @@ export class RegistrarService {
       dejaVu: this.record.dejaVu + Math.round(this.record.lifeExperience),
       temporaryAnguish: 0,
       eternalSuffering: this.record.eternalSuffering,
-      multipliersOwned: [0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500],
-      multiplierBasePrices: [10, 20, 500, 1500],
+      multipliersOwned: [0, 0, 0, 0, 0, 0],
+      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
+      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
       influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
         7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
@@ -146,9 +146,9 @@ export class RegistrarService {
       brokenPocketWatches: 0,
       dejaVu: 0,
       eternalSuffering: this.record.eternalSuffering + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100),
-      multipliersOwned: [0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500],
-      multiplierBasePrices: [10, 20, 500, 1500],
+      multipliersOwned: [0, 0, 0, 0, 0, 0],
+      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
+      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
       influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
         7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
@@ -172,21 +172,23 @@ export class RegistrarService {
     this.reinitializingDespair = false;
   }
 
-  continuePitifulExistance(): Subscription {
+  continuePitifulExistance(): Observable<Number> {
     if (localStorage.getItem('EIF-record')) {
       this.record = JSON.parse(localStorage.getItem('EIF-record')) as RecordOfExistance;
       console.log('Pitiful Existance Loaded!');
-      return this.theUnforgivingForwardMarchOfTimeAndDecay.subscribe(i => localStorage.setItem('EIF-record', JSON.stringify(this.record)));
+      return this.theUnforgivingForwardMarchOfTimeAndDecay;
     }
     this.record = {
       stress: 0,
       clones: 0,
       brokenPocketWatches: 0,
       dejaVu: 0,
+      lifeExperience: 0,
       eternalSuffering: 0,
-      multipliersOwned: [0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500],
-      multiplierBasePrices: [10, 20, 500, 1500],
+      temporaryAnguish: 0,
+      multipliersOwned: [0, 0, 0, 0, 0, 0],
+      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
+      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
       influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
         7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
@@ -205,7 +207,7 @@ export class RegistrarService {
       triggerTranscension: false,
       triggerAutomation: false
      } as RecordOfExistance;
-    return this.theUnforgivingForwardMarchOfTimeAndDecay.subscribe(i => localStorage.setItem('EIF-record', JSON.stringify(this.record)));
+    return this.theUnforgivingForwardMarchOfTimeAndDecay;
     }
 
 }

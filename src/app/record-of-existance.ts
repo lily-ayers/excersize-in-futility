@@ -1,12 +1,9 @@
 export interface RecordOfExistance {
   // Primary Currency
   stress: number;
-  // 1 quadrillion stress
-  pressure: number;
-  // 1 quadrillion pressure
-  tension: number;
-  // 1 quadrillion tension
-  strain: number;
+
+  // pressure: number;
+  // tension: number;
 
   // Secondary Currencies
   clones: number;
@@ -29,6 +26,8 @@ export interface RecordOfExistance {
   // 1: # of Dread Owned
   // 2: # of Memes Owned
   // 3: # of Debt Owned
+  // 4: # of Strain Owned
+  // 5: # of Tension owned
   multipliersOwned: number[];
 
   // Multiplier Prices Array:
@@ -36,6 +35,8 @@ export interface RecordOfExistance {
   // 1: Dread Price
   // 2: Memes Price
   // 3: Debt Price
+  // 4: Strain Price
+  // 5: Tension Price
   multiplierPrices: number[];
 
   // Multiplier Base Prices Array:
@@ -43,6 +44,8 @@ export interface RecordOfExistance {
   // 1: Dread Base Price
   // 2: Memes Base Price
   // 3: Debt Base Price
+  // 4: Strain Base Price
+  // 5: Tension Base Price
   multiplierBasePrices: number[];
 
   // Influenced Array:

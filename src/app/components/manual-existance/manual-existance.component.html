@@ -7,4 +7,5 @@
   </div>
   <button *ngIf="record.stress > 10000000 && !record.triggerAutomation" (click)="automate()">Improve Stress Efficiency</button>
   <mat-checkbox *ngIf="record.triggerAutomation" [(ngModel)]="automateAgony">Automate Agony</mat-checkbox>
+  <label>Stress per Click: {{ existManually() | bigNum: 2}}</label>
 </div>
