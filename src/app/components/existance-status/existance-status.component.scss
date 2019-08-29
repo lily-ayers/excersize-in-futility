@@ -7,7 +7,7 @@
     margin-top: 10px;
     font-size: 1.2vw;
   }
-  .tooltipZone .tooltip {
+  .tooltip-zone .tooltip {
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -18,7 +18,7 @@
     position: absolute;
     z-index: 1;
   }
-  .tooltipZone:hover .tooltip {
-    visibility: visible;
+  .tooltip-zone:hover .tooltip {
+    visibility: hidden;
   }
 }

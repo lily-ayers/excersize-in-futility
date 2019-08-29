@@ -1,4 +1,6 @@
-<table class="tabs">
+<h1 *ngIf="!prepared">Loading Misery...</h1>
+
+<table *ngIf="prepared" class="tabs">
   <tr>
     <td>
         <app-manual-existance [record]=record></app-manual-existance>
@@ -17,7 +19,7 @@
     </td>
   </tr>
   <tr>
-    <td *ngIf="record.triggerAscension && record.lifeExperience > 0">
+    <td *ngIf="record.triggerAscension">
       <app-ascend-existance [record]=record></app-ascend-existance>
     </td>
     <td *ngIf="record.triggerTranscension">

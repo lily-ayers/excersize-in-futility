@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Renderer2 } from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ManualExistanceComponent } from './components/manual-existance/manual-existance.component';
 import { ExistanceStatusComponent } from './components/existance-status/existance-status.component';
@@ -29,15 +28,14 @@ import { BigNumPipe } from './big-num.pipe';
     TimeMachineComponent,
     AscendExistanceComponent,
     TranscendExistanceComponent,
-    BigNumPipe,
+    BigNumPipe
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

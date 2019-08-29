@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RecordOfExistance } from './record-of-existance';
-import { interval, Subscription, Observable } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,9 @@ export class RegistrarService {
   suffering: Subscription;
   reinitializingDespair = false;
 
-  constructor() {
+  constructor() { }
+
+  initializeMisery() {
     this.continuePitifulExistance();
     this.theUnforgivingForwardMarchOfTimeAndDecay.subscribe(data => {
       this.recordPitifulExistance();
@@ -38,17 +40,17 @@ export class RegistrarService {
       if (!this.record.triggerOutsourcing && this.record.influenced[0] >= 1) {
         this.record.triggerOutsourcing = true;
       }
+      if (!this.record.triggerAscension && this.record.lifeExperience > 0) {
+        this.record.triggerAscension = true;
+      }
+      if(!this.record.triggerTranscension && this.record.temporaryAnguish > 0) {
+        this.record.triggerTranscension = true;
+      }
       if (!this.record.triggerCloningMachine && this.record.stress >= 1000000000000000) {
         this.record.triggerInfluence = true;
       }
       if (!this.record.triggerTimeMachine && this.record.stress >= 1000000000000000000000) {
         this.record.triggerOutsourcing = true;
-      }
-      if (!this.record.triggerAscension && this.record.stress >= (1000 * (this.record.dejaVu + 1))) {
-        this.record.triggerAscension = true;
-      }
-      if (!this.record.triggerTranscension && this.record.dejaVu >= (1000 * (this.record.eternalSuffering + 1))) {
-        this.record.triggerTranscension = true;
       }
     });
   }
@@ -99,124 +101,72 @@ export class RegistrarService {
 
   recordPitifulExistance(): void {
     localStorage.setItem('EIF-record', JSON.stringify(this.record));
+    localStorage.setItem('EIF-timestamp', JSON.stringify(Date.now()));
     console.log('Pitiful Existance Recorded!');
   }
 
-  registerCowardice() {
-    //log user's datetime on window close
+  reimburse() {
+    const previousToilEndingTime = JSON.parse(localStorage.getItem('EIF-timestamp')) as Date;
+    const currentToilStartingTime = Date.now();
+    const difference = Math.abs(currentToilStartingTime.valueOf() - previousToilEndingTime.valueOf());
+    let offlineToil = Math.ceil(difference / 1000);
+    offlineToil *= this.influenceGains();
+    console.log('Offline Earnings: ' + offlineToil);
+    this.record.stress += offlineToil;
   }
 
-  reimburse() {
-    // calculate offline earnings
-    // also fix Automate Agony inline display
+  initializeBasicRecord(newDejaVu: number = 0, newEternalSuffering: number = 0) {
+    this.reinitializingDespair = true;
+    this.record = {
+      stress: 0,
+      clones: 0,
+      brokenPocketWatches: 0,
+      dejaVu: newDejaVu,
+      eternalSuffering: newEternalSuffering,
+      multipliersOwned: [0, 0, 0, 0, 0, 0],
+      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
+      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
+      influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
+        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
+      influenceBasePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
+        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
+      clonePrices: [1, 10, 50, 100, 250, 500],
+      watchPrices: [1, 25, 50],
+      triggerEfficiency: false,
+      triggerInfluence: false,
+      triggerOutsourcing: false,
+      triggerStatus: false,
+      triggerMarriage: false,
+      triggerCloningMachine: false,
+      triggerTimeMachine: false,
+      triggerAscension: false,
+      triggerTranscension: false,
+      triggerAutomation: false
+    } as RecordOfExistance;
+    localStorage.setItem('EIF-record', JSON.stringify(this.record));
+    console.log('Welcome to a New Pitiful Existance!');
+    this.reinitializingDespair = false;
   }
 
   ascend() {
-    this.reinitializingDespair = true;
-    this.record = {
-      stress: 0,
-      clones: 0,
-      brokenPocketWatches: 0,
-      lifeExperience: 0,
-      dejaVu: this.record.dejaVu + Math.round(this.record.lifeExperience),
-      temporaryAnguish: 0,
-      eternalSuffering: this.record.eternalSuffering,
-      multipliersOwned: [0, 0, 0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
-      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
-      influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      influenceBasePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      clonePrices: [1, 10, 50, 100, 250, 500],
-      watchPrices: [1, 25, 50],
-      triggerEfficiency: false,
-      triggerInfluence: false,
-      triggerOutsourcing: false,
-      triggerStatus: false,
-      triggerMarriage: false,
-      triggerCloningMachine: false,
-      triggerTimeMachine: false,
-      triggerAscension: false,
-      triggerTranscension: false,
-      triggerAutomation: false
-     } as RecordOfExistance;
-    localStorage.setItem('EIF-record', JSON.stringify(this.record));
-    console.log('Welcome to a New Pitiful Existance!');
-    this.reinitializingDespair = false;
+    const dejaVu = this.record.dejaVu + Math.round(this.record.lifeExperience);
+    this.initializeBasicRecord(dejaVu);
   }
 
   transcend() {
-    this.reinitializingDespair = true;
-    this.record = {
-      stress: 0,
-      clones: 0,
-      brokenPocketWatches: 0,
-      dejaVu: 0,
-      eternalSuffering: this.record.eternalSuffering + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100),
-      multipliersOwned: [0, 0, 0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
-      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
-      influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      influenceBasePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      clonePrices: [1, 10, 50, 100, 250, 500],
-      watchPrices: [1, 25, 50],
-      triggerEfficiency: false,
-      triggerInfluence: false,
-      triggerOutsourcing: false,
-      triggerStatus: false,
-      triggerMarriage: false,
-      triggerCloningMachine: false,
-      triggerTimeMachine: false,
-      triggerAscension: false,
-      triggerTranscension: false,
-      triggerAutomation: false
-     } as RecordOfExistance;
-    localStorage.setItem('EIF-record', JSON.stringify(this.record));
-    console.log('Welcome to a New Pitiful Existance!');
-    this.reinitializingDespair = false;
+    const eternalSuffering = this.record.eternalSuffering
+      + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100);
+    this.initializeBasicRecord(eternalSuffering);
   }
 
-  continuePitifulExistance(): Observable<Number> {
+  continuePitifulExistance() {
     if (localStorage.getItem('EIF-record')) {
       this.record = JSON.parse(localStorage.getItem('EIF-record')) as RecordOfExistance;
       console.log('Pitiful Existance Loaded!');
-      return this.theUnforgivingForwardMarchOfTimeAndDecay;
+    } else {
+      this.initializeBasicRecord();
+      console.log('Welcome to a New Pitiful Existance!');
     }
-    this.record = {
-      stress: 0,
-      clones: 0,
-      brokenPocketWatches: 0,
-      dejaVu: 0,
-      lifeExperience: 0,
-      eternalSuffering: 0,
-      temporaryAnguish: 0,
-      multipliersOwned: [0, 0, 0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
-      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
-      influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      influenceBasePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
-        7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
-      clonePrices: [1, 10, 50, 100, 250, 500],
-      watchPrices: [1, 25, 50],
-      triggerEfficiency: false,
-      triggerInfluence: false,
-      triggerOutsourcing: false,
-      triggerStatus: false,
-      triggerMarriage: false,
-      triggerCloningMachine: false,
-      triggerTimeMachine: false,
-      triggerAscension: false,
-      triggerTranscension: false,
-      triggerAutomation: false
-     } as RecordOfExistance;
-    return this.theUnforgivingForwardMarchOfTimeAndDecay;
-    }
-
+  }
 }

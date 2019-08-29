@@ -1,6 +1,9 @@
 <div class="button-viewport">
   <h1>Ascend for {{ record.lifeExperience | number: '1.0-0'}} Deja Vu!</h1>
-  <button (click)="ascend()">
-    ASCEND!
-  </button>
+  <div class="tooltip-zone">
+    <button [disabled]="record.lifeExperience >= 1" (click)="ascend()">
+      ASCEND!
+    </button>
+    <span class="tooltip">You will lose all progress, but gain Deja Vu, which increases all earnings by 10% each!</span>
+  </div>
 </div>

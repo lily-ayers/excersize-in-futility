@@ -1,11 +1,13 @@
 <div class="button-viewport">
+  <div class="tooltip-zone">
   <button class="button" (click)="attemptExistance()" [disabled]='futileProgress!==0'>
     Try to Exist
   </button>
+  <span class="tooltip">Click to Manually Exist, you currently gain {{ existManually() | bigNum: 2}} Stress per click!</span>
+  </div>
   <div class="progress-bar">
     <div [ngStyle]="{'width.vw':.15*futileProgress}" class="progress"></div>
   </div>
   <button *ngIf="record.stress > 10000000 && !record.triggerAutomation" (click)="automate()">Improve Stress Efficiency</button>
   <mat-checkbox *ngIf="record.triggerAutomation" [(ngModel)]="automateAgony">Automate Agony</mat-checkbox>
-  <label>Stress per Click: {{ existManually() | bigNum: 2}}</label>
 </div>

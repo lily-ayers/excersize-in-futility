@@ -1,10 +1,16 @@
 <div class="button-viewport">
+  <div class="tooltip-zone">
     <button *ngIf="!active" class="button" (click)="defyNature()" [disabled]='ultimatelyPointlessExertion!==0'>
       Defy Nature
     </button>
+    <span class="tooltip">You're pretty sure you can build a cloning machine if you put in enough time...</span>
+  </div>
+  <div class="tooltip-zone">
     <button *ngIf="active" class="button" (click)="createLife()" [disabled]='ultimatelyPointlessExertion!==0'>
       Create Life
     </button>
+    <span class="tooltip">Time to test this thing out...</span>
+  </div>
     <div *ngIf="ultimatelyPointlessExertion > 0 && !active" class="progress-bar">
         <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress">Building Cloning Machine</div>
     </div>

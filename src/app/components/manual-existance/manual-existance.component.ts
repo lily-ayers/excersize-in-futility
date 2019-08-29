@@ -13,26 +13,29 @@ export class ManualExistanceComponent implements OnInit {
   futileProgress = 0;
   automateAgony = false;
 
-  constructor(private registrar: RegistrarService) {
-    registrar.continuePitifulExistance();
-   }
+  constructor(private registrar: RegistrarService) { }
 
   ngOnInit() {
   }
 
   async attemptExistance() {
-    this.futileProgress = 1;
-    if (this.record.multipliersOwned[0] < 25) {
-      for (this.futileProgress; this.futileProgress < 101; this.futileProgress++) {
-        await this.delayTheInevitable(this.record.multipliersOwned[0] + 1);
+    this.futileProgress = 0;
+    let delay = (100 / (1 + (this.record.multipliersOwned[0] / 10)));
+    if (this.record.multipliersOwned[0] < 100) {
+      for (this.futileProgress; this.futileProgress < 100; this.futileProgress++) {
+        await this.delayTheInevitable(delay);
       }
-    } else if (this.record.multipliersOwned[0] < 100) {
-      for (this.futileProgress; this.futileProgress < 101; this.futileProgress += 20) {
-        await this.delayTheInevitable((this.record.multipliersOwned[0] + 1) / 20);
+    } else if (this.record.multipliersOwned[0] < 1000) {
+      for (this.futileProgress; this.futileProgress < 101; this.futileProgress += 10) {
+        await this.delayTheInevitable(delay * 10);
       }
-    } else if (this.record.multipliersOwned[0] >= 100) {
+    } else if (this.record.multipliersOwned[0] < 5000) {
+      for (this.futileProgress; this.futileProgress < 101; this.futileProgress += 25) {
+        await this.delayTheInevitable(delay * 25);
+      }
+    } else if (this.record.multipliersOwned[0] >= 20000) {
       this.futileProgress = 100;
-      await this.delayTheInevitable((this.record.multipliersOwned[0] + 1) / 100);
+      await this.delayTheInevitable(delay * 100);
     }
     this.futileProgress = 0;
     this.record.stress += this.existManually();
@@ -50,8 +53,8 @@ export class ManualExistanceComponent implements OnInit {
       * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10)));
   }
 
-  private delayTheInevitable(accumulatedDespair: number) {
-    return new Promise(resolve => setTimeout(resolve, (100 / (1 + (accumulatedDespair / 2)))));
+  private delayTheInevitable(time: number) {
+    return new Promise(resolve => setTimeout(resolve, time));
   }
 
   automate() {
