@@ -102,6 +102,14 @@ export class RegistrarService {
     console.log('Pitiful Existance Recorded!');
   }
 
+  registerCowardice() {
+    //log user's datetime on window close
+  }
+
+  reimburse() {
+    //calculate offline earnings
+  }
+
   ascend() {
     this.reinitializingDespair = true;
     this.record = {
