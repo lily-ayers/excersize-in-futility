@@ -4,4 +4,7 @@ export interface Sufferer {
   damage: number;
   accuracy: number;
   defense: number;
+  sensibility: number;
+  stoicism: number;
+  deaths: number;
 }

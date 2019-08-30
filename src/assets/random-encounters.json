@@ -2,24 +2,438 @@
   "encounters": [
     {
       "message": "You come across a rock. Of course, by 'come across', I mean you tripped over it. Smooth move. (-1 Health)",
-      "affectedStat": "health",
-      "statChange": -1,
+      "affectedStats": ["health"],
+      "statChange": [-1],
       "followUps": [1]
     },
     {
-      "message": "Fight the rock? (Y/N)",
+      "message": "Fight the rock?",
       "actions": ["y", "n"],
-      "followUps": [2, 3]
+      "followUps": [2, 3],
+      "actionRequirements": [
+                              [
+                                "damage",
+                                "5",
+                                "demolish",
+                                "4"
+                              ]
+                            ],
+      "actionSkillCheck": [
+                              [
+                                "damage",
+                                "5",
+                                "5"
+                              ],
+                              [
+                                "sensibility",
+                                "5",
+                                "6"
+                              ]
+                            ]
     },
     {
       "message": "The rock doesn't really fight back, but you certainly feel stronger after punching it. (+1 Damage)",
-      "affectedStat": "damage",
-      "statChange": 1
+      "affectedStats": ["damage"],
+      "statChange": [1],
+      "followUps": [404404]
     },
     {
       "message": "You're right, that rock is more trouble than it's worth. You put in your pocket though, now 0.1% of your body is armored! (+1 Defense)",
-      "affectedStat": "defense",
-      "statChange": 1
+      "affectedStats": ["defense"],
+      "statChange": [1],
+      "followUps": [404404]
+    },
+    {
+      "message": "That rock never stood a chance. The crater you leave is all that remains of its legacy. (+1 Stoicism)",
+      "affectedStats": ["defense"],
+      "statChange": [1],
+      "followUps": [404404]
+    },
+    {
+      "message": "You try to punch the rock, but before you can even clench your fist a snickering boulder pantses you! You run away, ashamed.",
+      "followUps": [404404]
+    },
+    {
+      "message": "You mosey on your way, wondering what might have happenned if you had been more sensible...",
+      "followUps": [404404]
+    },
+    {
+      "message": "Well... You died. What a waste of time. Try again?",
+      "actions": ["start over"],
+      "followUps": [777777],
+      "actionRequirements": [
+                              [
+                                "damage",
+                                "100",
+                                "fight",
+                                "8"
+                              ],
+                              [
+                                "accuracy",
+                                "120",
+                                "darts",
+                                "9"
+                              ],
+                              [
+                                "defense",
+                                "100",
+                                "shrug",
+                                "11"
+                              ],
+                              [
+                                "maxHealth",
+                                "100",
+                                "bloodmagic",
+                                "12"
+                              ],
+                              [
+                                "sensibility",
+                                "100",
+                                "reason",
+                                "13"
+                              ],
+                              [
+                                "stoicism",
+                                "100",
+                                "stare",
+                                "14"
+                              ]
+                            ]
+    },
+    {
+      "message": "You punch Death. It doesn't do anything, but he admits you've got balls. He restores your life at a cost.",
+      "affectedStats": ["damage", "deaths", "healthfull"],
+      "statChange": [-50, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You challenge Death to a game of darts. You win your life back, but in the process you may have lost an eye or two.",
+      "affectedStats": ["accuracy", "deaths", "healthfull"],
+      "statChange": [-60, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You find a book, but it looks like it's also... a loaf of bread? You'd have to see this thing to believe it.",
+      "actions": ["read it", "eat it"],
+      "followUps": [15, 17]
+    },
+    {
+      "message": "You honestly didn't even notice dying, and you refuse to notice Death trying to get your attention. He eventually gets fed up and steals some of your armor, but hey, you're alive!",
+      "affectedStats": ["defense", "deaths", "healthfull"],
+      "statChange": [-50, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "Even death is impressed at your health bar, so he offers you your life back... for half of it. Yay?",
+      "affectedStats": ["maxHealth", "deaths", "healthfull"],
+      "statChange": [-50, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You talk it out with death, and by the time you're done, he's joined your pyramid scheme. Unfortunately, being part of a pyramid scheme in the first place has lessened your sensibility",
+      "affectedStats": ["sensibility", "deaths", "healthfull"],
+      "statChange": [-50, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You just stare death down. At first he thinks you're kidding, but after a few minutes it gets suuuper uncomfortable. He kinda just backs away and leaves you to your business. As he does, you crack a smile, losing a significant amount of Stoicism",
+      "affectedStats": ["stoicism", "deaths", "healthfull"],
+      "statChange": [-50, 1, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "This book has taught you a lot. Mostly that bread-books are poorly written. (+1 Sensibility)",
+      "affectedStats": ["sensibility"],
+      "statChange": [1],
+      "actions": ["throw it out"],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "sensibility",
+                                "10",
+                                "eat it anyway",
+                                "16"
+                              ]
+                            ]
+    },
+    {
+      "message": "It's baked a lot better than it was written. you feel bulkier... (+1 Damage, +1 Defense)",
+      "affectedStats": ["damage", "defense"],
+      "statChange": [1, 1],
+      "followUps": [404404]
+    },
+    {
+      "message": "You eat about half of it, but then you start to feel guilty. Someone obviously worked pretty hard to write this on bread, maybe it was really good. You'll never know now, you just ate the table of contents like a jerk! It was filling though. (+1 Defense, +1 Stoicism, -1 Sensibility)",
+      "affectedStats": ["defense", "stoicism", "sensibility"],
+      "statChange": [1, 1, -1],
+      "followUps": [404404]
+    },
+    {
+      "message": "Either the sun was already setting, or it wussed out and you won. You're convinced it was the latter. (+3 Stoicism, -1 Sensibility, -5 Accuracy",
+      "affectedStats": ["stoicism", "sensibility", "accuracy"],
+      "statChanges": [3, -1, -5],
+      "followUps": [404404]
+    },
+    {
+      "message": "You decide this is boring and punch the nearest thing you find. It was a cactus.",
+      "actions": ["ouch"],
+      "followUps": [21],
+      "actionSkillCheck": [
+                            [
+                              "defense",
+                              "15",
+                              "22"
+                            ]
+                          ]
+    },
+    {
+      "message": "Nothing happens, you just wander the wastes for a while.",
+      "actions": ["lame"],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "10",
+                                "stare down the sun",
+                                "18"
+                              ],
+                              [
+                                "damage",
+                                "15",
+                                "make something happen",
+                                "19"
+                              ]
+                            ]
+    },
+    {
+      "message": "Yeah, ouch. Your hand is sore now. (-2 Health, -2 Damage)",
+      "affectedStats": ["health", "damage"],
+      "statChange": [-2, -2],
+      "followUps": [404404]
+    },
+    {
+      "message": "You rush towards the cliff with reckless abandon and... And... AND...",
+      "actions": ["and...?"],
+      "followUps": [25],
+      "actionSkillCheck": [
+                            [
+                              "accuracy",
+                              "80",
+                              "26"
+                            ]
+                          ]
+    },
+    {
+      "message": "You T-pose beside her on the cliff. After a few hours it becomes more of a competition to see who can hold it the longest. After a few more you consider quitting.",
+      "actions": ["give up"],
+      "followUps": [29],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "15",
+                                "power through",
+                                "27"
+                              ],
+                              [
+                                "defense",
+                                "20",
+                                "tired? whose tired?",
+                                "28"
+                              ]
+                            ]
+    },
+    {
+      "message": "After watching for a while, it dawns on you that she isn't T-posing, she's practicing Tai-Chi. Your bad. You do learn some sweet techniques that you're definitely gonna practice at home, though. (+5 Accuracy, +1 Damage, +2 Sensibility)",
+      "affectedStats": ["accuracy", "damage", "sensibility"],
+      "statChange": [5, 1, 2],
+      "followUps": [404404]
+    },
+    {
+      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (+2 Damage, +2 Defense)",
+      "affectedStats": ["damage", "defense"],
+      "statChange": [2, 2],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "25",
+                                "yes.",
+                                "31"
+                              ]
+                            ]
+    },
+    {"26"},
+    {"27"},
+    {"28"},
+    {"29"},
+    {
+      "message": "You come across a woman T-posing on a cliff",
+      "actions": ["push her", "join her", "watch in amazement"],
+      "followUps": [22, 23, 24],
+      "actionRequirements": [
+                              [
+
+                              ]
+                            ],
+      "actionSkillCheck": [
+                              [
+
+                              ]
+                            ]
+    },
+    {
+      "message": "Yes? Yes what? Yes you want me to describe your heinous murder? I'm not going to.",
+      "actions": ["okay"],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "30",
+                                "yes. do it.",
+                                "32"
+                              ]
+                            ]
+    },
+    {
+      "message": "Look, I'm already uncomfortable with this whole situation, can we just move on?",
+      "actions": ["fine"],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "35",
+                                "no.",
+                                "33"
+                              ]
+                            ]
+    },
+    {
+      "message": "Please? I'll give you stats! See? (+2 Damage, +2 Defense, +2 Sensibility, +10 Accuracy, +2 Max Health please dont hurt me)",
+      "affectedStats": ["damage", "defense", "sensibility", "accuracy", "maxHealth"],
+      "statChange": [2, 2, 2, 10, 2],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "40",
+                                "more.",
+                                "34"
+                              ]
+                            ]
+    },
+    {
+      "message": "Uhm- I'm not really supposed to... I guess I could give you these? But it's all I have! (+10 Damage, +10 Sensibility",
+      "affectedStats": ["damage", "sensibility"],
+      "statChange": [10, 10],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "45",
+                                "eat the narrator",
+                                "35"
+                              ]
+                            ]
+
+    },
+    {
+      "message": "What? You can't do that. I'm not edible! What good would it do anyways? I'm not nutritious! I swear!",
+      "affectedStats": ["damage", "sensibility"],
+      "statChange": [10, 10],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "50",
+                                "eat the narrator",
+                                "36"
+                              ]
+                            ]
+
+    },
+    {
+      "message": "............(+10 to all Stats)",
+      "affectedStats": ["all"],
+      "statChange": [10],
+      "followUps": [37]
+
+    },
+    {
+      "message": "Hello, I have been assigned as your new Narrat-WHAT THE HELL HAVE YOU DONE?",
+      "followUps": []
+    },
+    {},
+    {},
+    {
+      "message": "40"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "50"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "60"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "70"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "80"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "90"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "message": "100"
     }
   ]
 }

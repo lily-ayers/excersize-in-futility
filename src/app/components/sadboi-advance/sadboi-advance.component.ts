@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SadboiMessage } from 'src/app/sadboi-message';
 import { SadboiAdvanceService } from 'src/app/sadboi-advance.service';
@@ -23,5 +23,11 @@ export class SadboiAdvanceComponent implements OnInit {
     } else {
       this.sadboi.submitInstance(this.sadboiConsoleInput.value.toString());
     }
+    this.sadboiConsoleInput.setValue('');
+  }
+
+  autoFill(input: string) {
+    this.sadboiConsoleInput.setValue(input);
+    this.submit();
   }
 }

@@ -5,13 +5,22 @@
   font-size: 1.2vw;
   top: 0;
   .sadboiDisplay {
-    height: 32vh;
+    height: 40vh;
     text-align: center;
     font-size: 1.2vw;
     top: 0;
     overflow-y: scroll;
     padding-left: 4px;
     padding-right: 4px;
+    .sadboiMessageDiv {
+      display: inline;
+      .clickable {
+        display: inline;
+      }
+      span {
+        display: block;
+      }
+    }
   }
   .sadboiInput {
     display: inline;

@@ -5,31 +5,31 @@
     <div class="tooltip-zone">
       <label>Accumulate Despair</label>
       <button (click)='accumulate(0, $event)'>Cost: {{ record.multiplierPrices[0] | bigNum: 2 }}</button>
-      <span class="tooltip">+10% Manual Exist Speed</span>
+      <span class="tooltip">+1 Despair (+10% Manual Exist Speed)</span>
     </div>
     <div *ngIf='record.multipliersOwned[0] > 0' class="tooltip-zone">
       <label>Wallow in Dread</label>
       <button (click)='accumulate(1, $event)'>Cost: {{ record.multiplierPrices[1] | bigNum: 2 }}</button>
-      <span class="tooltip">+1 Manual Exist Stress</span>
+      <span class="tooltip">+1 Dread (+1 Manual Exist Stress)</span>
     </div>
     <div *ngIf="record.multipliersOwned[1] > 0" class="tooltip-zone">
       <label>Browse the Internet</label>
       <button (click)='accumulate(2, $event)'>Cost: {{ record.multiplierPrices[2] | bigNum: 2 }}</button>
-      <span class="tooltip">+10% faster Ticks</span>
+      <span class="tooltip">+1 Meme (+10% faster Ticks)</span>
     </div>
     <div *ngIf="record.multipliersOwned[2] > 0" class="tooltip-zone">
       <label>Take Out Student Loans</label>
       <button (click)='accumulate(3, $event)'>Cost: {{ record.multiplierPrices[3] | bigNum: 2 }}</button>
-      <span class="tooltip">+10% Influence Stress</span>
+      <span class="tooltip">+1 Debt (+10% Influence Stress)</span>
     </div>
     <div *ngIf="record.multipliersOwned[3] > 0" class="tooltip-zone">
       <label>Refuse to Take Painkillers</label>
       <button (click)='accumulate(4, $event)'>Cost: {{ record.multiplierPrices[4] | bigNum: 2 }}</button>
-      <span class="tooltip">+10 Manual Exist Stress</span>
+      <span class="tooltip">+1 Strain (+10 Manual Exist Stress)</span>
     </div>
     <div *ngIf="record.multipliersOwned[4] > 0" class="tooltip-zone">
       <label>Pull an All Nighter</label>
       <button (click)='accumulate(5, $event)'>Cost: {{ record.multiplierPrices[5] | bigNum: 2 }}</button>
-      <span class="tooltip">+100 Manual Exist Stress</span>
+      <span class="tooltip">+1 Tension (+100 Manual Exist Stress)</span>
     </div>
   </div>
