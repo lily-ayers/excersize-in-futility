@@ -49,7 +49,7 @@ export class ManualExistanceComponent implements OnInit {
   existManually(): number {
     return Math.floor(((this.record.multipliersOwned[1] + 1)
       + ((this.record.multipliersOwned[4]) * 10)
-      /*+ ((this.record.multipliersOwned[5]) * 100)*/)
+      + ((this.record.multipliersOwned[5]) * 100))
       * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10)));
   }
 

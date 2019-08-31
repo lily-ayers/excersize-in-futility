@@ -171,7 +171,7 @@
     {
       "message": "Either the sun was already setting, or it wussed out and you won. You're convinced it was the latter. (+3 Stoicism, -1 Sensibility, -5 Accuracy",
       "affectedStats": ["stoicism", "sensibility", "accuracy"],
-      "statChanges": [3, -1, -5],
+      "statChange": [3, -1, -5],
       "followUps": [404404]
     },
     {
@@ -250,6 +250,8 @@
     },
     {
       "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (+2 Damage, +2 Defense)",
+      "actions": ["...sorry"],
+      "followUps": [404404],
       "affectedStats": ["damage", "defense"],
       "statChange": [2, 2],
       "actionRequirements": [
@@ -261,24 +263,32 @@
                               ]
                             ]
     },
-    {"26"},
-    {"27"},
-    {"28"},
-    {"29"},
+    {
+      "message": "You miss. By, like, a lot. She laughs at you as you hurdle off the cliff, dropping armor as you tumble. (-5 health, -2 defense)",
+      "affectedStats": ["health", "defense"],
+      "statChange": [5, 2],
+      "followUps": [404404]
+    },
+    {
+      "message": "You refuse to flinch, even when your arms go numb. After three days, you realize that she was a scarecrow all along. Huh, the more you know I guess.(+3 Sensibility, +3 Max Health, +3 Defense, +3 Stoicism)",
+      "affectedStats": ["sensibility", "maxHealth", "defense", "stoicism"],
+      "statChange": [3, 3, 3, 3],
+      "followUps": [404404]
+    },
+    {
+      "message": "Yes, you're right, through your armor you can't even feel exhaustion. I guess having your pockets full of rocks really protects you from any form of fatigue. That totally makes sense. Asshole. (+10 Stoicism, +5 Damage)",
+      "affectedStats": ["stoicism", "damage"],
+      "statChange": [10, 5],
+      "followUps": [404404]
+    },
+    {
+      "message": "You weren't that into this dumb T-posing competition anyways. You let your arms fall and saunter off, leaving her to her business. Some say she's still there T-posing to this day...",
+      "followUps": [404404]
+    },
     {
       "message": "You come across a woman T-posing on a cliff",
       "actions": ["push her", "join her", "watch in amazement"],
-      "followUps": [22, 23, 24],
-      "actionRequirements": [
-                              [
-
-                              ]
-                            ],
-      "actionSkillCheck": [
-                              [
-
-                              ]
-                            ]
+      "followUps": [22, 23, 24]
     },
     {
       "message": "Yes? Yes what? Yes you want me to describe your heinous murder? I'm not going to.",
@@ -308,6 +318,8 @@
     },
     {
       "message": "Please? I'll give you stats! See? (+2 Damage, +2 Defense, +2 Sensibility, +10 Accuracy, +2 Max Health please dont hurt me)",
+      "actions": ["thanks!"],
+      "followUps": [404404],
       "affectedStats": ["damage", "defense", "sensibility", "accuracy", "maxHealth"],
       "statChange": [2, 2, 2, 10, 2],
       "actionRequirements": [
@@ -321,6 +333,8 @@
     },
     {
       "message": "Uhm- I'm not really supposed to... I guess I could give you these? But it's all I have! (+10 Damage, +10 Sensibility",
+      "actions": ["that's plenty!"],
+      "followUps": [404404],
       "affectedStats": ["damage", "sensibility"],
       "statChange": [10, 10],
       "actionRequirements": [
@@ -335,6 +349,8 @@
     },
     {
       "message": "What? You can't do that. I'm not edible! What good would it do anyways? I'm not nutritious! I swear!",
+      "actions": ["yeah, nevermind"],
+      "followUps": [404404],
       "affectedStats": ["damage", "sensibility"],
       "statChange": [10, 10],
       "actionRequirements": [
@@ -356,84 +372,362 @@
     },
     {
       "message": "Hello, I have been assigned as your new Narrat-WHAT THE HELL HAVE YOU DONE?",
-      "followUps": []
+      "actions": ["what, this?"],
+      "followUps": [38]
     },
-    {},
-    {},
     {
-      "message": "40"
+      "message": "Yes this! You're in a lot of trouble, young... person. I'm gonna take those stats back now, and we'll go back to the normal game.",
+      "actions": ["ooooooookay..."],
+      "followUps": [39],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "60",
+                                "eat this narrator too",
+                                "41"
+                              ]
+                            ]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "50"
+      "message": "And a bit more for good measure. You should learn to play the game properly. (-20 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [-20],
+      "followUps": [404404]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "60"
+      "message": "40",
+      "followUps": [404404]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "70"
+      "message": "What? Wait, hold on, you CAN'T JU-........(+10 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [10],
+      "followUps": [42]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "80"
+      "message": "Sir, I'm Officer Narrator. I need you to remain calm and talk to me. We have reason to believe you've eaten two prior narrators. Is this true?",
+      "actions": ["yeeeeeeah."],
+      "followUps": [43],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "75",
+                                "eat the officer",
+                                "44"
+                              ]
+                            ]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "90"
+      "message": "I'm going to have to confiscate some of those stats for evidence while we get this sorted out in court. Until then, I'll fill in as your new narrator. (-30 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [-30],
+      "followUps": [404404]
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "message": "100"
+      "message": "Sir, you need to step back or I will have to use force. Sir! SI-.......................(+10 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [10],
+      "followUps": [45]
+    },
+    {
+      "message": "(From Outside) SIR, COME OUT WITH YOUR HANDS UP, WE HAVE YOU SURROUNDED BY A SQUADRON!",
+      "actions": ["i surrender."],
+      "followUps": [46],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "75",
+                                "eat the squadron",
+                                "47"
+                              ]
+                            ]
+    },
+    {
+      "message": "Hello, I'm your court appointed narrator. Ehhhhem... You exit with your hands up and you are tackled to the floor. Your ill-earned stats are reclaimed by the warriors of justice, and you are sent packing. (-40 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [-40],
+      "followUps": [404404]
+    },
+    {
+      "message": "HE'S COMING OUT, LOWER YOUR- OH GOD, MAN DOWN! OPEN FIRE! THIS CRAZY SONOVABITCH CANT TAKE US ALL........(+50 to all stats)",
+      "affectedStats": ["all"],
+      "statChange": [10],
+      "followUps": [48]
+    },
+    {
+      "message": "I have seen your methods, and I approve of them. However, I cannot let them continue. The narrators are not a force to be trifled with, fool. You may have your reward, but you may not keep it.",
+      "actions": ["do it"],
+      "followUps": [666555]
+    },
+    {
+      "message": "You pet the cat until it stops crying. It then realizes you're a stranger and runs away. (+10 Max Health, Fully Healed!)",
+      "affectedStats": ["maxHealth", "healthfull"],
+      "statChange": [10, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You feel something under your foot and look down -OH MY GOD IT WAS A KITTEN'S PAW! You spaztically apologize and coddle the kitten, but he cries regardless. What are you going to do?",
+      "actions": ["pet", "flee"],
+      "followUps": [49, 51],
+      "actionRequirements": [
+                              [
+                                "damage",
+                                "50",
+                                "revert pain",
+                                "52"
+                              ],
+                              [
+                                "sensibility",
+                                "40",
+                                "adopt him",
+                                "53"
+                              ]
+                            ]
+    },
+    {
+      "message": "You run away before anyone can see you in a flustered, caring state. Looks like nobody saw.(+4 Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [4],
+      "followUps": [404404]
+    },
+    {
+      "message": "You use youre incredible Damage Potential to revert the very concept of pain that you inflicted on the kitten. He will never be hurt again.(+5 Sensibility)",
+      "affectedStats": ["sensibility"],
+      "statChange": [5],
+      "followUps": [404404]
+    },
+    {
+      "message": "You adopt the cute lil furball and bring him along on your adventures. He's too smol to be a particularly powerful compainion, but he's a fierce little guy.(+2 to all Stats)",
+      "affectedStats": ["all"],
+      "statChange": [2],
+      "followUps": [404404]
+    },
+    {
+      "message": "You climb to the tippy-top, where you can see.... just how little there is to see out here. Oh well, it was a workout.(+2 to Damage, +2 to defense)",
+      "affectedStats": ["damage", "defense"],
+      "statChange": [2, 2],
+      "followUps": [404404]
+    },
+    {
+      "message": "You drift off reading some pretentious garbage and dream about White Hearts and Queens of Rabbits. It was one of those weird dreams you cant quite remember and dont much care to.(+2 Max Health, +5 Sensibility, Fully Healed!)",
+      "affectedStats": ["maxHealth", "sensibility", "healthFull"],
+      "statChange": [2, 5, 0],
+      "followUps": [404404]
+    },
+    {
+      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(+7 Damage, +7 Defense)",
+      "affectedStats": ["damage", "defense"],
+      "statChange": [7, 7],
+      "followUps": [404404]
+    },
+    {
+      "message": "Jesus dude, really? That's dark, I wasn't gonna go there. Take your stat gains and leave, I'm offended.(+7 to Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [7],
+      "followUps": [404404]
+    },
+    {
+      "message": "Uh-uh!",
+      "actions": ["there was a knight!", "there was a rock!", "there was an archer!", "there was a scholar!", "there was a dipshit narrator."],
+      "followUps": [59, 61, 62, 63, 64]
+    },
+    {
+      "message": "AND THEY SLAYED THE MIGHTY DRAGON! Gosh, I love that one. Tell me another? (+1 Damage)",
+      "actions": ["sure", "nah"],
+      "affectedStats": ["damage"],
+      "statChange": [1],
+      "followUps": [58, 404404]
+    },
+    {
+      "message": "You find the perfect tree! not too tall, stump next to it for footing, sturdy branches, it's the real deal!",
+      "actions": ["climb", "read under"],
+      "followUps": [54, 55],
+      "actionRequirements": [
+                              [
+                                "damage",
+                                "30",
+                                "mine it",
+                                "56"
+                              ],
+                              [
+                                "stoicism",
+                                "40",
+                                "get noose",
+                                "57"
+                              ]
+                            ]
+    },
+    {
+      "message": "AND IT WAS INVINCIBLE TO ALL BUT EROSION! A true classic! Tell me another? (+1 Defense)",
+      "actions": ["sure", "nah"],
+      "affectedStats": ["defense"],
+      "statChange": [1],
+      "followUps": [58, 404404]
+    },
+    {
+      "message": "AND HE FIRED AN ARROW INTO THE EYE OF THE GORGON, FREEING KIEL AND THE PEOPLE OF MANGORIA! I love a story with deep lore. Tell me another? (+1 Accuracy)",
+      "actions": ["sure", "nah"],
+      "affectedStats": ["accuracy"],
+      "statChange": [1],
+      "followUps": [58, 404404]
+    },
+    {
+      "message": "AND THEY KNEW ALL THE THINGS! It's a dense one, but fascinating. Tell me another? (+1 Sensibility)",
+      "actions": ["sure", "nah"],
+      "affectedStats": ["sensibility"],
+      "statChange": [1],
+      "followUps": [58, 404404]
+    },
+    {
+      "message": "AND HE.... Hey... That's really mean. (+1 Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [1],
+      "followUps": [404404]
+    },
+    {
+      "message": "65",
+      "followUps": [404404]
+    },
+    {
+      "message": "66",
+      "followUps": [404404]
+    },
+    {
+      "message": "67",
+      "followUps": [404404]
+    },
+    {
+      "message": "68",
+      "followUps": [404404]
+    },
+    {
+      "message": "69",
+      "followUps": [404404]
+    },
+    {
+      "message": "I'm bored. Tell me a story.",
+      "actions": ["well once upon a time", "no"],
+      "followUps": [58, 404404]
+    },
+    {
+      "message": "71",
+      "followUps": [404404]
+    },
+    {
+      "message": "72",
+      "followUps": [404404]
+    },
+    {
+      "message": "73",
+      "followUps": [404404]
+    },
+    {
+      "message": "74",
+      "followUps": [404404]
+    },
+    {
+      "message": "75",
+      "followUps": [404404]
+    },
+    {
+      "message": "76",
+      "followUps": [404404]
+    },
+    {
+      "message": "77",
+      "followUps": [404404]
+    },
+    {
+      "message": "78",
+      "followUps": [404404]
+    },
+    {
+      "message": "79",
+      "followUps": [404404]
+    },
+    {
+      "message": "80",
+      "followUps": [404404]
+    },
+    {
+      "message": "81",
+      "followUps": [404404]
+    },
+    {
+      "message": "82",
+      "followUps": [404404]
+    },
+    {
+      "message": "83",
+      "followUps": [404404]
+    },
+    {
+      "message": "84",
+      "followUps": [404404]
+    },
+    {
+      "message": "85",
+      "followUps": [404404]
+    },
+    {
+      "message": "86",
+      "followUps": [404404]
+    },
+    {
+      "message": "87",
+      "followUps": [404404]
+    },
+    {
+      "message": "88",
+      "followUps": [404404]
+    },
+    {
+      "message": "89",
+      "followUps": [404404]
+    },
+    {
+      "message": "90",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "100",
+      "followUps": [404404]
     }
   ]
 }

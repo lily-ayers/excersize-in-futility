@@ -22,7 +22,7 @@
     <td *ngIf="record.triggerAscension">
       <app-ascend-existance [record]=record></app-ascend-existance>
     </td>
-    <td colspan=2>
+    <td *ngIf="record.dejaVu > 0 && record.triggerEfficiency" colspan=2>
       <app-sadboi-advance [record]=record></app-sadboi-advance>
     </td>
     <td *ngIf="record.triggerCloningMachine">

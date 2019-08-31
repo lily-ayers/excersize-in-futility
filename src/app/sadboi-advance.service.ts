@@ -93,7 +93,7 @@ export class SadboiAdvanceService {
 
   wander() {
     this.consoleHistory.push({ message: 'Wandering the wastes...' });
-    this.encounter(Math.floor(Math.random() * 11) * 10);
+    this.encounter(Math.floor(Math.random() * 8) * 10);
   }
 
   rest() {
@@ -183,6 +183,10 @@ export class SadboiAdvanceService {
       this.consoleHistory = [
         { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
       ];
+      this.consoleHistory.push({ message: 'Available Actions: ' });
+      for (const action of this.basicActions) {
+        this.consoleHistory.push({ message: action, link: true});
+      }
       this.sufferer = {
         maxHealth: 10,
         health: 10,
@@ -198,6 +202,10 @@ export class SadboiAdvanceService {
       this.consoleHistory = [
         { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
       ];
+      this.consoleHistory.push({ message: 'Available Actions: ' });
+      for (const action of this.basicActions) {
+        this.consoleHistory.push({ message: action, link: true});
+      }
       this.sufferer = {
         maxHealth: 10,
         health: 10,
@@ -269,7 +277,7 @@ export class SadboiAdvanceService {
         case 'stoicism':
           this.sufferer.stoicism += encounter.statChange[i];
           break;
-        case 'healthFill':
+        case 'healthFull':
           this.sufferer.health = this.sufferer.maxHealth;
           break;
         case 'all':
