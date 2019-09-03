@@ -151,7 +151,7 @@ export class SadboiAdvanceService {
   async encounter(encounterID: number) {
     this.instance = false;
     if (!this.specialInstances.includes(encounterID)) {
-      let encounter: Encounter = this.encounters[encounterID];
+      let encounter: Encounter = JSON.parse(JSON.stringify(this.encounters[encounterID]));
       this.consoleHistory.push({ message: encounter.message });
       await new Promise(resolve => setTimeout(resolve, 1000));
       if (encounter.affectedStats && encounter.statChange) {
