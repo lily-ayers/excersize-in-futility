@@ -2,19 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ManualExistanceComponent } from './components/manual-existance/manual-existance.component';
-import { ExistanceStatusComponent } from './components/existance-status/existance-status.component';
-import { ExistanceOutsourcingComponent } from './components/existance-outsourcing/existance-outsourcing.component';
-import { ExistanceOutsourcingStatusComponent } from './components/existance-outsourcing-status/existance-outsourcing-status.component';
-import { ExistanceEfficiencyModifierComponent } from './components/existance-efficiency-modifier/existance-efficiency-modifier.component';
-import { CloningMachineComponent } from './components/cloning-machine/cloning-machine.component';
-import { TimeMachineComponent } from './components/time-machine/time-machine.component';
+import { ManualExistanceComponent } from './existance/manual-existance/manual-existance.component';
+import { ExistanceStatusComponent } from './existance/existance-status/existance-status.component';
+import { ExistanceOutsourcingComponent } from './existance/existance-outsourcing/existance-outsourcing.component';
+import { ExistanceOutsourcingStatusComponent } from './existance/existance-outsourcing-status/existance-outsourcing-status.component';
+import { ExistanceEfficiencyModifierComponent } from './existance/existance-efficiency-modifier/existance-efficiency-modifier.component';
+import { CloningMachineComponent } from './existance/cloning-machine/cloning-machine.component';
+import { TimeMachineComponent } from './existance/time-machine/time-machine.component';
 import { MatCheckboxModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AscendExistanceComponent } from './components/ascend-existance/ascend-existance.component';
+import { AscendExistanceComponent } from './existance/ascend-existance/ascend-existance.component';
 import { BigNumPipe } from './big-num.pipe';
-import { SadboiAdvanceComponent } from './components/sadboi-advance/sadboi-advance.component';
+import { SadboiAdvanceComponent } from './sadboi-advance/sadboi-advance/sadboi-advance.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SadboiColorComponent } from './sadboi-color/sadboi-color/sadboi-color.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     TimeMachineComponent,
     AscendExistanceComponent,
     BigNumPipe,
-    SadboiAdvanceComponent
+    SadboiAdvanceComponent,
+    SadboiColorComponent
     ],
   imports: [
     BrowserModule,

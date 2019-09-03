@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SadboiMessage } from './sadboi-message';
 import { Observable, interval, Subscription } from 'rxjs';
-import { encounters } from '../assets/random-encounters.json';
+import { encounters } from '../../assets/random-encounters.json';
 import { Sufferer } from './sufferer';
 import { Encounter } from './encounter';
-import { RegistrarService } from './registrar.service';
+import { RegistrarService } from '../existance/registrar.service';
 
 @Injectable({
   providedIn: 'root'

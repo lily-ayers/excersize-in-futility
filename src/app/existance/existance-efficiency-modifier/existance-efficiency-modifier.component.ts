@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecordOfExistance } from '../../record-of-existance';
-import { RegistrarService } from '../../registrar.service';
-import { MultiplyAnguishService } from 'src/app/multiply-anguish.service';
+import { RecordOfExistance } from '../record-of-existance';
+import { RegistrarService } from '../registrar.service';
+import { MultiplyAnguishService } from 'src/app/existance/multiply-anguish.service';
 
 @Component({
   selector: 'app-existance-efficiency-modifier',

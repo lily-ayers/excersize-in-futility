@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecordOfExistance } from 'src/app/record-of-existance';
-import { RegistrarService } from 'src/app/registrar.service';
-import { MultiplyAnguishService } from 'src/app/multiply-anguish.service';
+import { RecordOfExistance } from 'src/app/existance/record-of-existance';
+import { RegistrarService } from 'src/app/existance/registrar.service';
+import { MultiplyAnguishService } from 'src/app/existance/multiply-anguish.service';
 
 @Component({
   selector: 'app-existance-outsourcing',
