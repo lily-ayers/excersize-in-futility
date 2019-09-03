@@ -8,7 +8,7 @@
     },
     {
       "message": "Fight the rock?",
-      "actions": ["y", "n"],
+      "actions": ["fight", "let it slide"],
       "followUps": [2, 3],
       "actionRequirements": [
                               [
@@ -395,8 +395,24 @@
       "followUps": [404404]
     },
     {
-      "message": "40",
-      "followUps": [404404]
+      "message": "The ground opens up and...",
+      "actions": ["oh shit..."],
+      "followUps": [65],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "37",
+                                "no.",
+                                "65"
+                              ]
+                            ],
+      "actionSkillCheck": [
+                            [
+                              "damage",
+                              "40",
+                              "66"
+                            ]
+                          ]
     },
     {
       "message": "What? Wait, hold on, you CAN'T JU-........(+10 to all stats)",
@@ -585,23 +601,30 @@
       "followUps": [404404]
     },
     {
-      "message": "65",
+      "message": "Oh... I guess... Okay. The ground decides not to open up and you move on. (+10 Stoicism)",
+      "actions": ["dope"],
       "followUps": [404404]
     },
     {
-      "message": "66",
+      "message": "You wind up in a cave, score! Looks like there's treasure here, but there's such a small exit... You can only take one treasure through it.",
+      "actions": ["weapon", "armor", "monocle", "grimoire", "steroids", "nothing"],
+      "followUps": [71, 72, 73, 74, 75, 76]
+    },
+    {
+      "message": "You seem to have stepped so hard you split the earth beneath you. You tumble down into the fissure, catching on...",
+      "actions": ["a branch", "nothing, plummet with confidence"],
+      "followUps": [68, 69]
+    },
+    {
+      "message": "You grasp a branch before falling too far, then proceed to bend the earth back into shape, using the branch as leverage. It's a reasonable workout. (+10 Damage, +10 Defense, +10 Max Health)",
+      "affectedStats": ["damage", "defense", "maxHealth"],
+      "statChange": [10, 10, 10],
       "followUps": [404404]
     },
     {
-      "message": "67",
-      "followUps": [404404]
-    },
-    {
-      "message": "68",
-      "followUps": [404404]
-    },
-    {
-      "message": "69",
+      "message": "Through clever eyes and brilliant intuition, you deduce that you are asleep. Jolting awake, you feel accomplished at your deduction. (+10 Stoicism, +10 Sensibility, +10 Accuracy)",
+      "affectedStats": ["stoicism", "sensibility", "accuracy"],
+      "statChange": [10, 10, 10],
       "followUps": [404404]
     },
     {
@@ -610,44 +633,66 @@
       "followUps": [58, 404404]
     },
     {
-      "message": "71",
+      "message": "You grab a solid-looking sabre and slip out of the cave. (+10 Damage)",
+      "affectedStats": ["damage"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "72",
+      "message": "You don a chainmail vest and slip out of the cave. (+10 Defense)",
+      "affectedStats": ["defense"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "73",
+      "message": "You squint through your new stylish monocle and slip out of the cave. (+10 Accuracy)",
+      "affectedStats": ["accuracy"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "74",
+      "message": "You slip out of the cave while perusing your new book. (+10 Sensibility)",
+      "affectedStats": ["sensibility"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "75",
+      "message": "You aren't sure what to do with the steroids, but by not taking them, you gain Health as you slip out of the cave. (+10 Max Health)",
+      "affectedStats": ["maxHealth"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "76",
+      "message": "You ignore the shinies, you only need yourself. (+10 Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [10],
       "followUps": [404404]
     },
     {
-      "message": "77",
+      "message": "The gate doesn't even budge. You must not be strong enough... (Need 75 in all stats)",
+      "actions": ["damn..."],
       "followUps": [404404]
     },
     {
-      "message": "78",
-      "followUps": [404404]
+      "message": "The gate gives way easily to your power. You get the feeling the road ahead is going to be more dangerous...",
+      "actions": ["bring it on", "let's not and say we did"],
+      "followUps": [200200, 404404]
     },
     {
       "message": "79",
       "followUps": [404404]
     },
     {
-      "message": "80",
-      "followUps": [404404]
+      "message": "A large gate stands before you. The wastes seem to come to a stop.",
+      "actions": ["open it", "leave it"],
+      "followUps": [77, 404404],
+      "actionSkillCheck": [
+                            [
+                              "all",
+                              "75",
+                              "78"
+                            ]
+                          ]
     },
     {
       "message": "81",
@@ -686,8 +731,10 @@
       "followUps": [404404]
     },
     {
-      "message": "90",
-      "followUps": [404404]
+      "message": "Out of nowhere, a rotten apple hits you in the side of the head! Looking up, you see a cherub sticking out his tongue and readying an arrow! Better act fast!",
+      "actions": ["fight", "flee"],
+      "followUps": [999999, 404404],
+      "enemies": ["cherub"]
     },
     {
       "message": "91",

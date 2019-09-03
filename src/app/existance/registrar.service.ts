@@ -47,10 +47,10 @@ export class RegistrarService {
         this.record.triggerTranscension = true;
       }
       if (!this.record.triggerCloningMachine && this.record.stress >= 1000000000000000) {
-        this.record.triggerInfluence = true;
+        this.record.triggerCloningMachine = true;
       }
       if (!this.record.triggerTimeMachine && this.record.stress >= 1000000000000000000000) {
-        this.record.triggerOutsourcing = true;
+        this.record.triggerTimeMachine = true;
       }
     });
   }
