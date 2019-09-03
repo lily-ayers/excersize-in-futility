@@ -30,7 +30,7 @@ export class SadboiAdvanceService {
   // 666555 means retirement, as in US, UK, and AUS retirement ages
   // 909090 means wake, as in "ZZZ"
   // 404404 means End instance, as in Not Found
-  specialInstances = [666555, 909090, 404404, 200200];
+  specialInstances = [666555, 909090, 404404, 200200, 999999];
 
   constructor(private registrar: RegistrarService) {
     if (localStorage.getItem('EIF-sufferer')) {
@@ -220,6 +220,8 @@ export class SadboiAdvanceService {
       };
     } else if (encounterID === 200200) {
       this.worldProgress++;
+    } else if (encounterID === 999999) {
+      this.combat(JSON.parse(JSON.stringify(this.encounters[encounterID].enemies)));
     }
     this.encounters = encounters;
   }
@@ -243,6 +245,10 @@ export class SadboiAdvanceService {
       }
     }
     return encounter;
+  }
+
+  combat(enemy: string) {
+
   }
 
   suffererStats() {
