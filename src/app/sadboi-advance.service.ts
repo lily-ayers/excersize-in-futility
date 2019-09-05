@@ -145,7 +145,7 @@ export class SadboiAdvanceService {
 
   retireInfo() {
     // tslint:disable-next-line: max-line-length
-    this.consoleHistory.push({ message: 'Retiring your sufferer earns you Deja Vu. You will earn Deja Vu equivalent to the sum of your Sufferers stats minus base values.' });
+    this.consoleHistory.push({ message: 'Retiring your sufferer earns you Deja Vu. You will earn Deja Vu equivalent to the sum of your Sufferers stats minus base values, divided by 200.' });
   }
 
   async encounter(encounterID: number) {
@@ -328,8 +328,8 @@ export class SadboiAdvanceService {
           + this.sufferer.defense
           + this.sufferer.sensibility
           + this.sufferer.stoicism
-          + this.sufferer.maxHealth)
-      - 93;
+          + this.sufferer.maxHealth
+          - 93) / 200;
   }
 }
 
