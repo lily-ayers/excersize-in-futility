@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecordOfExistance } from 'src/app/record-of-existance';
+import { RecordOfExistance } from 'src/app/existance/record-of-existance';
 
 @Component({
   selector: 'app-existance-outsourcing-status',

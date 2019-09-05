@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SadboiMessage } from 'src/app/sadboi-message';
-import { SadboiAdvanceService } from 'src/app/sadboi-advance.service';
+import { SadboiMessage } from 'src/app/sadboi-advance/sadboi-message';
+import { SadboiAdvanceService } from 'src/app/sadboi-advance/sadboi-advance.service';
 
 @Component({
   selector: 'app-sadboi-advance',

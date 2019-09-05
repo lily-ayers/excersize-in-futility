@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrarService } from './registrar.service';
-import { MultiplyAnguishService } from './multiply-anguish.service';
+import { RegistrarService } from './existance/registrar.service';
+import { MultiplyAnguishService } from './existance/multiply-anguish.service';
 
 
 @Component({

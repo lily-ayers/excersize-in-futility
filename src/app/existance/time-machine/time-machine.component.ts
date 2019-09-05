@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RegistrarService } from 'src/app/registrar.service';
-import { RecordOfExistance } from 'src/app/record-of-existance';
+import { RegistrarService } from 'src/app/existance/registrar.service';
+import { RecordOfExistance } from 'src/app/existance/record-of-existance';
 
 @Component({
   selector: 'app-time-machine',

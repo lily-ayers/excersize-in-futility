@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SadboiMessage } from './sadboi-message';
 import { Observable, interval, Subscription } from 'rxjs';
-import { encounters } from '../assets/random-encounters.json';
+import { encounters } from '../../assets/random-encounters.json';
 import { Sufferer } from './sufferer';
 import { Encounter } from './encounter';
-import { RegistrarService } from './registrar.service';
+import { RegistrarService } from '../existance/registrar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,8 @@ export class SadboiAdvanceService {
   ];
   sufferer: Sufferer;
   encounters = encounters;
+  // Track which area the sufferer is in
+  worldProgress = 1;
   restSubscription: Subscription;
   restTime = 0;
   restGains = 0;
@@ -28,7 +30,7 @@ export class SadboiAdvanceService {
   // 666555 means retirement, as in US, UK, and AUS retirement ages
   // 909090 means wake, as in "ZZZ"
   // 404404 means End instance, as in Not Found
-  specialInstances = [666555, 909090, 404404];
+  specialInstances = [666555, 909090, 404404, 200200, 999999];
 
   constructor(private registrar: RegistrarService) {
     if (localStorage.getItem('EIF-sufferer')) {
@@ -93,7 +95,7 @@ export class SadboiAdvanceService {
 
   wander() {
     this.consoleHistory.push({ message: 'Wandering the wastes...' });
-    this.encounter(Math.floor(Math.random() * 8) * 10);
+    this.encounter((Math.floor(Math.random() * 9) * 10) + (90 * (this.worldProgress - 1)));
   }
 
   rest() {
@@ -216,6 +218,10 @@ export class SadboiAdvanceService {
         stoicism: 2,
         deaths: 0
       };
+    } else if (encounterID === 200200) {
+      this.worldProgress++;
+    } else if (encounterID === 999999) {
+      this.combat(JSON.parse(JSON.stringify(this.encounters[encounterID].enemies)));
     }
     this.encounters = encounters;
   }
@@ -239,6 +245,10 @@ export class SadboiAdvanceService {
       }
     }
     return encounter;
+  }
+
+  combat(enemy: string) {
+
   }
 
   suffererStats() {
@@ -318,18 +328,29 @@ export class SadboiAdvanceService {
       case 'deaths':
         if (this.sufferer.deaths >= req) { return true; }
         break;
+      case 'all':
+        if (this.sufferer.accuracy >= req
+            && this.sufferer.damage >= req
+            && this.sufferer.defense >= req
+            && this.sufferer.maxHealth >= req
+            && this.sufferer.sensibility >= req
+            && this.sufferer.stoicism >= req) {
+              return true;
+            }
+        break;
     }
     return false;
   }
 
   calculateSuffering() {
-    return (this.sufferer.accuracy
-          + this.sufferer.damage
-          + this.sufferer.defense
-          + this.sufferer.sensibility
-          + this.sufferer.stoicism
-          + this.sufferer.maxHealth
-          - 93) / 200;
+    const earnings = (this.sufferer.accuracy
+                    + this.sufferer.damage
+                    + this.sufferer.defense
+                    + this.sufferer.sensibility
+                    + this.sufferer.stoicism
+                    + this.sufferer.maxHealth)
+                    - 93;
+    if (earnings > 0) { return Math.floor(earnings / 200); } else { return 0; }
   }
 }
 
