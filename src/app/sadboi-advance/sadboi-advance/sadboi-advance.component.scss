@@ -6,6 +6,24 @@
   top: 0;
   .stat-bar {
     padding-top: 1vh;
+    .tooltip-zone {
+      display: inline-block;
+      height: 2vh;
+      .tooltip {
+        visibility: hidden;
+        width: 60px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+      }
+      &:hover .tooltip {
+        visibility: visible;
+      }
+    }
     .stat-logo {
       display: inline-block;
       height: 2vh;

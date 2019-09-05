@@ -1,26 +1,53 @@
 <div *ngIf="sadboi.consoleHistory.length >= 1" class="sadboiConsole">
   <div class="stat-bar">
-    <img class="stat-logo" src="../../../assets/images/health.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.health"></div>
-    <div class="stat-change" [@statChange]="sadboi.sufferer.maxHealth"></div>
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/health.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.health"></div>
+      <div class="stat-change" [@statChange]="sadboi.sufferer.maxHealth"></div>
+      <span class="tooltip">Health</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.health }}/{{ sadboi.sufferer.maxHealth }}</span>
-    <img class="stat-logo" src="../../../assets/images/damage.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.damage"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/damage.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.damage"></div>
+      <span class="tooltip">Damage</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.damage }}</span>
-    <img class="stat-logo" src="../../../assets/images/defense.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.defense"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/defense.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.defense"></div>
+      <span class="tooltip">Defense</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.defense }}</span>
-    <img class="stat-logo" src="../../../assets/images/sensibility.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.sensibility"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/sensibility.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.sensibility"></div>
+      <span class="tooltip">Sensibility</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.sensibility }}</span>
-    <img class="stat-logo" src="../../../assets/images/stoicism.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.stoicism"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/stoicism.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.stoicism"></div>
+      <span class="tooltip">Stoicism</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.stoicism }}</span>
-    <img class="stat-logo" src="../../../assets/images/accuracy.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.accuracy"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/accuracy.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.accuracy"></div>
+      <span class="tooltip">Accuracy</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.accuracy }}</span>
-    <img class="stat-logo" src="../../../assets/images/deaths.svg">
-    <div class="stat-change" [@statChange]="sadboi.sufferer.deaths"></div>
+
+    <div class="tooltip-zone">
+      <img class="stat-logo" src="../../../assets/images/deaths.svg">
+      <div class="stat-change" [@statChange]="sadboi.sufferer.deaths"></div>
+      <span class="tooltip">Deaths</span>
+    </div>
     <span class="stat">{{ sadboi.sufferer.deaths }}</span>
   </div>
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
