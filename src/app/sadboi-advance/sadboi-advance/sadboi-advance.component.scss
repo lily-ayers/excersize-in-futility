@@ -4,8 +4,28 @@
   text-align: center;
   font-size: 1.2vw;
   top: 0;
+  .stat-bar {
+    padding-top: 1vh;
+    .stat-logo {
+      display: inline-block;
+      height: 2vh;
+      width: 2vh;
+      margin-left: 2vh;
+    }
+    .stat-change {
+      display: inline-block;
+      height: 2vh;
+      width: 2vh;
+      margin-left: -2vh;
+      z-index: 1;
+    }
+    .stat {
+      display: inline-block;
+      font-size: 2vh;
+    }
+  }
   .sadboiDisplay {
-    height: 40vh;
+    height: 30vh;
     text-align: center;
     font-size: 1.2vw;
     top: 0;

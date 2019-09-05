@@ -16,6 +16,8 @@ import { BigNumPipe } from './big-num.pipe';
 import { SadboiAdvanceComponent } from './sadboi-advance/sadboi-advance/sadboi-advance.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SadboiColorComponent } from './sadboi-color/sadboi-color/sadboi-color.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { SadboiColorComponent } from './sadboi-color/sadboi-color/sadboi-color.c
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

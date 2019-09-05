@@ -685,12 +685,12 @@
     {
       "message": "A large gate stands before you. The wastes seem to come to a stop.",
       "actions": ["open it", "leave it"],
-      "followUps": [77, 404404],
+      "followUps": [78, 404404],
       "actionSkillCheck": [
                             [
                               "all",
                               "75",
-                              "78"
+                              "77"
                             ]
                           ]
     },
