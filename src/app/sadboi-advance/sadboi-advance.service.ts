@@ -213,7 +213,6 @@ export class SadboiAdvanceService {
     } else if (encounterID === 999999) {
       this.combat(JSON.parse(JSON.stringify(this.encounters[encounterID].enemies)));
     }
-    this.encounters = encounters;
   }
 
   getAdditionalActions(encounter: Encounter): Encounter {

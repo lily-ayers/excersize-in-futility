@@ -397,7 +397,7 @@
     {
       "message": "The ground opens up and...",
       "actions": ["oh shit..."],
-      "followUps": [65],
+      "followUps": [67],
       "actionRequirements": [
                               [
                                 "stoicism",
