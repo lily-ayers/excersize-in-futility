@@ -16,6 +16,7 @@ export class SadboiAdvanceService {
   ];
   sufferer: Sufferer;
   encounters = encounters;
+  statChangeAnimationTrackers = [0, 0, 0, 0, 0, 0, 0];
   // Track which area the sufferer is in
   worldProgress = 1;
   restSubscription: Subscription;
@@ -23,7 +24,7 @@ export class SadboiAdvanceService {
   restGains = 0;
   resting = false;
   instance = false;
-  basicActions = ['help', 'wander', 'rest', 'retire', 'purpose', 'sufferer'];
+  basicActions = ['help', 'wander', 'rest', 'retire', 'purpose'];
   instanceActions: string[];
   instanceFollowUps: number[];
   // Special instances include retiring, and eventually more.
@@ -50,10 +51,8 @@ export class SadboiAdvanceService {
     }
     this.registrar.theUnforgivingForwardMarchOfTimeAndDecay
       .subscribe(data => localStorage.setItem('EIF-sufferer', JSON.stringify(this.sufferer)));
-    this.consoleHistory.push({ message: 'Available Actions: ' });
-    for (const action of this.basicActions) {
-      this.consoleHistory.push({ message: action, link: true});
-    }
+    this.instanceActions = [...this.basicActions];
+    this.printActions();
   }
 
   submit(input: string) {
@@ -67,8 +66,6 @@ export class SadboiAdvanceService {
       this.retire();
     } else if (input.toLowerCase().includes('purpose')) {
       this.retireInfo();
-    } else if (input.toLowerCase().includes('sufferer')) {
-      this.suffererStats();
     } else {
       this.consoleHistory.push({ message: 'You either cant or wont do that, whatever it is. Try the "help" command.' });
     }
@@ -84,13 +81,20 @@ export class SadboiAdvanceService {
     }
   }
 
+  printActions() {
+    this.consoleHistory.push({ message: 'Available Actions: ' });
+    for (const action of this.instanceActions) {
+      this.consoleHistory.push({ message: action, link: true});
+    }
+  }
+
   help() {
     this.consoleHistory.push({ message: 'Commands  |   Actions' });
     this.consoleHistory.push({ message: 'wander    |   Waste time wandering the wastelands' });
     this.consoleHistory.push({ message: 'rest      |   Rest for a while and regain some health' });
     this.consoleHistory.push({ message: 'retire    |   Retire your current sufferer' });
     this.consoleHistory.push({ message: 'purpose   |   Display info about retiring' });
-    this.consoleHistory.push({ message: 'sufferer  |   Displays your Sufferers current stats' });
+    this.printActions();
   }
 
   wander() {
@@ -112,9 +116,8 @@ export class SadboiAdvanceService {
     });
     this.instance = true;
     this.instanceActions = ['wake'];
-    this.consoleHistory.push({ message: 'Available Actions: ' });
-    this.consoleHistory.push({ message: 'wake', link: true});
     this.instanceFollowUps = [909090];
+    this.printActions();
   }
 
   wake() {
@@ -130,9 +133,7 @@ export class SadboiAdvanceService {
     this.restTime = 0;
     this.restGains = 0;
     this.instance = false;
-    for (const action of this.basicActions) {
-      this.consoleHistory.push({ message: action, link: true});
-    }
+    this.instanceActions = [...this.basicActions];
   }
 
   retire() {
@@ -140,9 +141,7 @@ export class SadboiAdvanceService {
     this.consoleHistory.push({ message: 'Retire for ' + this.calculateSuffering() + ' Deja Vu?' });
     this.instanceActions = ['y', 'n'];
     this.instanceFollowUps = [666555, 404404];
-    for (const action of this.instanceActions) {
-      this.consoleHistory.push({ message: action, link: true});
-    }
+    this.printActions();
   }
 
   retireInfo() {
@@ -166,10 +165,7 @@ export class SadboiAdvanceService {
         this.instanceFollowUps = encounter.followUps;
         this.instanceActions = encounter.actions;
         encounter = this.getAdditionalActions(encounter);
-        this.consoleHistory.push({ message: 'Available Actions: ' });
-        for (const action of this.instanceActions) {
-          this.consoleHistory.push({ message: action, link: true});
-        }
+        this.printActions();
       } else if (encounter.followUps) {
       this.encounter(encounter.followUps[0]);
       }
@@ -177,18 +173,14 @@ export class SadboiAdvanceService {
       this.wake();
     } else if (encounterID === 404404) {
       this.consoleHistory.push({ message: 'What now, hotshot?' });
-      this.consoleHistory.push({ message: 'Available Actions: ' });
-      for (const action of this.basicActions) {
-        this.consoleHistory.push({ message: action, link: true});
-      }
+      this.instanceActions = [...this.basicActions];
+      this.printActions();
     } else if (encounterID === 777777) {
       this.consoleHistory = [
         { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
       ];
-      this.consoleHistory.push({ message: 'Available Actions: ' });
-      for (const action of this.basicActions) {
-        this.consoleHistory.push({ message: action, link: true});
-      }
+      this.instanceActions = [...this.basicActions];
+      this.printActions();
       this.sufferer = {
         maxHealth: 10,
         health: 10,
@@ -204,10 +196,8 @@ export class SadboiAdvanceService {
       this.consoleHistory = [
         { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
       ];
-      this.consoleHistory.push({ message: 'Available Actions: ' });
-      for (const action of this.basicActions) {
-        this.consoleHistory.push({ message: action, link: true});
-      }
+      this.instanceActions = [...this.basicActions];
+      this.printActions();
       this.sufferer = {
         maxHealth: 10,
         health: 10,
@@ -251,55 +241,62 @@ export class SadboiAdvanceService {
 
   }
 
-  suffererStats() {
-    this.consoleHistory.push({ message: 'Health: ' + this.sufferer.health + '/' + this.sufferer.maxHealth });
-    this.consoleHistory.push({ message: 'Damage: ' + this.sufferer.damage + ' | ' + 'Defense: ' + this.sufferer.defense });
-    this.consoleHistory.push({ message: 'Sensibility: ' + this.sufferer.sensibility + ' | ' + 'Stoicism: ' + this.sufferer.stoicism });
-    this.consoleHistory.push({ message: 'Accuracy: ' + this.sufferer.accuracy });
-    this.consoleHistory.push({ message: 'Deaths: ' + this.sufferer.deaths });
-    for (const action of this.basicActions) {
-      this.consoleHistory.push({ message: action, link: true});
-    }
-  }
-
   statChanges(encounter: Encounter) {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < encounter.affectedStats.length; i++) {
       switch (encounter.affectedStats[i]) {
         case 'health':
           this.sufferer.health += encounter.statChange[i];
+          this.statChangeAnimationTrackers[0] += encounter.statChange[i];
           break;
         case 'maxHealth':
           this.sufferer.maxHealth += encounter.statChange[i];
+          this.statChangeAnimationTrackers[0] += encounter.statChange[i];
           break;
         case 'damage':
           this.sufferer.damage += encounter.statChange[i];
+          this.statChangeAnimationTrackers[1] += encounter.statChange[i];
           break;
         case 'accuracy':
           this.sufferer.accuracy += encounter.statChange[i];
+          this.statChangeAnimationTrackers[5] += encounter.statChange[i];
           break;
         case 'defense':
           this.sufferer.defense += encounter.statChange[i];
+          this.statChangeAnimationTrackers[2] += encounter.statChange[i];
           break;
         case 'sensibility':
           this.sufferer.sensibility += encounter.statChange[i];
+          this.statChangeAnimationTrackers[3] += encounter.statChange[i];
           break;
         case 'stoicism':
           this.sufferer.stoicism += encounter.statChange[i];
+          this.statChangeAnimationTrackers[4] += encounter.statChange[i];
           break;
         case 'healthFull':
           this.sufferer.health = this.sufferer.maxHealth;
+          this.statChangeAnimationTrackers[0] += encounter.statChange[i];
+          break;
+        case 'deaths':
+          this.sufferer.deaths += encounter.statChange[i];
+          this.statChangeAnimationTrackers[6] += encounter.statChange[i];
           break;
         case 'all':
-            this.sufferer.maxHealth += encounter.statChange[i];
-            this.sufferer.damage += encounter.statChange[i];
-            this.sufferer.defense += encounter.statChange[i];
-            this.sufferer.accuracy += encounter.statChange[i];
-            this.sufferer.defense += encounter.statChange[i];
-            this.sufferer.sensibility += encounter.statChange[i];
-            this.sufferer.stoicism += encounter.statChange[i];
+          this.sufferer.maxHealth += encounter.statChange[i];
+          this.sufferer.damage += encounter.statChange[i];
+          this.sufferer.defense += encounter.statChange[i];
+          this.sufferer.accuracy += encounter.statChange[i];
+          this.sufferer.defense += encounter.statChange[i];
+          this.sufferer.sensibility += encounter.statChange[i];
+          this.sufferer.stoicism += encounter.statChange[i];
+          for (let x of this.statChangeAnimationTrackers) {
+            x += encounter.statChange[i];
           }
+          break;
+      }
     }
+    console.log(this.statChangeAnimationTrackers);
+    this.statChangeAnimationTrackers = [0, 0, 0, 0, 0, 0, 0];
   }
 
   statChecker(stat: string, req: number) {

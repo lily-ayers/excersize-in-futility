@@ -1,9 +1,33 @@
 <div *ngIf="sadboi.consoleHistory.length >= 1" class="sadboiConsole">
+  <div class="stat-bar">
+    <img class="stat-logo" src="../../../assets/images/health.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.health"></div>
+    <div class="stat-change" [@statChange]="sadboi.sufferer.maxHealth"></div>
+    <span class="stat">{{ sadboi.sufferer.health }}/{{ sadboi.sufferer.maxHealth }}</span>
+    <img class="stat-logo" src="../../../assets/images/damage.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.damage"></div>
+    <span class="stat">{{ sadboi.sufferer.damage }}</span>
+    <img class="stat-logo" src="../../../assets/images/defense.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.defense"></div>
+    <span class="stat">{{ sadboi.sufferer.defense }}</span>
+    <img class="stat-logo" src="../../../assets/images/sensibility.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.sensibility"></div>
+    <span class="stat">{{ sadboi.sufferer.sensibility }}</span>
+    <img class="stat-logo" src="../../../assets/images/stoicism.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.stoicism"></div>
+    <span class="stat">{{ sadboi.sufferer.stoicism }}</span>
+    <img class="stat-logo" src="../../../assets/images/accuracy.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.accuracy"></div>
+    <span class="stat">{{ sadboi.sufferer.accuracy }}</span>
+    <img class="stat-logo" src="../../../assets/images/deaths.svg">
+    <div class="stat-change" [@statChange]="sadboi.sufferer.deaths"></div>
+    <span class="stat">{{ sadboi.sufferer.deaths }}</span>
+  </div>
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">
           <span *ngIf="!print.link">{{ print.message }}</span>
-          <button *ngIf="print.link" class="clickable" [disabled]="" (click)="autoFill(print.message)">{{ print.message | titlecase}}</button>
+          <button *ngIf="print.link" class="clickable" [disabled]="!sadboi.instanceActions.includes(print.message)" (click)="autoFill(print.message)">{{ print.message | titlecase}}</button>
       </div>
     </div>
 </div>
