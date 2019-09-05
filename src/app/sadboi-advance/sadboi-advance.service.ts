@@ -6,6 +6,7 @@ import { encounters } from '../../assets/random-encounters.json';
 import { Sufferer } from './sufferer';
 import { Encounter } from './encounter';
 import { enemies } from '../../assets/enemies.json';
+import { equipment } from '../../assets/equipment.json';
 import { RegistrarService } from '../existance/registrar.service';
 
 @Injectable({
@@ -18,9 +19,9 @@ export class SadboiAdvanceService {
   sufferer: Sufferer;
   encounters = encounters;
   enemies = enemies;
+  equipment = equipment;
   enemy;
   // Track which area the sufferer is in
-  worldProgress = 1;
   restSubscription: Subscription;
   restTime = 0;
   restGains = 0;
@@ -49,6 +50,7 @@ export class SadboiAdvanceService {
         sensibility: 2,
         stoicism: 2,
         deaths: 0,
+        worldProgress: 0,
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
       };
@@ -114,7 +116,7 @@ export class SadboiAdvanceService {
 
   wander() {
     this.consoleHistory.push({ message: 'Wandering the wastes...' });
-    this.encounter((Math.floor(Math.random() * 10) * 10) + (100 * (this.worldProgress - 1)));
+    this.encounter((Math.floor(Math.random() * 10) * 10) + (100 * (this.sufferer.worldProgress)));
   }
 
   rest() {
@@ -169,10 +171,16 @@ export class SadboiAdvanceService {
     if (!this.specialInstances.includes(encounterID)) {
       let encounter: Encounter = JSON.parse(JSON.stringify(this.encounters[encounterID]));
       this.consoleHistory.push({ message: encounter.message });
-      console.log(this.instanceActions, this.instanceFollowUps);
       await new Promise(resolve => setTimeout(resolve, 1000));
       if (encounter.affectedStats && encounter.statChange) {
         this.statChanges(encounter);
+      }
+      if (encounter.equipment) {
+        let i = 0;
+        for (const item of encounter.equipment) {
+          this.equipmentUpdate(encounter.equipmentType[i], this.equipment.find(data => data.name === item))
+          i++;
+        }
       }
       if (this.sufferer.health <= 0 && encounterID !== 7) {
         this.encounter(7);
@@ -180,11 +188,10 @@ export class SadboiAdvanceService {
         this.instance = true;
         this.instanceFollowUps = encounter.followUps;
         this.instanceActions = encounter.actions;
-        if (encounter.enemy != null) {
+        if (encounter.enemy) {
           this.enemy = JSON.parse(JSON.stringify(this.enemies.find(data => data.name = encounter.enemy)));
         }
         encounter = this.getAdditionalActions(encounter);
-        console.log(this.instanceActions, this.instanceFollowUps);
         this.printActions();
       } else if (encounter.followUps) {
       this.encounter(encounter.followUps[0]);
@@ -211,6 +218,7 @@ export class SadboiAdvanceService {
         defense: 2,
         sensibility: 2,
         stoicism: 2,
+        worldProgress: 0,
         deaths: this.sufferer.deaths + 1,
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
@@ -231,11 +239,14 @@ export class SadboiAdvanceService {
         sensibility: 2,
         stoicism: 2,
         deaths: 0,
+        worldProgress: 0,
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
       };
     } else if (encounterID === 200200) {
-      this.worldProgress++;
+      this.sufferer.worldProgress++;
+      this.instanceActions = [...this.basicActions];
+      this.printActions();
     } else if (encounterID === 999999) {
       this.initiateCombat(this.enemy);
     }
@@ -275,8 +286,8 @@ export class SadboiAdvanceService {
     switch (actionID) {
       case 6:
         this.consoleHistory.push({ message: 'You punch the ' + this.enemy.name
-          + ' for ' + (this.sufferer.strength - this.enemy.defense) + ' damage'});
-        this.enemy.health -= (this.sufferer.strength - this.enemy.defense);
+          + ' for ' + Math.floor(this.sufferer.strength - this.enemy.defense / 10) + ' damage'});
+        this.enemy.health -= Math.floor(this.sufferer.strength - this.enemy.defense / 10);
         if (this.enemy.health <= 0) {
           this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
           this.statChanges(this.enemy);
@@ -306,8 +317,8 @@ export class SadboiAdvanceService {
       case 0:
         if (Math.random() * this.sufferer.accuracy / 8 > this.enemy.speed) {
           this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! You swing your fists at the ' + this.enemy.name
-              + ' for ' + (this.sufferer.strength - this.enemy.defense) / 10 + ' damage'});
-          this.enemy.health -= (this.sufferer.strength - this.enemy.defense) / 10;
+              + ' for ' + Math.floor(this.sufferer.strength - this.enemy.defense) / 7 + ' damage'});
+          this.enemy.health -= Math.floor(this.sufferer.strength - this.enemy.defense) / 7;
         } else {
           this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! ........You miss tho.' });
         }
@@ -331,7 +342,7 @@ export class SadboiAdvanceService {
             this.enemy.health -= (this.sufferer.strength - this.enemy.defense) / 10;
           } else {
             this.consoleHistory.push({ message: 'You swing your ' + this.sufferer.equipment[4].name
-              +  'at a nearby innocent tree. The ' + this.enemy.name + ' laughs at you. Honestly, so do I.' });
+              +  ' at a nearby innocent tree. The ' + this.enemy.name + ' laughs at you. Honestly, so do I.' });
           }
           if (this.enemy.health <= 0) {
             this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
@@ -504,6 +515,48 @@ export class SadboiAdvanceService {
         break;
     }
     return false;
+  }
+
+  // tslint:disable-next-line: no-shadowed-variable
+  equipmentUpdate(type: string, equipment: any) {
+    let index = -1;
+    switch (type) {
+      case 'head':
+        index = 0;
+        break;
+      case 'neck':
+        index = 1;
+        break;
+      case 'chest':
+        index = 2;
+        break;
+      case 'armguards':
+        index = 3;
+        break;
+      case 'rightHand':
+        index = 4;
+        break;
+      case 'leftHand':
+        index = 5;
+        break;
+      case 'belt':
+        index = 6;
+        break;
+      case 'pants':
+        index = 7;
+        break;
+      case 'shoes':
+        index = 8;
+        break;
+    }
+    if (!this.sufferer.equipment[index].equipped)
+    {
+      this.sufferer.equipment[index] = equipment;
+      this.sufferer.equipment[index].equipped = true;
+    } else {
+      this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
+    }
+    // TODO: Logic for determining if new equipment is better and equipping it
   }
 
   calculateSuffering() {

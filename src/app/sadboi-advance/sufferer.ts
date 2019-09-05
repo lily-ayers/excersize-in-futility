@@ -9,6 +9,7 @@ export interface Sufferer {
   sensibility: number;
   stoicism: number;
   deaths: number;
+  worldProgress: number;
   // 0: head
   // 1: neck
   // 2: chest

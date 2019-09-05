@@ -39,7 +39,8 @@ export class ManualExistanceComponent implements OnInit {
     }
     this.futileProgress = 0;
     this.record.stress += this.existManually();
-    if (this.automateAgony && !this.registrar.reinitializingDespair) {
+    if (this.automateAgony && this.record.triggerAutomation
+      && !this.registrar.reinitializingDespair) {
       this.attemptExistance();
     } else {
       this.automateAgony = false;

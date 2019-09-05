@@ -49,7 +49,23 @@
       <span class="tooltip">Deaths</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.deaths }}</span>
+
+    <div class="tooltip-zone">
+        <img class="stat-logo" src="../../../assets/images/equipment.svg">
+        <span class="tooltip" style="width: 200px">
+          Head: {{ sadboi.sufferer.equipment[0].name | titlecase }}<br>
+          Neck: {{ sadboi.sufferer.equipment[1].name | titlecase }}<br>
+          Chest: {{ sadboi.sufferer.equipment[2].name | titlecase }}<br>
+          Armguards: {{ sadboi.sufferer.equipment[3].name | titlecase }}<br>
+          Right Hand: {{ sadboi.sufferer.equipment[4].name | titlecase }}<br>
+          Left Hand: {{ sadboi.sufferer.equipment[5].name | titlecase }}<br>
+          Belt: {{ sadboi.sufferer.equipment[6].name | titlecase }}<br>
+          Pants: {{ sadboi.sufferer.equipment[7].name | titlecase }}<br>
+          Shoes: {{ sadboi.sufferer.equipment[8].name | titlecase }}
+        </span>
+      </div>
   </div>
+  <span>Area: {{ areas[sadboi.sufferer.worldProgress] }}</span>
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">

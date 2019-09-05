@@ -43,6 +43,7 @@ import { trigger, style, state, transition, animate, group, query, stagger } fro
 })
 export class SadboiAdvanceComponent implements OnInit {
   @Input() record;
+  areas = ['The Wastes', 'The Highway', 'The Gutter', 'The Colony'];
 
   constructor(public sadboi: SadboiAdvanceService) { }
 

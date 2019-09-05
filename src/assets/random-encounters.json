@@ -45,7 +45,7 @@
     },
     {
       "message": "That rock never stood a chance. The crater you leave is all that remains of its legacy. (+1 Stoicism)",
-      "affectedStats": ["defense"],
+      "affectedStats": ["stoicism"],
       "statChange": [1],
       "followUps": [404404]
     },
@@ -177,12 +177,12 @@
     {
       "message": "You decide this is boring and punch the nearest thing you find. It was a cactus.",
       "actions": ["ouch"],
-      "followUps": [21],
+      "followUps": [81],
       "actionSkillCheck": [
                             [
                               "defense",
                               "15",
-                              "22"
+                              "21"
                             ]
                           ]
     },
@@ -600,6 +600,8 @@
     },
     {
       "message": "Oh... I guess... Okay. The ground decides not to open up and you move on. (+10 Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [10],
       "actions": ["dope"],
       "followUps": [404404]
     },
@@ -726,7 +728,9 @@
                           ]
     },
     {
-      "message": "81",
+      "message": "Really its the cactus that got hurt in this situation. You do keep the spikes that jabbed you, though. (New Weapon!)",
+      "equipmentType": ["rightHand"],
+      "equipment": ["cactus spikes"],
       "followUps": [404404]
     },
     {

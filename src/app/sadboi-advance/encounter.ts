@@ -12,5 +12,7 @@ export interface Encounter {
   // each array contains the required stat name, followed by amount needed for action to succeed,
   // followed by the followUp on fail
   actionSkillCheck?: string[][];
+  equipmentType?: string[];
+  equipment?: string[];
   enemy?: string;
 }
