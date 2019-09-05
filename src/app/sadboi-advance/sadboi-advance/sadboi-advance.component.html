@@ -10,10 +10,10 @@
 
     <div class="tooltip-zone">
       <img class="stat-logo" src="../../../assets/images/damage.svg">
-      <div class="stat-change" [@statChange]="sadboi.sufferer.damage"></div>
-      <span class="tooltip">Damage</span>
+      <div class="stat-change" [@statChange]="sadboi.sufferer.strength"></div>
+      <span class="tooltip">Strength</span>
     </div>
-    <span class="stat">{{ sadboi.sufferer.damage }}</span>
+    <span class="stat">{{ sadboi.sufferer.strength }}</span>
 
     <div class="tooltip-zone">
       <img class="stat-logo" src="../../../assets/images/defense.svg">
@@ -54,7 +54,7 @@
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">
           <span *ngIf="!print.link">{{ print.message }}</span>
-          <button *ngIf="print.link" class="clickable" [disabled]="!sadboi.instanceActions.includes(print.message)" (click)="autoFill(print.message)">{{ print.message | titlecase}}</button>
+          <button *ngIf="print.link" class="clickable" [disabled]="!sadboi.instanceActions.includes(print.message)" (click)="submit(print.message)">{{ print.message | titlecase}}</button>
       </div>
     </div>
 </div>

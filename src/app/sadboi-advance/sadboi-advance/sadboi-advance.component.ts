@@ -43,24 +43,19 @@ import { trigger, style, state, transition, animate, group, query, stagger } fro
 })
 export class SadboiAdvanceComponent implements OnInit {
   @Input() record;
-  sadboiConsoleInput = new FormControl('');
 
   constructor(public sadboi: SadboiAdvanceService) { }
 
   ngOnInit() {
   }
 
-  submit() {
-    if (!this.sadboi.instance) {
-      this.sadboi.submit(this.sadboiConsoleInput.value.toString());
-    } else {
-      this.sadboi.submitInstance(this.sadboiConsoleInput.value.toString());
+  submit(input: string) {
+    if (!this.sadboi.instance && !this.sadboi.combatInstance) {
+      this.sadboi.submit(input);
+    } else if (this.sadboi.instance) {
+      this.sadboi.submitInstance(input);
+    } else if (this.sadboi.combatInstance) {
+      this.sadboi.submitCombat(input);
     }
-    this.sadboiConsoleInput.setValue('');
-  }
-
-  autoFill(input: string) {
-    this.sadboiConsoleInput.setValue(input);
-    this.submit();
   }
 }

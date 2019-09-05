@@ -12,7 +12,7 @@
       "followUps": [2, 3],
       "actionRequirements": [
                               [
-                                "damage",
+                                "strength",
                                 "5",
                                 "demolish",
                                 "4"
@@ -20,7 +20,7 @@
                             ],
       "actionSkillCheck": [
                               [
-                                "damage",
+                                "strength",
                                 "5",
                                 "5"
                               ],
@@ -32,8 +32,8 @@
                             ]
     },
     {
-      "message": "The rock doesn't really fight back, but you certainly feel stronger after punching it. (+1 Damage)",
-      "affectedStats": ["damage"],
+      "message": "The rock doesn't really fight back, but you certainly feel stronger after punching it. (+1 Strength)",
+      "affectedStats": ["strength"],
       "statChange": [1],
       "followUps": [404404]
     },
@@ -63,7 +63,7 @@
       "followUps": [777777],
       "actionRequirements": [
                               [
-                                "damage",
+                                "strength",
                                 "100",
                                 "fight",
                                 "8"
@@ -102,7 +102,7 @@
     },
     {
       "message": "You punch Death. It doesn't do anything, but he admits you've got balls. He restores your life at a cost.",
-      "affectedStats": ["damage", "deaths", "healthfull"],
+      "affectedStats": ["strength", "deaths", "healthfull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
@@ -157,8 +157,8 @@
                             ]
     },
     {
-      "message": "It's baked a lot better than it was written. you feel bulkier... (+1 Damage, +1 Defense)",
-      "affectedStats": ["damage", "defense"],
+      "message": "It's baked a lot better than it was written. you feel bulkier... (+1 Strength, +1 Defense)",
+      "affectedStats": ["strength", "defense"],
       "statChange": [1, 1],
       "followUps": [404404]
     },
@@ -198,7 +198,7 @@
                                 "18"
                               ],
                               [
-                                "damage",
+                                "strength",
                                 "15",
                                 "make something happen",
                                 "19"
@@ -206,8 +206,8 @@
                             ]
     },
     {
-      "message": "Yeah, ouch. Your hand is sore now. (-2 Health, -2 Damage)",
-      "affectedStats": ["health", "damage"],
+      "message": "Yeah, ouch. Your hand is sore now. (-2 Health, -2 Strength)",
+      "affectedStats": ["health", "strength"],
       "statChange": [-2, -2],
       "followUps": [404404]
     },
@@ -243,16 +243,16 @@
                             ]
     },
     {
-      "message": "After watching for a while, it dawns on you that she isn't T-posing, she's practicing Tai-Chi. Your bad. You do learn some sweet techniques that you're definitely gonna practice at home, though. (+5 Accuracy, +1 Damage, +2 Sensibility)",
-      "affectedStats": ["accuracy", "damage", "sensibility"],
+      "message": "After watching for a while, it dawns on you that she isn't T-posing, she's practicing Tai-Chi. Your bad. You do learn some sweet techniques that you're definitely gonna practice at home, though. (+5 Accuracy, +1 Strength, +2 Sensibility)",
+      "affectedStats": ["accuracy", "strength", "sensibility"],
       "statChange": [5, 1, 2],
       "followUps": [404404]
     },
     {
-      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (+2 Damage, +2 Defense)",
+      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (+2 Strength, +2 Defense)",
       "actions": ["...sorry"],
       "followUps": [404404],
-      "affectedStats": ["damage", "defense"],
+      "affectedStats": ["strength", "defense"],
       "statChange": [2, 2],
       "actionRequirements": [
                               [
@@ -276,8 +276,8 @@
       "followUps": [404404]
     },
     {
-      "message": "Yes, you're right, through your armor you can't even feel exhaustion. I guess having your pockets full of rocks really protects you from any form of fatigue. That totally makes sense. Asshole. (+10 Stoicism, +5 Damage)",
-      "affectedStats": ["stoicism", "damage"],
+      "message": "Yes, you're right, through your armor you can't even feel exhaustion. I guess having your pockets full of rocks really protects you from any form of fatigue. That totally makes sense. Asshole. (+10 Stoicism, +5 Strength)",
+      "affectedStats": ["stoicism", "strength"],
       "statChange": [10, 5],
       "followUps": [404404]
     },
@@ -317,10 +317,10 @@
                             ]
     },
     {
-      "message": "Please? I'll give you stats! See? (+2 Damage, +2 Defense, +2 Sensibility, +10 Accuracy, +2 Max Health please dont hurt me)",
+      "message": "Please? I'll give you stats! See? (+2 Strength, +2 Defense, +2 Sensibility, +10 Accuracy, +2 Max Health please dont hurt me)",
       "actions": ["thanks!"],
       "followUps": [404404],
-      "affectedStats": ["damage", "defense", "sensibility", "accuracy", "maxHealth"],
+      "affectedStats": ["strength", "defense", "sensibility", "accuracy", "maxHealth"],
       "statChange": [2, 2, 2, 10, 2],
       "actionRequirements": [
                               [
@@ -332,10 +332,10 @@
                             ]
     },
     {
-      "message": "Uhm- I'm not really supposed to... I guess I could give you these? But it's all I have! (+10 Damage, +10 Sensibility",
+      "message": "Uhm- I'm not really supposed to... I guess I could give you these? But it's all I have! (+10 Strength, +10 Sensibilitypleasepleaseplease)",
       "actions": ["that's plenty!"],
       "followUps": [404404],
-      "affectedStats": ["damage", "sensibility"],
+      "affectedStats": ["strength", "sensibility"],
       "statChange": [10, 10],
       "actionRequirements": [
                               [
@@ -351,8 +351,6 @@
       "message": "What? You can't do that. I'm not edible! What good would it do anyways? I'm not nutritious! I swear!",
       "actions": ["yeah, nevermind"],
       "followUps": [404404],
-      "affectedStats": ["damage", "sensibility"],
-      "statChange": [10, 10],
       "actionRequirements": [
                               [
                                 "stoicism",
@@ -408,7 +406,7 @@
                             ],
       "actionSkillCheck": [
                             [
-                              "damage",
+                              "strength",
                               "40",
                               "66"
                             ]
@@ -477,7 +475,7 @@
     },
     {
       "message": "You pet the cat until it stops crying. It then realizes you're a stranger and runs away. (+10 Max Health, Fully Healed!)",
-      "affectedStats": ["maxHealth", "healthfull"],
+      "affectedStats": ["maxHealth", "healthFull"],
       "statChange": [10, 0],
       "followUps": [404404]
     },
@@ -487,7 +485,7 @@
       "followUps": [49, 51],
       "actionRequirements": [
                               [
-                                "damage",
+                                "strength",
                                 "50",
                                 "revert pain",
                                 "52"
@@ -507,7 +505,7 @@
       "followUps": [404404]
     },
     {
-      "message": "You use youre incredible Damage Potential to revert the very concept of pain that you inflicted on the kitten. He will never be hurt again.(+5 Sensibility)",
+      "message": "You use youre incredible Strength Potential to revert the very concept of pain that you inflicted on the kitten. He will never be hurt again.(+5 Sensibility)",
       "affectedStats": ["sensibility"],
       "statChange": [5],
       "followUps": [404404]
@@ -519,8 +517,8 @@
       "followUps": [404404]
     },
     {
-      "message": "You climb to the tippy-top, where you can see.... just how little there is to see out here. Oh well, it was a workout.(+2 to Damage, +2 to defense)",
-      "affectedStats": ["damage", "defense"],
+      "message": "You climb to the tippy-top, where you can see.... just how little there is to see out here. Oh well, it was a workout.(+2 to Strength, +2 to defense)",
+      "affectedStats": ["strength", "defense"],
       "statChange": [2, 2],
       "followUps": [404404]
     },
@@ -531,8 +529,8 @@
       "followUps": [404404]
     },
     {
-      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(+7 Damage, +7 Defense)",
-      "affectedStats": ["damage", "defense"],
+      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(+7 Strength, +7 Defense)",
+      "affectedStats": ["strength", "defense"],
       "statChange": [7, 7],
       "followUps": [404404]
     },
@@ -548,9 +546,9 @@
       "followUps": [59, 61, 62, 63, 64]
     },
     {
-      "message": "AND THEY SLAYED THE MIGHTY DRAGON! Gosh, I love that one. Tell me another? (+1 Damage)",
+      "message": "AND THEY SLAYED THE MIGHTY DRAGON! Gosh, I love that one. Tell me another? (+1 Strength)",
       "actions": ["sure", "nah"],
-      "affectedStats": ["damage"],
+      "affectedStats": ["strength"],
       "statChange": [1],
       "followUps": [58, 404404]
     },
@@ -560,7 +558,7 @@
       "followUps": [54, 55],
       "actionRequirements": [
                               [
-                                "damage",
+                                "strength",
                                 "30",
                                 "mine it",
                                 "56"
@@ -616,8 +614,8 @@
       "followUps": [68, 69]
     },
     {
-      "message": "You grasp a branch before falling too far, then proceed to bend the earth back into shape, using the branch as leverage. It's a reasonable workout. (+10 Damage, +10 Defense, +10 Max Health)",
-      "affectedStats": ["damage", "defense", "maxHealth"],
+      "message": "You grasp a branch before falling too far, then proceed to bend the earth back into shape, using the branch as leverage. It's a reasonable workout. (+10 Strength, +10 Defense, +10 Max Health)",
+      "affectedStats": ["strength", "defense", "maxHealth"],
       "statChange": [10, 10, 10],
       "followUps": [404404]
     },
@@ -633,8 +631,8 @@
       "followUps": [58, 404404]
     },
     {
-      "message": "You grab a solid-looking sabre and slip out of the cave. (+10 Damage)",
-      "affectedStats": ["damage"],
+      "message": "You grab a solid-looking sabre and slip out of the cave. (+10 Strength)",
+      "affectedStats": ["strength"],
       "statChange": [10],
       "followUps": [404404]
     },
@@ -679,8 +677,41 @@
       "followUps": [200200, 404404]
     },
     {
-      "message": "79",
-      "followUps": [404404]
+      "message": "**General Encounter Checker**",
+      "actions": ["punch", "defend", "run"],
+      "followUps": [6, 7, 8],
+      "actionRequirements": [
+                              [
+                                "strength",
+                                "100",
+                                "punch harder",
+                                "0"
+                              ],
+                              [
+                                "weapon",
+                                "1",
+                                "swing your weapon",
+                                "1"
+                              ],
+                              [
+                                "stoicism",
+                                "100",
+                                "stare down",
+                                "2"
+                              ],
+                              [
+                                "sensibility",
+                                "100",
+                                "trick",
+                                "3"
+                              ],
+                              [
+                                "accuracy",
+                                "100",
+                                "go for the eyes",
+                                "4"
+                              ]
+                            ]
     },
     {
       "message": "A large gate stands before you. The wastes seem to come to a stop.",
@@ -734,7 +765,7 @@
       "message": "Out of nowhere, a rotten apple hits you in the side of the head! Looking up, you see a cherub sticking out his tongue and readying an arrow! Better act fast!",
       "actions": ["fight", "flee"],
       "followUps": [999999, 404404],
-      "enemies": ["cherub"]
+      "enemy": "cherub"
     },
     {
       "message": "91",
@@ -773,7 +804,367 @@
       "followUps": [404404]
     },
     {
-      "message": "100",
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
+      "followUps": [404404]
+    },
+    {
+      "message": "91",
+      "followUps": [404404]
+    },
+    {
+      "message": "92",
+      "followUps": [404404]
+    },
+    {
+      "message": "93",
+      "followUps": [404404]
+    },
+    {
+      "message": "94",
+      "followUps": [404404]
+    },
+    {
+      "message": "95",
+      "followUps": [404404]
+    },
+    {
+      "message": "96",
+      "followUps": [404404]
+    },
+    {
+      "message": "97",
+      "followUps": [404404]
+    },
+    {
+      "message": "98",
+      "followUps": [404404]
+    },
+    {
+      "message": "99",
+      "followUps": [404404]
+    },
+    {
+      "message": "There's nothing here.",
       "followUps": [404404]
     }
   ]

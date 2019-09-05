@@ -1,0 +1,34 @@
+{
+  "enemies": [
+    {
+      "name": "cherub",
+      "health": 2,
+      "strength": 1,
+      "defense": 0,
+      "obsession": 2,
+      "speed": 4,
+      "confidence": 2,
+      "intelligence": 2,
+      "gainsString": "(+5 Max Health, +2 Strength, +2 Defense)",
+      "affectedStats": ["maxHealth", "strength", "defense"],
+      "statChange": [5, 2, 2],
+      "abilities": [
+                      [
+                        "fires an arrow at you!",
+                        "75",
+                        "2"
+                      ],
+                      [
+                        "is distracted by nearby jingling keys.",
+                        "100",
+                        "0"
+                      ],
+                      [
+                        "bites your arm.",
+                        "90",
+                        "1"
+                      ]
+                   ]
+    }
+  ]
+}
