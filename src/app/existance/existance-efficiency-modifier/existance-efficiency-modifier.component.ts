@@ -25,7 +25,9 @@ export class ExistanceEfficiencyModifierComponent implements OnInit {
     } else if (event.ctrlKey) {
       mult = 25;
     }
-    this.registrar.accumulate(index, mult);
+    if (!this.sadboi.activateGame && this.record.triggerMarriage && this.registrar.accumulate(index, mult)) {
+      this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
+    }
     if (mult === 1) {
       this.record.multiplierPrices[index] = Math.floor(this.record.multiplierBasePrices[index]
         * Math.pow(1.1, this.record.multipliersOwned[index]));
@@ -37,9 +39,6 @@ export class ExistanceEfficiencyModifierComponent implements OnInit {
       const tempEvent = new KeyboardEvent('onkeydown', {code: 'ControlLeft'});
       this.multiply.onUnMultiply();
       this.multiply.onMultiply(tempEvent);
-    }
-    if (!this.sadboi.activateGame) {
-      this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
     }
   }
 }

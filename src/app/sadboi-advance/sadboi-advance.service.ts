@@ -65,6 +65,7 @@ export class SadboiAdvanceService {
       this.consoleHistory = [
         { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
       ];
+      this.activateGame = true;
       this.instanceActions = [...this.basicActions];
       this.printActions();
     } else {
@@ -73,6 +74,24 @@ export class SadboiAdvanceService {
         + '(Thank you for purchasing Sadboi Personal Assistant, for any bugs or errors, please contact 555-IAMASADBOI)' }
       ];
     }
+  }
+
+  renewSufferer() {
+    this.sufferer = {
+      maxHealth: 10,
+      health: 10,
+      strength: 2,
+      accuracy: 75,
+      defense: 2,
+      sensibility: 2,
+      stoicism: 2,
+      deaths: 0,
+      worldProgress: 0,
+      inventory: [],
+      equipment: [{equipped: false}, {equipped: false}, {equipped: false},
+        {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
+    };
+    localStorage.setItem('EIF-sufferer', JSON.stringify(this.sufferer));
   }
 
   submit(input: string) {
@@ -244,20 +263,7 @@ export class SadboiAdvanceService {
       ];
       this.instanceActions = [...this.basicActions];
       this.printActions();
-      this.sufferer = {
-        maxHealth: 10,
-        health: 10,
-        strength: 2,
-        accuracy: 75,
-        defense: 2,
-        sensibility: 2,
-        stoicism: 2,
-        deaths: 0,
-        worldProgress: 0,
-        inventory: [],
-        equipment: [{equipped: false}, {equipped: false}, {equipped: false},
-          {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
-      };
+      this.renewSufferer();
     } else if (encounterID === 200200) {
       this.sufferer.worldProgress++;
       this.instanceActions = [...this.basicActions];

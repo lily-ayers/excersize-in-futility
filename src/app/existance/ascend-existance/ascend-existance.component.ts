@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RegistrarService } from 'src/app/existance/registrar.service';
 import { RecordOfExistance } from 'src/app/existance/record-of-existance';
+import { SadboiAdvanceService } from 'src/app/sadboi-advance/sadboi-advance.service';
 
 @Component({
   selector: 'app-ascend-existance',
@@ -10,7 +11,7 @@ import { RecordOfExistance } from 'src/app/existance/record-of-existance';
 export class AscendExistanceComponent implements OnInit {
   @Input() record: RecordOfExistance;
 
-  constructor(private registrar: RegistrarService) {
+  constructor(private registrar: RegistrarService, private sadboi: SadboiAdvanceService) {
 
    }
 
@@ -18,10 +19,12 @@ export class AscendExistanceComponent implements OnInit {
   }
 
   ascend() {
+    this.sadboi.renewSufferer();
     this.registrar.ascend();
   }
 
   transcend() {
+    this.sadboi.renewSufferer();
     this.registrar.transcend();
   }
 }

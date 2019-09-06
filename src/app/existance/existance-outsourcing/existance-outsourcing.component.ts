@@ -26,7 +26,10 @@ export class ExistanceOutsourcingComponent implements OnInit {
     } else if (event.ctrlKey) {
       mult = 25;
     }
-    this.registrar.influence(index, mult);
+    if (!this.sadboi.activateGame && this.record.triggerMarriage && this.registrar.influence(index, mult)) {
+      this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
+    }
+    ;
     if (mult === 1) {
       this.record.influencePrices[index] = Math.floor(this.record.influenceBasePrices[index]
         * Math.pow(1.1, this.record.influenced[index]));
@@ -38,9 +41,6 @@ export class ExistanceOutsourcingComponent implements OnInit {
       const tempEvent = new KeyboardEvent('onkeydown', {code: 'ControlLeft'});
       this.multiply.onUnMultiply();
       this.multiply.onMultiply(tempEvent);
-    }
-    if (!this.sadboi.activateGame) {
-      this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
     }
   }
 }

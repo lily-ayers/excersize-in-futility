@@ -56,11 +56,13 @@ export class RegistrarService {
   }
 
   accumulate(index: number, mult: number = 1) {
+    let transaction = false;
     for (let i = 0; i < mult; i++) {
       const price = Math.floor(this.record.multiplierBasePrices[index] * Math.pow(1.1, this.record.multipliersOwned[index]));
       if (this.record.stress >= price) {
         this.record.stress -= price;
         this.record.multipliersOwned[index]++;
+        transaction = true;
       } else {
         break;
       }
@@ -69,18 +71,28 @@ export class RegistrarService {
       this.suffering.unsubscribe();
       this.suffering = this.determineSuffering();
     }
+    if (transaction) {
+      return true;
+    }
+    return false;
   }
 
   influence(index: number, mult: number = 1) {
+    let transaction = false;
     for (let i = 0; i < mult; i++) {
       const price = Math.floor(this.record.influenceBasePrices[index] * Math.pow(1.1, this.record.influenced[index]));
       if (this.record.stress >= price) {
         this.record.stress -= price;
         this.record.influenced[index]++;
+        transaction = true;
       } else {
         break;
       }
     }
+    if (transaction) {
+      return true;
+    }
+    return false;
   }
 
   influenceGains(): number {
@@ -152,12 +164,16 @@ export class RegistrarService {
   ascend() {
     const dejaVu = this.record.dejaVu + Math.round(this.record.lifeExperience);
     this.initializeBasicRecord(dejaVu);
+    localStorage.removeItem('EIF-sufferer');
+    localStorage.removeItem('EIF-sadboiTrigger');
   }
 
   transcend() {
     const eternalSuffering = this.record.eternalSuffering
       + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100);
     this.initializeBasicRecord(eternalSuffering);
+    localStorage.removeItem('EIF-sufferer');
+    localStorage.removeItem('EIF-sadboiTrigger');
   }
 
   continuePitifulExistance() {

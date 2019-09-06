@@ -47,7 +47,7 @@ export class ManualExistanceComponent implements OnInit {
       }
       this.futileProgress = 0;
       this.record.stress += this.existManually();
-      if (!this.sadboi.activateGame) {
+      if (!this.sadboi.activateGame && this.record.triggerMarriage) {
         this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
       }
       if (this.automateAgony
