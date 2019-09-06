@@ -1,5 +1,5 @@
 <div *ngIf="sadboi.consoleHistory.length >= 1" class="sadboiConsole">
-  <div class="stat-bar">
+  <div *ngIf="sadboi.activateGame" class="stat-bar">
     <div class="tooltip-zone">
       <img class="stat-logo" src="assets/images/health.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.health"></div>
@@ -65,7 +65,7 @@
         </span>
       </div>
   </div>
-  <span>Area: {{ areas[sadboi.sufferer.worldProgress] }}</span>
+  <span *ngIf="sadboi.activateGame">Area: {{ areas[sadboi.sufferer.worldProgress] }}</span>
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">

@@ -13,14 +13,14 @@ import { RegistrarService } from '../existance/registrar.service';
   providedIn: 'root'
 })
 export class SadboiAdvanceService {
-  consoleHistory: SadboiMessage[] = [
-    { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
-  ];
+  consoleHistory: SadboiMessage[];
   sufferer: Sufferer;
   encounters = encounters;
   enemies = enemies;
   equipment = equipment;
   enemy;
+  activateGame = false;
+  userProgress = this.registrar.record.eternalSuffering > 0 ? this.registrar.record.eternalSuffering : this.registrar.record.dejaVu;
   // Track which area the sufferer is in
   restSubscription: Subscription;
   restTime = 0;
@@ -35,7 +35,9 @@ export class SadboiAdvanceService {
   // 666555 means retirement, as in US, UK, and AUS retirement ages
   // 909090 means wake, as in "ZZZ"
   // 404404 means End instance, as in Not Found
-  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777];
+  // 777777 means death
+  // 987654321 means initial PA encounter (fix sadboi)
+  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777, 987654321];
 
   constructor(private registrar: RegistrarService) {
     if (localStorage.getItem('EIF-sufferer')) {
@@ -51,6 +53,7 @@ export class SadboiAdvanceService {
         stoicism: 2,
         deaths: 0,
         worldProgress: 0,
+        inventory: [],
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
       };
@@ -58,8 +61,18 @@ export class SadboiAdvanceService {
     }
     this.registrar.theUnforgivingForwardMarchOfTimeAndDecay
       .subscribe(data => localStorage.setItem('EIF-sufferer', JSON.stringify(this.sufferer)));
-    this.instanceActions = [...this.basicActions];
-    this.printActions();
+    if (localStorage.getItem('EIF-sadboiTrigger')) {
+      this.consoleHistory = [
+        { message: 'Welcome to the Sadboi Advance - A Gaming Console for the Depressed Vagrant inside all of us!' }
+      ];
+      this.instanceActions = [...this.basicActions];
+      this.printActions();
+    } else {
+      this.consoleHistory = [
+        { message: 'Welcome to the Sadboi Personal Assistant! You now have 10 less stress! '
+        + '(Thank you for purchasing Sadboi Personal Assistant, for any bugs or errors, please contact 555-IAMASADBOI)' }
+      ];
+    }
   }
 
   submit(input: string) {
@@ -178,7 +191,7 @@ export class SadboiAdvanceService {
       if (encounter.equipment) {
         let i = 0;
         for (const item of encounter.equipment) {
-          this.equipmentUpdate(encounter.equipmentType[i], this.equipment.find(data => data.name === item))
+          this.equipmentUpdate(encounter.equipmentType[i], this.equipment.find(data => data.name === item));
           i++;
         }
       }
@@ -219,6 +232,7 @@ export class SadboiAdvanceService {
         sensibility: 2,
         stoicism: 2,
         worldProgress: 0,
+        inventory: [],
         deaths: this.sufferer.deaths + 1,
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
@@ -240,6 +254,7 @@ export class SadboiAdvanceService {
         stoicism: 2,
         deaths: 0,
         worldProgress: 0,
+        inventory: [],
         equipment: [{equipped: false}, {equipped: false}, {equipped: false},
           {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
       };
@@ -249,6 +264,10 @@ export class SadboiAdvanceService {
       this.printActions();
     } else if (encounterID === 999999) {
       this.initiateCombat(this.enemy);
+    } else if (encounterID === 987654321) {
+      this.consoleHistory.push({ message: 'error... error. You really arent qualified to fix this machine,'
+        + 'and also you dont understand why you should have to fix something you just bought. This is bullshit. (stress + 25)' });
+      this.registrar.record.stress += 25;
     }
   }
 
@@ -550,14 +569,45 @@ export class SadboiAdvanceService {
         index = 8;
         break;
     }
-    if (!this.sufferer.equipment[index].equipped)
-    {
+    if (!this.sufferer.equipment[index].equipped) {
       this.sufferer.equipment[index] = equipment;
       this.sufferer.equipment[index].equipped = true;
     } else {
       this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
+      this.instanceActions = ['equip new item', 'keep old item'];
+      this.instanceFollowUps = [989898, 404404];
+      this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
+      this.printEquipmentStats(this.sufferer.equipment[index], false);
+      this.printEquipmentStats(equipment, true);
+      this.consoleHistory.push({ message: 'Would you like to equip the new item?' });
+      this.printActions();
     }
-    // TODO: Logic for determining if new equipment is better and equipping it
+  }
+
+  printEquipmentStats(equipment: any, newItem: boolean) {
+    if (newItem) {
+      this.consoleHistory.push({ message: 'Equipped: ' + equipment.name });
+    } else {
+      this.consoleHistory.push({ message: 'New Item: ' + equipment.name });
+    }
+    if (equipment.strength) {
+      this.consoleHistory.push({ message: 'Strength: ' + equipment.strength });
+    }
+    if (equipment.defense) {
+      this.consoleHistory.push({ message: 'Defense: ' + equipment.defense });
+    }
+    if (equipment.sensibility) {
+      this.consoleHistory.push({ message: 'Sensibility: ' + equipment.sensibility });
+    }
+    if (equipment.stoicism) {
+      this.consoleHistory.push({ message: 'Stoicism: ' + equipment.stoicism });
+    }
+    if (equipment.accuracy) {
+      this.consoleHistory.push({ message: 'Accuracy: ' + equipment.accuracy });
+    }
+    if (equipment.maxHealth) {
+      this.consoleHistory.push({ message: 'Max Health: ' + equipment.maxHealth });
+    }
   }
 
   calculateSuffering() {

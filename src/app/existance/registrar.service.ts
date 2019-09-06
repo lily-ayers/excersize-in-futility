@@ -28,7 +28,7 @@ export class RegistrarService {
     this.existance = interval(1000 / (1 + (this.record.multipliersOwned[2] / 10)));
     return this.existance.subscribe(i => {
       this.record.stress += this.influenceGains();
-      if (!this.record.triggerStatus && this.record.stress > 0) {
+      if (!this.record.triggerStatus && (this.record.stress > 0 || this.record.dejaVu > 0 || this.record.eternalSuffering > 0)) {
         this.record.triggerStatus = true;
       }
       if (!this.record.triggerEfficiency && this.record.stress >= 10) {

@@ -4,7 +4,7 @@ export interface Equipment {
   maxHealth?: number;
   strength?: number;
   accuracy?: number;
-  defens?: number;
+  defense?: number;
   sensibility?: number;
   stoicism?: number;
 }

@@ -20,4 +20,5 @@ export interface Sufferer {
   // 7: pants
   // 8: shoes
   equipment: Equipment[];
+  inventory: Equipment[][];
 }

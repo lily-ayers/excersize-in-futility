@@ -1,8 +1,64 @@
 {
   "equipment": [
     {
+      "name": "HEAD PIECES"
+    },
+    {
+      "name": "cracked monocle",
+      "accuracy": 10,
+      "defense": 2
+    },
+    {
+      "name": "NECK PIECES"
+    },
+    {
+      "name": "t-poser's necklace",
+      "damage": 10,
+      "accuracy": 20,
+      "sensibility": 10
+    },
+    {
+      "name": "CHEST PIECES"
+    },
+    {
+      "name": "dusty book cover",
+      "defense": 10,
+      "sensibility": 1
+    },
+    {
+      "name": "RIGHT HAND PIECES"
+    },
+    {
       "name": "cactus spikes",
       "strength": 10
+    },
+    {
+      "name": "bent sabre",
+      "strength": 20,
+      "stoicism": -5
+    },
+    {
+      "name": "LEFT HAND PIECES"
+    },
+    {
+      "name": "outdated grimoire",
+      "sensibility": 10,
+      "defense": 5
+    },
+    {
+      "name": "BELT PIECES"
+    },
+    {
+      "name": "PANTS PIECES"
+    },
+    {
+      "name": "SHOES PIECES"
+    },
+    {
+      "name": "wooden clogs",
+      "defense": 10,
+      "maxHealth": 10,
+      "accuracy": -5
     }
   ]
 }

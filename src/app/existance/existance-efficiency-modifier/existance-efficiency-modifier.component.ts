@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RecordOfExistance } from '../record-of-existance';
 import { RegistrarService } from '../registrar.service';
 import { MultiplyAnguishService } from 'src/app/existance/multiply-anguish.service';
-
+import { SadboiAdvanceService } from 'src/app/sadboi-advance/sadboi-advance.service';
+import { responses } from 'src/assets/multiply-responses.json';
 @Component({
   selector: 'app-existance-efficiency-modifier',
   templateUrl: './existance-efficiency-modifier.component.html',
@@ -11,7 +12,8 @@ import { MultiplyAnguishService } from 'src/app/existance/multiply-anguish.servi
 export class ExistanceEfficiencyModifierComponent implements OnInit {
   @Input() record: RecordOfExistance;
 
-  constructor(private registrar: RegistrarService, private multiply: MultiplyAnguishService) { }
+  constructor(private registrar: RegistrarService, private multiply: MultiplyAnguishService,
+              private sadboi: SadboiAdvanceService) { }
 
   ngOnInit() {
   }
@@ -35,6 +37,9 @@ export class ExistanceEfficiencyModifierComponent implements OnInit {
       const tempEvent = new KeyboardEvent('onkeydown', {code: 'ControlLeft'});
       this.multiply.onUnMultiply();
       this.multiply.onMultiply(tempEvent);
+    }
+    if (!this.sadboi.activateGame) {
+      this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
     }
   }
 }
