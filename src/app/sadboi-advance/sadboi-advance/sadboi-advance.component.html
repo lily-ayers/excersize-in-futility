@@ -1,7 +1,7 @@
 <div *ngIf="sadboi.consoleHistory.length >= 1" class="sadboiConsole">
   <div class="stat-bar">
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/health.svg">
+      <img class="stat-logo" src="assets/images/health.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.health"></div>
       <div class="stat-change" [@statChange]="sadboi.sufferer.maxHealth"></div>
       <span class="tooltip">Health</span>
@@ -9,49 +9,49 @@
     <span class="stat">{{ sadboi.sufferer.health }}/{{ sadboi.sufferer.maxHealth }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/damage.svg">
+      <img class="stat-logo" src="assets/images/damage.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.strength"></div>
       <span class="tooltip">Strength</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.strength }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/defense.svg">
+      <img class="stat-logo" src="assets/images/defense.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.defense"></div>
       <span class="tooltip">Defense</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.defense }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/sensibility.svg">
+      <img class="stat-logo" src="assets/images/sensibility.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.sensibility"></div>
       <span class="tooltip">Sensibility</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.sensibility }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/stoicism.svg">
+      <img class="stat-logo" src="assets/images/stoicism.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.stoicism"></div>
       <span class="tooltip">Stoicism</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.stoicism }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/accuracy.svg">
+      <img class="stat-logo" src="assets/images/accuracy.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.accuracy"></div>
       <span class="tooltip">Accuracy</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.accuracy }}</span>
 
     <div class="tooltip-zone">
-      <img class="stat-logo" src="../../../assets/images/deaths.svg">
+      <img class="stat-logo" src="assets/images/deaths.svg">
       <div class="stat-change" [@statChange]="sadboi.sufferer.deaths"></div>
       <span class="tooltip">Deaths</span>
     </div>
     <span class="stat">{{ sadboi.sufferer.deaths }}</span>
 
     <div class="tooltip-zone">
-        <img class="stat-logo" src="../../../assets/images/equipment.svg">
+        <img class="stat-logo" src="assets/images/equipment.svg">
         <span class="tooltip" style="width: 200px">
           Head: {{ sadboi.sufferer.equipment[0].name | titlecase }}<br>
           Neck: {{ sadboi.sufferer.equipment[1].name | titlecase }}<br>

@@ -286,8 +286,8 @@ export class SadboiAdvanceService {
     switch (actionID) {
       case 6:
         this.consoleHistory.push({ message: 'You punch the ' + this.enemy.name
-          + ' for ' + Math.floor(this.sufferer.strength - this.enemy.defense / 10) + ' damage'});
-        this.enemy.health -= Math.floor(this.sufferer.strength - this.enemy.defense / 10);
+          + ' for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 10) + ' damage'});
+        this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 10);
         if (this.enemy.health <= 0) {
           this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
           this.statChanges(this.enemy);
@@ -315,10 +315,10 @@ export class SadboiAdvanceService {
         }
         break;
       case 0:
-        if (Math.random() * this.sufferer.accuracy / 8 > this.enemy.speed) {
+        if ((Math.random() * this.sufferer.accuracy) / 8 > this.enemy.speed) {
           this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! You swing your fists at the ' + this.enemy.name
-              + ' for ' + Math.floor(this.sufferer.strength - this.enemy.defense) / 7 + ' damage'});
-          this.enemy.health -= Math.floor(this.sufferer.strength - this.enemy.defense) / 7;
+              + ' for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 7) + ' damage'});
+          this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 7);
         } else {
           this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! ........You miss tho.' });
         }
@@ -338,8 +338,9 @@ export class SadboiAdvanceService {
           if (Math.random() * this.sufferer.accuracy / 5 > this.enemy.speed) {
             this.consoleHistory.push({ message: 'Slashy slashy - You swing your '
               + this.sufferer.equipment[4].name + ' at the ' + this.enemy.name
-              + ' for ' + (this.sufferer.strength + this.sufferer.equipment[4].strength - this.enemy.defense) / 10 + ' damage'});
-            this.enemy.health -= (this.sufferer.strength - this.enemy.defense) / 10;
+              + ' for ' + Math.floor((this.sufferer.strength + this.sufferer.equipment[4].strength - this.enemy.defense) / 10)
+              + ' damage'});
+            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 10);
           } else {
             this.consoleHistory.push({ message: 'You swing your ' + this.sufferer.equipment[4].name
               +  ' at a nearby innocent tree. The ' + this.enemy.name + ' laughs at you. Honestly, so do I.' });
@@ -387,8 +388,8 @@ export class SadboiAdvanceService {
       case 4:
           if (this.sufferer.accuracy * Math.random() / 7 >= this.enemy.speed) {
             this.consoleHistory.push({ message: 'With a snicker-snack, yopu thrust the vorpal sword (in this case, your finger) into the '
-            + this.enemy.name + 's eye for ' + (this.sufferer.strength - this.enemy.defense) / 5 + ' damage'});
-            this.enemy.health -= (this.sufferer.strength - this.enemy.defense) / 10;
+            + this.enemy.name + 's eye for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 5) + ' damage'});
+            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 10);
           } else {
             this.consoleHistory.push({ message: 'You thrust your finger towards the ' + this.enemy.name
               // tslint:disable-next-line: max-line-length
