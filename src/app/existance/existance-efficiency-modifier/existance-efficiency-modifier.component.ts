@@ -25,7 +25,8 @@ export class ExistanceEfficiencyModifierComponent implements OnInit {
     } else if (event.ctrlKey) {
       mult = 25;
     }
-    if (!this.sadboi.activateGame && this.record.triggerMarriage && this.registrar.accumulate(index, mult)) {
+    const transaction = this.registrar.accumulate(index, mult);
+    if (!this.sadboi.activateGame && this.record.triggerMarriage && transaction) {
       this.sadboi.consoleHistory.push({ message: responses[Math.floor(Math.random() * responses.length)] });
     }
     if (mult === 1) {
