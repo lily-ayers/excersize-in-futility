@@ -334,6 +334,8 @@ export class SadboiAdvanceService {
           this.consoleHistory.push({ message: 'You slip away, leaving the ' + this.enemy.name + ' to their own business' });
           this.combatInstance = false;
           this.enemy = null;
+          this.instanceActions = [...this.basicActions];
+          this.printActions();
         } else {
           this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' catches you trying to escape and attacks!' });
           this.executeCombatEnemyTurn(false);
