@@ -19,6 +19,7 @@ export class SadboiAdvanceService {
   enemies = enemies;
   equipment = equipment;
   enemy;
+  equipmentInQuestion;
   activateGame = false;
   userProgress = this.registrar.record.eternalSuffering > 0 ? this.registrar.record.eternalSuffering : this.registrar.record.dejaVu;
   // Track which area the sufferer is in
@@ -37,7 +38,8 @@ export class SadboiAdvanceService {
   // 404404 means End instance, as in Not Found
   // 777777 means death
   // 987654321 means initial PA encounter (fix sadboi)
-  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777, 987654321];
+  // 989898 means equip new piece
+  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777, 989898, 987654321];
 
   constructor(private registrar: RegistrarService) {
     if (localStorage.getItem('EIF-sufferer')) {
@@ -183,6 +185,7 @@ export class SadboiAdvanceService {
     this.restGains = 0;
     this.instance = false;
     this.instanceActions = [...this.basicActions];
+    this.printActions();
   }
 
   retire() {
@@ -207,15 +210,14 @@ export class SadboiAdvanceService {
       if (encounter.affectedStats && encounter.statChange) {
         this.statChanges(encounter);
       }
-      if (encounter.equipment) {
+      if (this.sufferer.health <= 0 && encounterID !== 7) {
+        this.encounter(7);
+      } else if (encounter.equipment) {
         let i = 0;
         for (const item of encounter.equipment) {
           this.equipmentUpdate(encounter.equipmentType[i], this.equipment.find(data => data.name === item));
           i++;
         }
-      }
-      if (this.sufferer.health <= 0 && encounterID !== 7) {
-        this.encounter(7);
       } else if (encounter.actions) {
         this.instance = true;
         this.instanceFollowUps = encounter.followUps;
@@ -274,6 +276,8 @@ export class SadboiAdvanceService {
       this.consoleHistory.push({ message: 'error... error. You really arent qualified to fix this machine,'
         + 'and also you dont understand why you should have to fix something you just bought. This is bullshit. (stress + 25)' });
       this.registrar.record.stress += 25;
+    } else if (encounterID === 989898) {
+      this.sufferer.equipment[this.equipmentInQuestion[0]] = this.equipmentInQuestion[1];
     }
   }
 
@@ -580,7 +584,7 @@ export class SadboiAdvanceService {
     if (!this.sufferer.equipment[index].equipped) {
       this.sufferer.equipment[index] = equipment;
       this.sufferer.equipment[index].equipped = true;
-    } else {
+    } else if (this.sufferer.equipment[index].name !== equipment.name) {
       this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
       this.instanceActions = ['equip new item', 'keep old item'];
       this.instanceFollowUps = [989898, 404404];
@@ -588,7 +592,10 @@ export class SadboiAdvanceService {
       this.printEquipmentStats(this.sufferer.equipment[index], false);
       this.printEquipmentStats(equipment, true);
       this.consoleHistory.push({ message: 'Would you like to equip the new item?' });
+      this.equipmentInQuestion = [index, equipment];
       this.printActions();
+    } else {
+      this.encounter(404404);
     }
   }
 

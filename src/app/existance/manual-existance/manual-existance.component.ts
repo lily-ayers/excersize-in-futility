@@ -3,6 +3,7 @@ import { RegistrarService } from 'src/app/existance/registrar.service';
 import { RecordOfExistance } from 'src/app/existance/record-of-existance';
 import { SadboiAdvanceService } from 'src/app/sadboi-advance/sadboi-advance.service';
 import { responses } from 'src/assets/try-to-exist-responses.json';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-manual-existance',
@@ -15,6 +16,7 @@ export class ManualExistanceComponent implements OnInit {
   futileProgress = 0;
   automateAgony = false;
   activatedGame = false;
+  resetInput = new FormControl();
 
   constructor(private registrar: RegistrarService, private sadboi: SadboiAdvanceService) {
     if (localStorage.getItem('EIF-sadboiTrigger')) {
@@ -93,6 +95,14 @@ export class ManualExistanceComponent implements OnInit {
       this.sadboi.instanceActions = [...this.sadboi.basicActions];
       this.sadboi.printActions();
     }
+  }
+
+  submitReset() {
+    if (this.resetInput.value.toString() === 'HARD-RESET') {
+      localStorage.clear();
+      this.registrar.initializeBasicRecord();
+    }
+    this.resetInput.setValue('');
   }
 }
 
