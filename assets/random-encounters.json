@@ -249,11 +249,11 @@
       "followUps": [404404]
     },
     {
-      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (+2 Strength, +2 Defense)",
+      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (New Neck Armor!)",
       "actions": ["...sorry"],
       "followUps": [404404],
-      "affectedStats": ["strength", "defense"],
-      "statChange": [2, 2],
+      "equipmentType": ["neck"],
+      "equipment": ["t-poser's necklace"],
       "actionRequirements": [
                               [
                                 "stoicism",
@@ -529,9 +529,9 @@
       "followUps": [404404]
     },
     {
-      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(+7 Strength, +7 Defense)",
-      "affectedStats": ["strength", "defense"],
-      "statChange": [7, 7],
+      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(New Shoes)",
+      "equipmentType": ["shoes"],
+      "equipment": ["wooden clogs"],
       "followUps": [404404]
     },
     {
@@ -633,27 +633,27 @@
       "followUps": [58, 404404]
     },
     {
-      "message": "You grab a solid-looking sabre and slip out of the cave. (+10 Strength)",
-      "affectedStats": ["strength"],
-      "statChange": [10],
+      "message": "You grab a solid-looking sabre and slip out of the cave. (New Weapon!)",
+      "equipmentType": ["rightHand"],
+      "equipment": ["bent sabre"],
       "followUps": [404404]
     },
     {
-      "message": "You don a chainmail vest and slip out of the cave. (+10 Defense)",
-      "affectedStats": ["defense"],
-      "statChange": [10],
+      "message": "You don a chainmail vest and slip out of the cave. (New Chest Armor!)",
+      "equipmentType": ["chest"],
+      "equipment": ["dusty book cover"],
       "followUps": [404404]
     },
     {
-      "message": "You squint through your new stylish monocle and slip out of the cave. (+10 Accuracy)",
-      "affectedStats": ["accuracy"],
-      "statChange": [10],
+      "message": "You squint through your new stylish monocle and slip out of the cave. (New Head Armor!)",
+      "equipmentType": ["head"],
+      "equipment": ["cracked monocle"],
       "followUps": [404404]
     },
     {
-      "message": "You slip out of the cave while perusing your new book. (+10 Sensibility)",
-      "affectedStats": ["sensibility"],
-      "statChange": [10],
+      "message": "You slip out of the cave while perusing your new book. (New Shield!)",
+      "equipmentType": ["leftHand"],
+      "equipment": ["outdated grimoire"],
       "followUps": [404404]
     },
     {
