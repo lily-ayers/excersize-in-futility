@@ -1,18 +1,18 @@
 <div class="store">
-    <h1 *ngIf="record.multipliersOwned[0] !== 0">Multiply</h1>
-    <h1 *ngIf="record.multipliersOwned[0] === 0">Turn your stress into productivity to generate even more stress!</h1>
+    <h1 *ngIf="record.multipliersOwned[1] !== 0">Multiply</h1>
+    <h1 *ngIf="record.multipliersOwned[1] === 0">Turn your stress into productivity to generate even more stress!</h1>
     <hr>
     <div class="tooltip-zone">
-      <label>Accumulate Despair</label>
-      <button (click)='accumulate(0, $event)'>Cost: {{ record.multiplierPrices[0] | bigNum: 2 }}</button>
-      <span class="tooltip">+1 Despair (+10% Manual Exist Speed)</span>
-    </div>
-    <div *ngIf='record.multipliersOwned[0] > 0' class="tooltip-zone">
       <label>Wallow in Dread</label>
       <button (click)='accumulate(1, $event)'>Cost: {{ record.multiplierPrices[1] | bigNum: 2 }}</button>
       <span class="tooltip">+1 Dread (+1 Manual Exist Stress)</span>
     </div>
-    <div *ngIf="record.multipliersOwned[1] > 0" class="tooltip-zone">
+    <div *ngIf='record.multipliersOwned[1] > 0'  class="tooltip-zone">
+      <label>Accumulate Despair</label>
+      <button (click)='accumulate(0, $event)'>Cost: {{ record.multiplierPrices[0] | bigNum: 2 }}</button>
+      <span class="tooltip">+1 Despair (+10% Manual Exist Stress)</span>
+    </div>
+    <div *ngIf="record.multipliersOwned[0] > 0" class="tooltip-zone">
       <label>Browse the Internet</label>
       <button (click)='accumulate(2, $event)'>Cost: {{ record.multiplierPrices[2] | bigNum: 2 }}</button>
       <span class="tooltip">+1 Meme (+10% faster Ticks)</span>

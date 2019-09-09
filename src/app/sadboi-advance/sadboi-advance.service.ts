@@ -15,11 +15,12 @@ import { RegistrarService } from '../existance/registrar.service';
 export class SadboiAdvanceService {
   consoleHistory: SadboiMessage[];
   sufferer: Sufferer;
-  encounters = encounters;
-  enemies = enemies;
-  equipment = equipment;
+  encounters = JSON.parse(JSON.stringify(encounters));
+  enemies = JSON.parse(JSON.stringify(enemies));
+  equipment = JSON.parse(JSON.stringify(equipment));
   enemy;
   equipmentInQuestion;
+  currentEncounter;
   activateGame = false;
   userProgress = this.registrar.record.eternalSuffering > 0 ? this.registrar.record.eternalSuffering : this.registrar.record.dejaVu;
   // Track which area the sufferer is in
@@ -94,6 +95,7 @@ export class SadboiAdvanceService {
         {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}, {equipped: false}]
     };
     localStorage.setItem('EIF-sufferer', JSON.stringify(this.sufferer));
+    this.encounters = JSON.parse(JSON.stringify(encounters));
   }
 
   submit(input: string) {
@@ -201,29 +203,34 @@ export class SadboiAdvanceService {
     this.consoleHistory.push({ message: 'Retiring your sufferer earns you Deja Vu. You will earn Deja Vu equivalent to the sum of your Sufferers stats minus base values, divided by 200.' });
   }
 
-  async encounter(encounterID: number) {
+  async encounter(encounterID: number, equipmentRepeat: any = null) {
     this.instance = false;
     if (!this.specialInstances.includes(encounterID)) {
       let encounter: Encounter = JSON.parse(JSON.stringify(this.encounters[encounterID]));
-      this.consoleHistory.push({ message: encounter.message });
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      if (encounter.affectedStats && encounter.statChange) {
+      if (equipmentRepeat === null) {
+        this.consoleHistory.push({ message: encounter.message });
+      }
+      if (encounter.perk && !this.sufferer.inventory.includes(encounter.perk)) {
+        this.sufferer.inventory.push(encounter.perk);
+        this.consoleHistory.push({ message: 'Gained Perk: ' + encounter.perk, small: true });
+      }
+      await new Promise(resolve => setTimeout(resolve, 500));
+      if (encounter.affectedStats && encounter.statChange && equipmentRepeat === null) {
         this.statChanges(encounter);
       }
       if (this.sufferer.health <= 0 && encounterID !== 7) {
         this.encounter(7);
-      } else if (encounter.equipment) {
-        let i = 0;
-        for (const item of encounter.equipment) {
-          this.equipmentUpdate(encounter.equipmentType[i], this.equipment.find(data => data.name === item));
-          i++;
-        }
+      } else if (encounter.equipment && equipmentRepeat === null) {
+          this.currentEncounter = encounterID;
+          this.equipmentUpdate(encounter.equipmentType[0], this.equipment.find(data => data.name === encounter.equipment[0]));
+          this.encounters = JSON.parse(JSON.stringify(encounters));
       } else if (encounter.actions) {
         this.instance = true;
         this.instanceFollowUps = encounter.followUps;
         this.instanceActions = encounter.actions;
         if (encounter.enemy) {
-          this.enemy = JSON.parse(JSON.stringify(this.enemies.find(data => data.name = encounter.enemy)));
+          this.enemy = this.enemies.find(data => data.name === encounter.enemy);
+          console.log(this.enemy);
         }
         encounter = this.getAdditionalActions(encounter);
         this.printActions();
@@ -277,7 +284,8 @@ export class SadboiAdvanceService {
         + 'and also you dont understand why you should have to fix something you just bought. This is bullshit. (stress + 25)' });
       this.registrar.record.stress += 25;
     } else if (encounterID === 989898) {
-      this.sufferer.equipment[this.equipmentInQuestion[0]] = this.equipmentInQuestion[1];
+      this.newEquipmentStats();
+      this.encounter(this.currentEncounter, 1);
     }
   }
 
@@ -285,7 +293,7 @@ export class SadboiAdvanceService {
     if (encounter.actionSkillCheck) {
       let i = 0;
       for (const check of encounter.actionSkillCheck) {
-        if (!this.statChecker(check[0], +check[1])) {
+        if (!this.statChecker(check[0], check[1])) {
           this.instanceFollowUps[i] = +check[2];
         }
         i++;
@@ -329,12 +337,44 @@ export class SadboiAdvanceService {
           this.executeCombatEnemyTurn(false);
         }
         break;
+      case 5:
+          this.consoleHistory.push({ message: 'You FIRE punch the ' + this.enemy.name
+              + ' for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 5) + ' damage'});
+          this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 5);
+          if (this.enemy.health <= 0) {
+              this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
+              this.statChanges(this.enemy);
+              this.enemy = null;
+              this.combatInstance = false;
+              this.instanceActions = [...this.basicActions];
+              this.printActions();
+          } else {
+              this.consoleHistory.push({ message: this.enemy.name + ' remaining Health: ' + this.enemy.health });
+              this.executeCombatEnemyTurn(false);
+          }
+          break;
       case 7:
           this.consoleHistory.push({ message: 'You brace yourself for the ' + this.enemy.name + 's coming attack.' });
           this.executeCombatEnemyTurn(true);
           break;
+      case 14:
+          this.consoleHistory.push({ message: 'You brace yourself EPICLY for the ' + this.enemy.name + 's coming attack.' });
+          this.executeCombatEnemyTurn(true, true);
+          break;
       case 8:
         if (this.sufferer.sensibility * Math.random() > this.enemy.obsession) {
+          this.consoleHistory.push({ message: 'You slip away, leaving the ' + this.enemy.name + ' to their own business' });
+          this.combatInstance = false;
+          this.enemy = null;
+          this.instanceActions = [...this.basicActions];
+          this.printActions();
+        } else {
+          this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' catches you trying to escape and attacks!' });
+          this.executeCombatEnemyTurn(false);
+        }
+        break;
+      case 15:
+        if (this.sufferer.sensibility * 2 * Math.random() > this.enemy.obsession) {
           this.consoleHistory.push({ message: 'You slip away, leaving the ' + this.enemy.name + ' to their own business' });
           this.combatInstance = false;
           this.enemy = null;
@@ -365,13 +405,56 @@ export class SadboiAdvanceService {
           this.executeCombatEnemyTurn(false);
         }
         break;
+      case 9:
+          if ((Math.random() * this.sufferer.accuracy) / 8 > this.enemy.speed) {
+              this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! You swing your FLAMING fists at the ' + this.enemy.name
+                  + ' for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 3) + ' damage'});
+              this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 3);
+          } else {
+              this.consoleHistory.push({ message: 'ITS CLOBBERIN TIME!!! ........You miss tho.' });
+          }
+          if (this.enemy.health <= 0) {
+              this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
+              this.statChanges(this.enemy);
+              this.enemy = null;
+              this.combatInstance = false;
+              this.instanceActions = [...this.basicActions];
+              this.printActions();
+          } else {
+              this.consoleHistory.push({ message: this.enemy.name + ' remaining Health: ' + this.enemy.health });
+              this.executeCombatEnemyTurn(false);
+          }
+          break;
       case 1:
           if (Math.random() * this.sufferer.accuracy / 5 > this.enemy.speed) {
             this.consoleHistory.push({ message: 'Slashy slashy - You swing your '
               + this.sufferer.equipment[4].name + ' at the ' + this.enemy.name
               + ' for ' + Math.floor((this.sufferer.strength + this.sufferer.equipment[4].strength - this.enemy.defense) / 10)
               + ' damage'});
-            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 10);
+            this.enemy.health -= Math.floor((this.sufferer.strength + this.sufferer.equipment[4].strength - this.enemy.defense) / 10);
+          } else {
+            this.consoleHistory.push({ message: 'You swing your ' + this.sufferer.equipment[4].name
+              +  ' at a nearby innocent tree. The ' + this.enemy.name + ' laughs at you. Honestly, so do I.' });
+          }
+          if (this.enemy.health <= 0) {
+            this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
+            this.statChanges(this.enemy);
+            this.enemy = null;
+            this.combatInstance = false;
+            this.instanceActions = [...this.basicActions];
+            this.printActions();
+          } else {
+            this.consoleHistory.push({ message: this.enemy.name + ' remaining Health: ' + this.enemy.health });
+            this.executeCombatEnemyTurn(false);
+          }
+          break;
+      case 10:
+          if (Math.random() * this.sufferer.accuracy / 5 > this.enemy.speed) {
+            this.consoleHistory.push({ message: 'SUPER slashy - You swing your '
+              + this.sufferer.equipment[4].name + ' at the ' + this.enemy.name
+              + ' for ' + Math.floor((this.sufferer.strength + (this.sufferer.equipment[4].strength * 2) - this.enemy.defense) / 10)
+              + ' damage'});
+            this.enemy.health -= Math.floor((this.sufferer.strength + (this.sufferer.equipment[4].strength * 2) - this.enemy.defense) / 10);
           } else {
             this.consoleHistory.push({ message: 'You swing your ' + this.sufferer.equipment[4].name
               +  ' at a nearby innocent tree. The ' + this.enemy.name + ' laughs at you. Honestly, so do I.' });
@@ -402,8 +485,36 @@ export class SadboiAdvanceService {
           this.executeCombatEnemyTurn(false);
         }
         break;
+      case 11:
+        if (this.sufferer.stoicism * Math.random() / 2 >= this.enemy.confidence) {
+          if (this.enemy.strength >= 1) {
+            this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' looks uncomfortable.' });
+            this.enemy.strength--;
+          } else {
+            this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' is already as uncomfortable as they can be.' });
+          }
+        } else {
+          this.consoleHistory.push({ message: 'The ' + this.enemy.name
+            + ' is annoyed at your weak intimidation tactics, and strikes immediately..' });
+          this.executeCombatEnemyTurn(false);
+        }
+        break;
       case 3:
           if (this.sufferer.sensibility * Math.random() / 5 >= this.enemy.intelligence) {
+            if (this.enemy.defense >= 1) {
+              this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' falls for it and looks behind them!' });
+              this.enemy.defense--;
+            } else {
+              this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' is already distracted.' });
+            }
+          } else {
+            this.consoleHistory.push({ message: 'The ' + this.enemy.name
+              + ' sees right through your trick. Luckily it has a great sense of humour, if you think being attacked is funny.' });
+            this.executeCombatEnemyTurn(false);
+          }
+          break;
+      case 12:
+          if (this.sufferer.sensibility * Math.random() / 2 >= this.enemy.intelligence) {
             if (this.enemy.defense >= 1) {
               this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' falls for it and looks behind them!' });
               this.enemy.defense--;
@@ -420,7 +531,29 @@ export class SadboiAdvanceService {
           if (this.sufferer.accuracy * Math.random() / 7 >= this.enemy.speed) {
             this.consoleHistory.push({ message: 'With a snicker-snack, yopu thrust the vorpal sword (in this case, your finger) into the '
             + this.enemy.name + 's eye for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 5) + ' damage'});
-            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 10);
+            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 5);
+          } else {
+            this.consoleHistory.push({ message: 'You thrust your finger towards the ' + this.enemy.name
+              // tslint:disable-next-line: max-line-length
+              + ' eye, but you end up missing and picking their nose. Its weird and awkward for everyone involved. They decide to just move on for both of your sakes.' });
+          }
+          if (this.enemy.health <= 0) {
+            this.consoleHistory.push({ message: 'You have defeated the ' + this.enemy.name + ' and earned ' + this.enemy.gainsString });
+            this.statChanges(this.enemy);
+            this.enemy = null;
+            this.combatInstance = false;
+            this.instanceActions = [...this.basicActions];
+            this.printActions();
+          } else {
+            this.consoleHistory.push({ message: this.enemy.name + ' remaining Health: ' + this.enemy.health });
+            this.executeCombatEnemyTurn(false);
+          }
+          break;
+      case 13:
+          if (this.sufferer.accuracy * Math.random() / 6 >= this.enemy.speed) {
+            this.consoleHistory.push({ message: 'With a snicker-snack, yopu thrust the vorpal sword (in this case, your finger) into the '
+            + this.enemy.name + 's eye for ' + Math.floor((this.sufferer.strength - this.enemy.defense) / 2) + ' damage'});
+            this.enemy.health -= Math.floor((this.sufferer.strength - this.enemy.defense) / 2);
           } else {
             this.consoleHistory.push({ message: 'You thrust your finger towards the ' + this.enemy.name
               // tslint:disable-next-line: max-line-length
@@ -441,11 +574,14 @@ export class SadboiAdvanceService {
     }
   }
 
-  executeCombatEnemyTurn(defending: boolean) {
+  executeCombatEnemyTurn(defending: boolean, superDefending?: boolean) {
     const action = this.enemy.abilities[Math.floor(Math.random() * this.enemy.abilities.length)];
     this.consoleHistory.push({ message: 'The ' + this.enemy.name + ' ' + action[0] });
     if ((Math.random() * 101) + (this.sufferer.sensibility / 25) <= +action[1]) {
-      if (defending) {
+      if (superDefending) {
+        this.sufferer.health -= (this.enemy.strength * +action[2]) / 4;
+        this.consoleHistory.push({ message: 'You were hit for ' + (this.enemy.strength * +action[2])  / 2 + ' damage!' });
+      } else if (defending) {
         this.sufferer.health -= (this.enemy.strength * +action[2]) / 2;
         this.consoleHistory.push({ message: 'You were hit for ' + (this.enemy.strength * +action[2])  / 2 + ' damage!' });
       } else {
@@ -506,44 +642,49 @@ export class SadboiAdvanceService {
     }
   }
 
-  statChecker(stat: string, req: number) {
+  statChecker(stat: string, req: any) {
     switch (stat) {
       case 'health':
-        if (this.sufferer.health >= req) { return true; }
+        if (this.sufferer.health >= +req) { return true; }
         break;
       case 'maxHealth':
-          if (this.sufferer.maxHealth >= req) { return true; }
+          if (this.sufferer.maxHealth >= +req) { return true; }
           break;
       case 'strength':
-          if (this.sufferer.strength >= req) { return true; }
+          if (this.sufferer.strength >= +req) { return true; }
           break;
       case 'accuracy':
-          if (this.sufferer.accuracy >= req) { return true; }
+          if (this.sufferer.accuracy >= +req) { return true; }
           break;
       case 'defense':
-          if (this.sufferer.defense >= req) { return true; }
+          if (this.sufferer.defense >= +req) { return true; }
           break;
       case 'sensibility':
-          if (this.sufferer.sensibility >= req) { return true; }
+          if (this.sufferer.sensibility >= +req) { return true; }
           break;
       case 'stoicism':
-          if (this.sufferer.stoicism >= req) { return true; }
+          if (this.sufferer.stoicism >= +req) { return true; }
           break;
       case 'deaths':
-        if (this.sufferer.deaths >= req) { return true; }
+        if (this.sufferer.deaths >= +req) { return true; }
         break;
       case 'weapon':
         if (this.sufferer.equipment[4].equipped) { return true; }
         break;
       case 'all':
-        if (this.sufferer.accuracy >= req
-            && this.sufferer.strength >= req
-            && this.sufferer.defense >= req
-            && this.sufferer.maxHealth >= req
-            && this.sufferer.sensibility >= req
-            && this.sufferer.stoicism >= req) {
+        if (this.sufferer.accuracy >= +req
+            && this.sufferer.strength >= +req
+            && this.sufferer.defense >= +req
+            && this.sufferer.maxHealth >= +req
+            && this.sufferer.sensibility >= +req
+            && this.sufferer.stoicism >= +req) {
               return true;
             }
+        break;
+      case 'perk':
+        if (this.sufferer.inventory.includes(req)) {
+          return true;
+        }
         break;
     }
     return false;
@@ -582,20 +723,25 @@ export class SadboiAdvanceService {
         break;
     }
     if (!this.sufferer.equipment[index].equipped) {
-      this.sufferer.equipment[index] = equipment;
-      this.sufferer.equipment[index].equipped = true;
+      this.equipmentInQuestion = [index, equipment];
+      this.newEquipmentStats();
+      this.consoleHistory.push({ message: 'You equipped the ' + equipment.name + '!', small: true });
+      this.instanceActions = [...this.basicActions];
+      this.encounter(this.currentEncounter, 1);
     } else if (this.sufferer.equipment[index].name !== equipment.name) {
-      this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
+      this.consoleHistory.push({ message: 'You found a ' + equipment.name, small: true });
       this.instanceActions = ['equip new item', 'keep old item'];
-      this.instanceFollowUps = [989898, 404404];
-      this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...' });
+      this.instanceFollowUps = [989898, this.currentEncounter];
+      this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...', small: true });
       this.printEquipmentStats(this.sufferer.equipment[index], false);
       this.printEquipmentStats(equipment, true);
-      this.consoleHistory.push({ message: 'Would you like to equip the new item?' });
+      this.consoleHistory.push({ message: 'Would you like to equip the new item?', small: true });
       this.equipmentInQuestion = [index, equipment];
       this.printActions();
     } else {
-      this.encounter(404404);
+      this.consoleHistory.push({ message: 'You found a ' + equipment.name, small: true });
+      this.consoleHistory.push({ message: 'You already have one of those equipped, though!', small: true });
+      this.encounter(this.currentEncounter, 1);
     }
   }
 
@@ -623,6 +769,51 @@ export class SadboiAdvanceService {
     if (equipment.maxHealth) {
       this.consoleHistory.push({ message: 'Max Health: ' + equipment.maxHealth });
     }
+  }
+
+  newEquipmentStats() {
+    if (this.sufferer.equipment[this.equipmentInQuestion[0]].equipped) {
+      const oldEquip = this.sufferer.equipment[this.equipmentInQuestion[0]];
+      if (oldEquip.strength) {
+        this.sufferer.strength -= oldEquip.strength;
+      }
+      if (oldEquip.defense) {
+        this.sufferer.defense -= oldEquip.defense;
+      }
+      if (oldEquip.accuracy) {
+        this.sufferer.accuracy -= oldEquip.accuracy;
+      }
+      if (oldEquip.sensibility) {
+        this.sufferer.sensibility -= oldEquip.sensibility;
+      }
+      if (oldEquip.stoicism) {
+        this.sufferer.stoicism -= oldEquip.stoicism;
+      }
+      if (oldEquip.maxHealth) {
+        this.sufferer.maxHealth -= oldEquip.maxHealth;
+      }
+    }
+    const newEquip = this.equipmentInQuestion[1];
+    if (newEquip.strength) {
+      this.sufferer.strength += newEquip.strength;
+    }
+    if (newEquip.defense) {
+      this.sufferer.defense += newEquip.defense;
+    }
+    if (newEquip.accuracy) {
+      this.sufferer.accuracy += newEquip.accuracy;
+    }
+    if (newEquip.sensibility) {
+      this.sufferer.sensibility += newEquip.sensibility;
+    }
+    if (newEquip.stoicism) {
+      this.sufferer.stoicism += newEquip.stoicism;
+    }
+    if (newEquip.maxHealth) {
+      this.sufferer.maxHealth += newEquip.maxHealth;
+    }
+    this.sufferer.equipment[this.equipmentInQuestion[0]] = this.equipmentInQuestion[1];
+    this.sufferer.equipment[this.equipmentInQuestion[0]].equipped = true;
   }
 
   calculateSuffering() {

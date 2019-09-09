@@ -69,8 +69,9 @@
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">
-          <span *ngIf="!print.link">{{ print.message }}</span>
-          <button *ngIf="print.link" class="clickable" [disabled]="!sadboi.instanceActions.includes(print.message)" (click)="submit(print.message)">{{ print.message | titlecase}}</button>
+          <span *ngIf="!print.link &&!print.small">{{ print.message }}</span>
+          <button *ngIf="print.link &&!print.small" class="clickable" [disabled]="!sadboi.instanceActions.includes(print.message)" (click)="submit(print.message)">{{ print.message | titlecase}}</button>
+          <label *ngIf="!print.link && print.small">({{ print.message }})</label>
       </div>
     </div>
 </div>

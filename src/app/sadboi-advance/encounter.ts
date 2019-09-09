@@ -15,4 +15,5 @@ export interface Encounter {
   equipmentType?: string[];
   equipment?: string[];
   enemy?: string;
+  perk?: string;
 }

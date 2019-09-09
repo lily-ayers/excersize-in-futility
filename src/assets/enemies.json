@@ -29,6 +29,36 @@
                         "1"
                       ]
                    ]
+    },
+    {
+      "name": "choir demon",
+      "health": 40,
+      "strength": 20,
+      "defense": 20,
+      "obsession": 20,
+      "speed": 10,
+      "confidence": 10,
+      "intelligence": 10,
+      "gainsString": "(+10 Stoicism, +10 Strength, +10 Sensibility, +10 Defense)",
+      "affectedStats": ["stoicism", "sensibility", "strength", "defense"],
+      "statChange": [10, 10, 10, 10],
+      "abilities": [
+                      [
+                        "spits acid.",
+                        "80",
+                        "2"
+                      ],
+                      [
+                        "cackles heinously.",
+                        "100",
+                        "0"
+                      ],
+                      [
+                        "swings it's pitchfork.",
+                        "60",
+                        "4"
+                      ]
+                   ]
     }
   ]
 }

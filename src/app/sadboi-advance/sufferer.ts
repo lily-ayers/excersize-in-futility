@@ -20,5 +20,7 @@ export interface Sufferer {
   // 7: pants
   // 8: shoes
   equipment: Equipment[];
-  inventory: Equipment[][];
+  // Inventory has been reporposed to contain perks, and has not been renamed
+  // to avoid forcing players to retire in order to refresh their saves Sufferrer
+  inventory: string[];
 }

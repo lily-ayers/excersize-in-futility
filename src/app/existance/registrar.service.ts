@@ -11,6 +11,7 @@ export class RegistrarService {
   existance;
   suffering: Subscription;
   reinitializingDespair = false;
+  automateAgony = false;
 
   constructor() { }
 
@@ -136,8 +137,8 @@ export class RegistrarService {
       dejaVu: newDejaVu,
       eternalSuffering: newEternalSuffering,
       multipliersOwned: [0, 0, 0, 0, 0, 0],
-      multiplierPrices: [10, 20, 500, 1500, 3000, 45000],
-      multiplierBasePrices: [10, 20, 500, 1500, 3000, 45000],
+      multiplierPrices: [20, 10, 500, 1500, 3000, 45000],
+      multiplierBasePrices: [20, 10, 500, 1500, 3000, 45000],
       influenced: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       influencePrices: [100, 750, 50000, 400000, 30000000, 2250000000, 168750000000, 1.265625e+13, 9.4921875e+14,
         7.1191406e+16, 5.3393555e+18, 4.0045166e+20, 3.0033875e+22, 2.2525406e+24, 1.6894054e+26],
@@ -164,6 +165,7 @@ export class RegistrarService {
   ascend() {
     const dejaVu = this.record.dejaVu + Math.round(this.record.lifeExperience);
     this.initializeBasicRecord(dejaVu);
+    this.determineSuffering();
     localStorage.removeItem('EIF-sufferer');
     localStorage.removeItem('EIF-sadboiTrigger');
   }
@@ -172,6 +174,7 @@ export class RegistrarService {
     const eternalSuffering = this.record.eternalSuffering
       + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100);
     this.initializeBasicRecord(eternalSuffering);
+    this.determineSuffering();
     localStorage.removeItem('EIF-sufferer');
     localStorage.removeItem('EIF-sadboiTrigger');
   }
