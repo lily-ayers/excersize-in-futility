@@ -249,7 +249,7 @@
       "followUps": [404404]
     },
     {
-      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person. (New Neck Armor!)",
+      "message": "What, do you want me to describe the despicable thing you just did? She's dead. Take your ill-earned loot and go away, you bad bad person.",
       "actions": ["...sorry"],
       "followUps": [404404],
       "equipmentType": ["neck"],
@@ -529,7 +529,7 @@
       "followUps": [404404]
     },
     {
-      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.(New Shoes)",
+      "message": "You punch the tree until your hands bleed... wait, that's not your blood? It's the tree's? Dear Jesus, that's not right. You finish that unholy business and fashion the bits and pieces into new equipment for yourself.",
       "equipmentType": ["shoes"],
       "equipment": ["wooden clogs"],
       "followUps": [404404]
@@ -633,25 +633,25 @@
       "followUps": [58, 404404]
     },
     {
-      "message": "You grab a solid-looking sabre and slip out of the cave. (New Weapon!)",
+      "message": "You grab a solid-looking sabre and slip out of the cave.",
       "equipmentType": ["rightHand"],
       "equipment": ["bent sabre"],
       "followUps": [404404]
     },
     {
-      "message": "You don a chainmail vest and slip out of the cave. (New Chest Armor!)",
+      "message": "You don a chainmail vest and slip out of the cave.",
       "equipmentType": ["chest"],
       "equipment": ["dusty book cover"],
       "followUps": [404404]
     },
     {
-      "message": "You squint through your new stylish monocle and slip out of the cave. (New Head Armor!)",
+      "message": "You squint through your new stylish monocle and slip out of the cave.",
       "equipmentType": ["head"],
       "equipment": ["cracked monocle"],
       "followUps": [404404]
     },
     {
-      "message": "You slip out of the cave while perusing your new book. (New Shield!)",
+      "message": "You slip out of the cave while perusing your new book.",
       "equipmentType": ["leftHand"],
       "equipment": ["outdated grimoire"],
       "followUps": [404404]
@@ -676,44 +676,86 @@
     {
       "message": "The gate gives way easily to your power. You get the feeling the road ahead is going to be more dangerous...",
       "actions": ["bring it on", "let's not and say we did"],
-      "followUps": [200200, 404404]
+      "followUps": [82, 404404]
     },
     {
       "message": "**General Encounter Checker**",
       "actions": ["punch", "defend", "run"],
-      "followUps": [6, 7, 8],
+      "followUps": [5, 14, 15],
       "actionRequirements": [
                               [
                                 "strength",
                                 "100",
                                 "punch harder",
-                                "0"
+                                "9"
                               ],
                               [
                                 "weapon",
                                 "1",
                                 "swing your weapon",
-                                "1"
+                                "10"
                               ],
                               [
                                 "stoicism",
                                 "100",
                                 "stare down",
-                                "2"
+                                "11"
                               ],
                               [
                                 "sensibility",
                                 "100",
                                 "trick",
-                                "3"
+                                "12"
                               ],
                               [
                                 "accuracy",
                                 "100",
                                 "go for the eyes",
-                                "4"
+                                "13"
                               ]
+                            ],
+      "actionSkillCheck": [
+                            [
+                              "perk",
+                              "fire punch",
+                              "6"
+                            ],
+                            [
+                              "perk",
+                              "iron skin",
+                              "7"
+                            ],
+                            [
+                              "perk",
+                              "covered in oil",
+                              "8"
+                            ],
+                            [
+                              "perk",
+                              "fire punch",
+                              "0"
+                            ],
+                            [
+                              "perk",
+                              "weapons master",
+                              "1"
+                            ],
+                            [
+                              "perk",
+                              "steel gays",
+                              "2"
+                            ],
+                            [
+                              "perk",
+                              "ventriloquism",
+                              "3"
+                            ],
+                            [
+                              "perk",
+                              "eagle eyes",
+                              "4"
                             ]
+                          ]
     },
     {
       "message": "A large gate stands before you. The wastes seem to come to a stop.",
@@ -728,42 +770,66 @@
                           ]
     },
     {
-      "message": "Really its the cactus that got hurt in this situation. You do keep the spikes that jabbed you, though. (New Weapon!)",
+      "message": "Really its the cactus that got hurt in this situation. You do keep the spikes that jabbed you, though.",
       "equipmentType": ["rightHand"],
       "equipment": ["cactus spikes"],
       "followUps": [404404]
     },
     {
-      "message": "82",
+      "message": "As the gate shuts behind you, the heat of the desert wastes fades quickly from your person. The blood-red sky stretches endlessly above you, and below is an endless expanse of asphalt. The Highway awaits its guests, tempting you with the signs of civilization in the distance.",
+      "followUps": [200200]
+    },
+    {
+      "message": "It's a small choir, singing Ave Maria. They are just standing on the side of the highway, and appear to have no malicious intent.",
+      "actions": ["give money", "join their ranks", "stop their cacophony"],
+      "followUps": [84, 85, 86]
+    },
+    {
+      "message": "They gratiously nod their heads as you put down 3 pesos, a looney, and 2 dimes. As you walk away, the singing stops. You turn around to find the group is vanished.",
+      "actions": ["investigate", "mind your own"],
+      "followUps": [87, 88]
+    },
+    {
+      "message": "The choir seamlessly makes room for you in their ranks, and closes back in around you. As you open your mouth to sing along with them, you find the words to the song come to you with ease...",
+      "actions": ["oh, listen to a maiden's prayer..."],
+      "followUps": [91]
+    },
+    {
+      "message": "You ask them to stop politely, and they apologize for being a bother and move on down the road to find somewhere more provate to sing. As a token of apology, they hand you a piece of sheet music. You feel a little bad for being a jerk, they were really nice folks.",
+      "equipmentType": ["leftHand"],
+      "equipment": ["sheet music"],
       "followUps": [404404]
     },
     {
-      "message": "83",
+      "message": "As you return to the place where the choir was, you find one of their robes crumpled on the ground. It contains a sticky note that says 'Made you look'. You aren't sure if you've fallen victim to some sort of avant-garde prank or what, but you got a robe out of it, so whatever.",
+      "equipmentType": ["chest"],
+      "equipment": ["choral robes"],
       "followUps": [404404]
     },
     {
-      "message": "84",
+      "message": "Their throats were probably getting sore, not your business. As you walk away you feel you are being watched, though...",
+      "perk": "choral paranoia",
       "followUps": [404404]
     },
     {
-      "message": "85",
-      "followUps": [404404]
-    },
-    {
-      "message": "86",
-      "followUps": [404404]
-    },
-    {
-      "message": "87",
-      "followUps": [404404]
-    },
-    {
-      "message": "88",
-      "followUps": [404404]
-    },
-    {
-      "message": "89",
-      "followUps": [404404]
+      "message": "Sorry, I misspoke. you come across slime. Not an entity, just some goop.",
+      "actions": ["poke it", "lick it"],
+      "followUps": [106, 99],
+      "actionRequirements": [
+                              [
+                                "weapon",
+                                "1",
+                                "put it on your weapon",
+                                "101"
+                              ]
+                            ],
+      "actionSkillCheck": [
+                            [
+                              "perk",
+                              "fire punch",
+                              "98"
+                            ]
+                          ]
     },
     {
       "message": "Out of nowhere, a rotten apple hits you in the side of the head! Looking up, you see a cherub sticking out his tongue and readying an arrow! Better act fast!",
@@ -772,175 +838,248 @@
       "enemy": "cherub"
     },
     {
-      "message": "91",
+      "message": "The notes pour from your throat with ease, and you feel at peace like you never have before. (Health Filled!)",
+      "actions": ["'tis thou, 'tis thou canst save amid, despair..."],
+      "followUps": [92]
+    },
+    {
+      "message": "You feel fulfilled. Loved. Accepted. The music and the robes swirl around you like a blanket of protection. (+10 Defense)",
+      "actions": ["we slumber safely till the morrow..."],
+      "followUps": [93]
+    },
+    {
+      "message": "The comfort penetrates all your doubts and fears. You feel as if your mind is free of its limitations. (+10 Sensibility)",
+      "actions": ["oh maiden, see a maiden's sorrow"],
+      "followUps": [94]
+    },
+    {
+      "message": "The voices get louder, the music sweeter, almost overpowering the din of the ground beneath you shaking. You feel empowered by their song. (+10 Strength)",
+      "actions": ["ave maria gratia plena"],
+      "followUps": [95]
+    },
+    {
+      "message": "As the sand swirls around you, you find yourself completely undisturbed by the demons that emerge from the choral robes. They do not matter to you. (+10 Stoicism)",
+      "actions": ["ave ave dominus, dominus tecum"],
+      "followUps": [96]
+    },
+    {
+      "message": "Your song finishes and you slump over to the ground in exhaustion. Your mind fills with words, but they are unfamiliar. Your new powers merely an illusion, you stumble for a moment, recalculating your movements",
+      "actions": ["recover"],
+      "followUps": [97]
+    },
+    {
+      "message": "You regain your balance and glance around the pit you found yourself in. One demon remained, the rest having shed their robes and facades and fled the cave.",
+      "actions": ["slay"],
+      "followUps": [999999],
+      "enemy": "choir demon"
+    },
+    {
+      "message": "Great idea, poke the flaming slime- What? I didn't mention it's on fire? Shit, sorry, it's on fire, glowing, and purple. Still wanna poke it?",
+      "actions": ["yes", "no"],
+      "followUps": [102, 103]
+    },
+    {
+      "message": "You lick the raspberry jelly off the ",
+      "actions": ["jelly?"],
+      "followUps": [107]
+    },
+    {
+      "message": "There's something here.",
+      "actions": ["well what is it?"],
+      "followUps": [83]
+    },
+    {
+      "message": "As you dip your weapon into the slime, you feel... stupid, because the slime covers your weapon, making it duller. It is bigger though, making it easier to hit stuff with. Win some and lose some I guess?",
+      "affectedStats": ["weapon"],
+      "statChange": [0, -10, 20, 0, 0, 0],
       "followUps": [404404]
     },
     {
-      "message": "92",
+      "message": "I...Fine, you poke the flaming, glowing, purple slime. And you die.",
+      "actions": ["nope, actually i'm fine"],
+      "followUps": [104]
+    },
+    {
+      "message": "Wow, it's almost like you're actually learning to make smart decisions. Are you ill? Here's take some health. And some sensibility, I'm worried about you. (+15 Sensibility, Health Filled!)",
+      "affectedStats": ["sensibility", "healthFull"],
+      "statChange": [15, 0],
       "followUps": [404404]
     },
     {
-      "message": "93",
+      "message": "What? No fucking way. It's on FIRE, you're not immune to FIRE. you can't just change the rules.",
+      "actions": ["just look (show your hand)"],
+      "followUps": [105]
+    },
+    {
+      "message": "Is that the slime? It covered your fist and now you can fire-punch but it doesn't burn you? FUCK THIS GAME, your ass should be dead, and this is bullshit. God I hate this job. Go take your stupid firepunch perk and get out of my sight.",
+      "perk": "fire punch",
       "followUps": [404404]
     },
     {
-      "message": "94",
+      "message": "Nope, not doing that again, you don't need two flaming hands. I won't allow it.",
+      "action": ["awww..."],
+      "followUps": [89]
+    },
+    {
+      "message": "Wha- Oh shit, I messed up the sequencing. You lick the SLIME and ",
+      "actions": ["and it was jelly?"],
+      "followUps": [108]
+    },
+    {
+      "message": "You know what? I hate you. the jelly was poison.(-20 Health)",
+      "affectedStats": ["health"],
+      "statChange": [-20],
+      "actions": ["fuck."],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "perk",
+                                "narrator's pet",
+                                "i thought we were friends...",
+                                "NEEDS FOLLOWUP"
+                              ]
+                            ]
+    },
+    {
+      "message": "(mumbling) dressed up like a hmm hmm dollar hmm hmm... trying hard to look like gary hmm hmm...",
+      "actions": ["supa dupa!!!!!!", "continue ignoring"],
+      "followUps": [112, 113]
+    },
+    {
+      "message": "You come across a slime!",
+      "actions": ["fight it!"],
+      "followUps": [89]
+    },
+    {
+      "message": "UH, yeah, I um, It's a song I like and- I didn't mean for you to hear that. Sorry, here take some stats and let's forget this happenned. (+7 to all stats!)",
+      "affectedStats": ["all"],
+      "statChange": [7],
       "followUps": [404404]
     },
     {
-      "message": "95",
+      "message": "Oh fu!-......................",
+      "actions": ["uh, hello?"],
+      "followUps": [114]
+    },
+    {
+      "message": "(mumbling) supa doopa, come lets mix where hmm-kefellers hmm hmm sticks hmumberellas in the mix... hmmbadumbadum Badum, do doo doo",
+      "actions": ["clear throat politely", "continue ignoring"],
+      "followUps": [119, 121]
+    },
+    {
+      "message": "...........-Ehem. Sorry. I thought the mic was off.",
+      "actions": ["it's alright, i like that song"],
+      "followUps": [115]
+    },
+    {
+      "message": "Yes, well... Um, how long were you listening?",
+      "actions": ["only a while"],
+      "followUps": [116]
+    },
+    {
+      "message": "Crap, I have when people hear me sing, I sound awful.",
+      "actions": ["no, i liked it"],
+      "followUps": [117]
+    },
+    {
+      "message": "...really? I mean, I wasn't really trying or anything, I was just kinda humming to myself...",
+      "actions": ["you should sing more"],
+      "followUps": [118]
+    },
+    {
+      "message": "(blushing) thanks.... Really, I appreciate that.",
+      "perk": "narrator's pet",
       "followUps": [404404]
     },
     {
-      "message": "96",
+      "message": "huh? Oh, I didn't notice you were wandering, so sorry. You find a beaver or something. It gives you some advice and you feel, uh...",
+      "actions": ["stronger?", "smarter?", "apathetic?", "keener?", "healthier?", "tougher?"],
+      "followUps": [123, 124, 125, 126, 127, 128]
+    },
+    {
+      "message": "(mumbling) hmmhmm bluena hmm hmm hmm where to go hmm why dont hm hmm hmm hmm-shun sits... puddinhm hmm hmm...",
+      "actions": ["ignore narrator's humming", "was that putting on the ritz?"],
+      "followUps": [109, 111]
+    },
+    {
+      "message": "(it sounds like he's tap dancing now)",
+      "actions": ["count the steps"],
+      "followUps": [122]
+    },
+    {
+      "message": "(He tapdances for a while before you hear a door close, it seems he has left his office)",
+      "actions": ["good riddance"],
+      "followUps": [404404],
+      "actionRequirements": [
+                              [
+                                "stoicism",
+                                "150",
+                                "check the office",
+                                "129"
+                              ]
+                            ]
+    },
+    {
+      "message": "Sure, the beaver's advice ripples through your muscles and rejuvinats your beaver-y power. (+15 Strength)",
+      "affectedstats": ["strength"],
+      "statChange": [15],
       "followUps": [404404]
     },
     {
-      "message": "97",
+      "message": "Sure, the beaver's advice resonates with you and you take it to heart. (+15 Sensibility)",
+      "affectedstats": ["sensibility"],
+      "statChange": [15],
       "followUps": [404404]
     },
     {
-      "message": "98",
+      "message": "Sure, the beaver whines about his troubles and you find you care less and less about the world. (+15 Stoicism)",
+      "affectedstats": ["stoicism"],
+      "statChange": [15],
       "followUps": [404404]
     },
     {
-      "message": "99",
+      "message": "Sure, the beaver advises you to aim with your eyes open. (+20 Accuracy)",
+      "affectedstats": ["accuracy"],
+      "statChange": [20],
       "followUps": [404404]
+    },
+    {
+      "message": "Sure, the beaver tells you about Paleo, and you decide to try it. (+20 Max Health)",
+      "affectedstats": ["maxHealth"],
+      "statChange": [20],
+      "followUps": [404404]
+    },
+    {
+      "message": "Sure, the beaver instructs you in the art of woodcrafting. You learn you can't bite through wood, being human, but the pain is a gift. (+15 Defense)",
+      "affectedstats": ["defense"],
+      "statChange": [15],
+      "followUps": [404404]
+    },
+    {
+      "message": "(Really? okay, uh, you slip into the narrator's office. There's a few things lying around that might be useful, but be quick, he could be back any second!)",
+      "actions": ["take pants", "take whip", "take roller skates"],
+      "followUps": [131, 132, 133]
     },
     {
       "message": "There's nothing here.",
       "followUps": [404404]
     },
     {
-      "message": "91",
+      "message": "(You put on the Narration Trousers, and you leave!) (muffled) Hey, my trousers are gone... I never really wear them while I narrate anyways, not like anyone can see me. Besides, it's hot in here and I like a cool bree- (It seems the narrator has accidentally unplugged his microphone)",
+      "equipmentType": ["pants"],
+      "equipment": ["narration trousers"],
       "followUps": [404404]
     },
     {
-      "message": "92",
+      "message": "(You snag the narrator's whip, but you really don't know how to weild the thing, so you tie it aroun your waist, and you leave!) (muffled) Hey, my dope replica whip is gone... I was totally gonna learn to use that thing one of these days. Man, it was an actual prop too- (It seems the narrator has accidentally unplugged his microphone)",
+      "equipmentType": ["belt"],
+      "equipment": ["replica whip"],
       "followUps": [404404]
     },
     {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "99",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "91",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "99",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "91",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "99",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "91",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
+      "message": "(You don the narrator's roller skates, and you leave!) (muffled) Hey, my roller skates! HOW WILL PEOPLE KNOW I'M COOL IF I CANT ROLLER SKATE? (getting distant) JERRY, Did you take my roller skates? (It seems the narrator has left for now, its your chance to escape!)",
+      "equipmentType": ["shoes"],
+      "equipment": ["sick roller skates"],
       "followUps": [404404]
     },
     {

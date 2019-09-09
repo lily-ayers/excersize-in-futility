@@ -26,6 +26,11 @@
       "sensibility": 1
     },
     {
+      "name": "choral robes",
+      "defense": 25,
+      "sensibility": 15
+    },
+    {
       "name": "RIGHT HAND PIECES"
     },
     {
@@ -46,10 +51,27 @@
       "defense": 5
     },
     {
+      "name": "sheet music",
+      "maxHealth": 50,
+      "defense": 15
+    },
+    {
       "name": "BELT PIECES"
     },
     {
+      "name": "replica whip",
+      "defense": 50,
+      "stoicism": 50,
+      "accuracy": 35
+    },
+    {
       "name": "PANTS PIECES"
+    },
+    {
+      "name": "narration trousers",
+      "maxHealth": 50,
+      "stoicism": 50,
+      "sensibility": 35
     },
     {
       "name": "SHOES PIECES"
@@ -59,6 +81,12 @@
       "defense": 10,
       "maxHealth": 10,
       "accuracy": -5
+    },
+    {
+      "name": "sick roller skates",
+      "sensibility": 75,
+      "defense": 75,
+      "stoicism": -35
     }
   ]
 }
