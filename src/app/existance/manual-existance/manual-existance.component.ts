@@ -46,7 +46,7 @@ export class ManualExistanceComponent implements OnInit {
       gain *= 2;
     }
     if (this.record.perks.includes('Manual Stress + 20% of SPS')) {
-      gain += (this.registrar.influenceGains() / 10);
+      gain += (this.registrar.influenceGains() / 5);
     }
     return (gain / 4);
   }
@@ -55,6 +55,7 @@ export class ManualExistanceComponent implements OnInit {
     if (this.record.stress >= 10) {
       this.record.stress -= 10;
       this.record.triggerMarriage = true;
+      this.activatedGame = false;
       this.sadboi.instanceActions = ['fix sadboi'];
       this.sadboi.instanceFollowUps = [987654321];
       this.sadboi.instance = true;
