@@ -65,7 +65,7 @@
         </span>
       </div>
   </div>
-  <span *ngIf="sadboi.activateGame">Area: {{ areas[sadboi.sufferer.worldProgress] }}</span>
+  <span *ngIf="sadboi.activateGame">Area: {{ sadboi.areas[sadboi.sufferer.worldProgress] }}</span>
     <div  #autoScroll [scrollTop]="autoScroll.scrollHeight" class="sadboiDisplay">
       <div *ngFor="let print of sadboi.consoleHistory; let last = last" class="sadboiMessageDiv">
           <hr *ngIf="!print.link">

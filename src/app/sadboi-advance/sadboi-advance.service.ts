@@ -13,6 +13,7 @@ import { RegistrarService } from '../existance/registrar.service';
   providedIn: 'root'
 })
 export class SadboiAdvanceService {
+  areas = ['The Wastes', 'The Highway', 'The Gutter', 'The Colony'];
   consoleHistory: SadboiMessage[];
   sufferer: Sufferer;
   encounters = JSON.parse(JSON.stringify(encounters));
@@ -109,6 +110,12 @@ export class SadboiAdvanceService {
     } else if (input.toLowerCase().includes('retire')) {
       this.retire();
     } else if (input.toLowerCase().includes('purpose')) {
+      this.sufferer.accuracy += 100;
+      this.sufferer.defense += 100;
+      this.sufferer.maxHealth += 100;
+      this.sufferer.sensibility += 100;
+      this.sufferer.stoicism += 100;
+      this.sufferer.strength += 100;
       this.retireInfo();
     } else {
       this.consoleHistory.push({ message: 'You either cant or wont do that, whatever it is. Try the "help" command.' });
@@ -144,7 +151,7 @@ export class SadboiAdvanceService {
 
   help() {
     this.consoleHistory.push({ message: 'Commands  |   Actions' });
-    this.consoleHistory.push({ message: 'wander    |   Waste time wandering the wastelands' });
+    this.consoleHistory.push({ message: 'wander    |   Waste time wandering ' + this.areas[this.sufferer.worldProgress] });
     this.consoleHistory.push({ message: 'rest      |   Rest for a while and regain some health' });
     this.consoleHistory.push({ message: 'retire    |   Retire your current sufferer' });
     this.consoleHistory.push({ message: 'purpose   |   Display info about retiring' });
@@ -152,7 +159,7 @@ export class SadboiAdvanceService {
   }
 
   wander() {
-    this.consoleHistory.push({ message: 'Wandering the wastes...' });
+    this.consoleHistory.push({ message: 'Wandering ' + this.areas[this.sufferer.worldProgress] });
     this.encounter((Math.floor(Math.random() * 10) * 10) + (100 * (this.sufferer.worldProgress)));
   }
 
@@ -304,7 +311,7 @@ export class SadboiAdvanceService {
     }
     if (encounter.actionRequirements) {
       for (const req of encounter.actionRequirements) {
-        if (!this.instanceActions.includes(req[2]) && this.statChecker(req[0], +req[1])) {
+        if (!this.instanceActions.includes(req[2]) && this.statChecker(req[0], req[1])) {
           this.instanceActions.push(req[2]);
           this.instanceFollowUps.push(+req[3]);
         }
