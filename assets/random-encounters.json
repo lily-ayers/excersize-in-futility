@@ -1061,8 +1061,9 @@
       "followUps": [131, 132, 133]
     },
     {
-      "message": "There's nothing here.",
-      "followUps": [404404]
+      "message": "The road seems to stretch forever. Is the city in the distance even getting closer? You look around for somewhere to rest.",
+      "actions": ["look for a structure", "dig a hovel"],
+      "followUps": [134, 135]
     },
     {
       "message": "(You put on the Narration Trousers, and you leave!) (muffled) Hey, my trousers are gone... I never really wear them while I narrate anyways, not like anyone can see me. Besides, it's hot in here and I like a cool bree- (It seems the narrator has accidentally unplugged his microphone)",
@@ -1083,43 +1084,55 @@
       "followUps": [404404]
     },
     {
-      "message": "94",
-      "followUps": [404404]
+      "message": "You search for a while before finding a shed. Inside there are a few tools and a moldy sleeping bag. Lucky you!",
+      "actions": ["grab the tools and leave", "rest"],
+      "followUps": [136, 137]
     },
     {
       "message": "95",
       "followUps": [404404]
     },
     {
-      "message": "96",
-      "followUps": [404404]
+      "message": "You grab the first tool, it's a saw. Not a bad weapon, if you're fighting a tree.",
+      "equipmentType": ["rightHand"],
+      "equipment": ["hand saw"],
+      "followUps": [138]
     },
     {
-      "message": "97",
-      "followUps": [404404]
+      "message": "You take a nice mold-nap. Hoenstly it makes a decent pillow. Unfortunately when you wake up you start hallucinating.",
+      "followUps": ["NEEDS FOLLOWUP"]
     },
     {
-      "message": "98",
-      "followUps": [404404]
+      "message": "You grab the second tool, it's a lantern, could be useful in your off-hand",
+      "equipmentType": ["leftHand"],
+      "equipment": ["old-timey lantern"],
+      "followUps": [139]
     },
     {
-      "message": "139",
-      "followUps": [404404]
+      "message": "You grab the final tool, it's some duct tape. I guess you could use this in a variety of ways?",
+      "actions": ["tape waist", "tape head", "tape arms", "tape feet", "tape legs", "tape neck"],
+      "followUps": [141, 142, 143, 144, 145, 146]
     },
     {
       "message": "There's nothing here.",
       "followUps": [404404]
     },
     {
-      "message": "141",
+      "message": "You deftly layer the tape into a belt, wrapping it around your waist.",
+      "equipmentType": ["belt"],
+      "equipment": ["duct tape belt"],
       "followUps": [404404]
     },
     {
-      "message": "92",
+      "message": "You wrap the duct tape around your head until th only part of your face that is visible is your eyes. Taking this off is gonna hurt...",
+      "equipmentType": ["head"],
+      "equipment": ["duct tape mask"],
       "followUps": [404404]
     },
     {
-      "message": "93",
+      "message": "You deftly layer the tape into a belt, wrapping it around your waist.",
+      "equipmentType": ["armbands"],
+      "equipment": ["duct tape belt"],
       "followUps": [404404]
     },
     {
