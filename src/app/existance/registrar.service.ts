@@ -20,7 +20,16 @@ export class RegistrarService {
     this.theUnforgivingForwardMarchOfTimeAndDecay.subscribe(data => {
       this.recordPitifulExistance();
       this.record.lifeExperience = Math.round(Math.log((this.record.stress - (1000 * (this.record.dejaVu + 1))) / 100));
+      if (this.record.perks.includes('Double Deja Vu')) {
+        this.record.lifeExperience *= 2;
+      }
+      if (this.record.perks.includes('Triple Deja Vu')) {
+        this.record.lifeExperience *= 3;
+      }
       this.record.temporaryAnguish = Math.round(Math.log((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100));
+      if (this.record.perks.includes('Double Eternal Suffering')) {
+        this.record.temporaryAnguish *= 2;
+      }
     });
     this.suffering = this.determineSuffering();
   }
@@ -46,12 +55,6 @@ export class RegistrarService {
       }
       if(!this.record.triggerTranscension && this.record.temporaryAnguish > 0) {
         this.record.triggerTranscension = true;
-      }
-      if (!this.record.triggerCloningMachine && this.record.stress >= 1000000000000000) {
-        this.record.triggerCloningMachine = true;
-      }
-      if (!this.record.triggerTimeMachine && this.record.stress >= 1000000000000000000000) {
-        this.record.triggerTimeMachine = true;
       }
     });
   }
@@ -99,8 +102,8 @@ export class RegistrarService {
   influenceGains(): number {
     let stressPerTick = 0;
     // Get Student Debt to calculate increases
-    const mult = (1 + (this.record.multipliersOwned[3] / 10))
-      * (1 + (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10));
+    let mult = (1 + (this.record.multipliersOwned[3] / 10));
+    mult += (mult * (this.record.dejaVu / 10));
     // Add each influencer's earnings to stressPerSecond
     for (let i = 0; i < this.record.influenced.length; i++) {
       stressPerTick += (this.record.influenced[i] * (Math.pow(5, i)) * mult);
@@ -113,6 +116,9 @@ export class RegistrarService {
   }
 
   recordPitifulExistance(): void {
+    if (!this.record.perks) {
+      this.record.perks = [];
+    }
     localStorage.setItem('EIF-record', JSON.stringify(this.record));
     localStorage.setItem('EIF-timestamp', JSON.stringify(Date.now()));
     console.log('Pitiful Existance Recorded!');
@@ -155,7 +161,8 @@ export class RegistrarService {
       triggerTimeMachine: false,
       triggerAscension: false,
       triggerTranscension: false,
-      triggerAutomation: false
+      triggerAutomation: false,
+      perks: this.record.perks
     } as RecordOfExistance;
     localStorage.setItem('EIF-record', JSON.stringify(this.record));
     console.log('Welcome to a New Pitiful Existance!');
@@ -171,9 +178,15 @@ export class RegistrarService {
   }
 
   transcend() {
-    const eternalSuffering = this.record.eternalSuffering
-      + Math.round((this.record.dejaVu - (1000 * (this.record.eternalSuffering + 1))) / 100);
-    this.initializeBasicRecord(eternalSuffering);
+    const eternalSuffering = this.record.eternalSuffering + Math.round(this.record.temporaryAnguish);
+    this.initializeBasicRecord(0, eternalSuffering);
+    this.determineSuffering();
+    localStorage.removeItem('EIF-sufferer');
+    localStorage.removeItem('EIF-sadboiTrigger');
+  }
+
+  purchaseDistress() {
+    this.initializeBasicRecord();
     this.determineSuffering();
     localStorage.removeItem('EIF-sufferer');
     localStorage.removeItem('EIF-sadboiTrigger');

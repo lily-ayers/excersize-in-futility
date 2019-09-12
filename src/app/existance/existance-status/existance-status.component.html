@@ -1,5 +1,5 @@
 <div class="status-box">
-  <label>Stress: {{ record.stress | bigNum: 2 }}</label>
+  <label>Stress: {{ record.stress.toPrecision(3) }}</label>
   <hr>
   <div class="tooltip-zone">
     <label *ngIf="record.multipliersOwned[0] > 0">Despair: {{ record.multipliersOwned[0] }}</label>
@@ -26,8 +26,8 @@
     <span class="tooltip">Increases Influenced Parties' Produced Stress per Tick by 10%</span>
   </div>
   <hr>
-  <label *ngIf="record.influenced[0] > 0">Stress per Tick: {{ record.stressPerTick | bigNum: 2 }}</label>
-  <label *ngIf="record.influenced[0] > 0">Stress per Second: {{ record.stressPerSecond | bigNum: 2 }}</label>
-  <label *ngIf="record.dejaVu > 0">Deja Vu: {{ record.dejaVu | bigNum: 2 }}</label>
-  <label *ngIf="record.eternalSuffering > 0">Eternal Suffering: {{ record.eternalSuffering | bigNum: 2 }}</label>
+  <label *ngIf="record.influenced[0] > 0">Stress per Tick: {{ record.stressPerTick.toPrecision(3) }}</label>
+  <label *ngIf="record.influenced[0] > 0">Stress per Second: {{ record.stressPerSecond.toPrecision(3) }}</label>
+  <label *ngIf="record.dejaVu > 0">Deja Vu: {{ record.dejaVu.toPrecision(3) }}</label>
+  <label *ngIf="record.eternalSuffering > 0">Eternal Suffering: {{ record.eternalSuffering.toPrecision(3) }}</label>
 </div>

@@ -2,6 +2,9 @@
   height: 94.1vh;
   border: 2px solid black;
   text-align: center;
+  position: sticky;
+  top: 5px;
+  right: 5px;
   label {
     display: block;
     font-size: 1.2vw;
@@ -14,6 +17,7 @@
     color: #fff;
     text-align: center;
     padding: 5px 0;
+    right: 100px;
     border-radius: 6px;
     position: absolute;
     z-index: 1;

@@ -3,7 +3,7 @@
   <button class="button" (click)="attemptExistance()" [disabled]='futileProgress!==0'>
     Try to Exist
   </button>
-  <span class="tooltip">Click to Manually Exist for {{ existManually() | bigNum: 2}} Stress</span>
+  <span class="tooltip">Click to Manually Exist for {{ existManually().toPrecision(3) }} Stress</span>
   </div>
   <button *ngIf="this.record.stress >= 10 && !record.triggerMarriage" (click)="triggerSadboiBasic()">Buy a Digital PA to Track Your Misery (Cost: 10)</button>
   <div class="tooltip-zone">

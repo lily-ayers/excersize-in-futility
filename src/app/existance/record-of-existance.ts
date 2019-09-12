@@ -128,4 +128,7 @@ export interface RecordOfExistance {
   triggerAscension: boolean;
   triggerTranscension: boolean;
   triggerAutomation: boolean;
+
+  // Array to store DoD Perks
+  perks: string[];
 }

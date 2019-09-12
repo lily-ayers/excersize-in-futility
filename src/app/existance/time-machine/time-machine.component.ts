@@ -44,6 +44,7 @@ export class TimeMachineComponent implements OnInit {
     }
     this.completeWasteOfEffort = 0;
     this.active = true;
+    this.record.triggerTimeMachine = true;
     this.registrar.recordPitifulExistance();
   }
 

@@ -601,6 +601,9 @@ export class SadboiAdvanceService {
   statChanges(encounter: Encounter) {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < encounter.affectedStats.length; i++) {
+      if (this.registrar.record.perks.includes('Double Stat Gains')) {
+        encounter.statChange[i] *= 2;
+      }
       switch (encounter.affectedStats[i]) {
         case 'health':
           this.sufferer.health += encounter.statChange[i];
@@ -737,6 +740,7 @@ export class SadboiAdvanceService {
       this.printEquipmentStats(equipment, true);
       this.consoleHistory.push({ message: 'Would you like to equip the new item?', small: true });
       this.equipmentInQuestion = [index, equipment];
+      this.instance = true;
       this.printActions();
     } else {
       this.consoleHistory.push({ message: 'You found a ' + equipment.name, small: true });
@@ -745,29 +749,29 @@ export class SadboiAdvanceService {
     }
   }
 
-  printEquipmentStats(equipment: any, newItem: boolean) {
+  printEquipmentStats(newEquipment: any, newItem: boolean) {
     if (newItem) {
-      this.consoleHistory.push({ message: 'Equipped: ' + equipment.name });
+      this.consoleHistory.push({ message: 'Equipped: ' + newEquipment.name });
     } else {
-      this.consoleHistory.push({ message: 'New Item: ' + equipment.name });
+      this.consoleHistory.push({ message: 'New Item: ' + newEquipment.name });
     }
-    if (equipment.strength) {
-      this.consoleHistory.push({ message: 'Strength: ' + equipment.strength });
+    if (newEquipment.strength) {
+      this.consoleHistory.push({ message: 'Strength: ' + newEquipment.strength });
     }
-    if (equipment.defense) {
-      this.consoleHistory.push({ message: 'Defense: ' + equipment.defense });
+    if (newEquipment.defense) {
+      this.consoleHistory.push({ message: 'Defense: ' + newEquipment.defense });
     }
-    if (equipment.sensibility) {
-      this.consoleHistory.push({ message: 'Sensibility: ' + equipment.sensibility });
+    if (newEquipment.sensibility) {
+      this.consoleHistory.push({ message: 'Sensibility: ' + newEquipment.sensibility });
     }
-    if (equipment.stoicism) {
-      this.consoleHistory.push({ message: 'Stoicism: ' + equipment.stoicism });
+    if (newEquipment.stoicism) {
+      this.consoleHistory.push({ message: 'Stoicism: ' + newEquipment.stoicism });
     }
-    if (equipment.accuracy) {
-      this.consoleHistory.push({ message: 'Accuracy: ' + equipment.accuracy });
+    if (newEquipment.accuracy) {
+      this.consoleHistory.push({ message: 'Accuracy: ' + newEquipment.accuracy });
     }
-    if (equipment.maxHealth) {
-      this.consoleHistory.push({ message: 'Max Health: ' + equipment.maxHealth });
+    if (newEquipment.maxHealth) {
+      this.consoleHistory.push({ message: 'Max Health: ' + newEquipment.maxHealth });
     }
   }
 

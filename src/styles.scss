@@ -1,11 +1,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 .tabs {
   td {
     vertical-align: top;
-    width: 18vw;
+    width: 20vw;
     > * {
       width: 18vw;
+    }
+    app-existance-outsourcing-component {
+      display: block;
+      position: sticky;
+      top: 5px;
     }
   }
 }

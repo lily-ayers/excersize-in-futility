@@ -8,7 +8,6 @@ import { RecordOfExistance } from 'src/app/existance/record-of-existance';
   styleUrls: ['./cloning-machine.component.scss']
 })
 export class CloningMachineComponent implements OnInit {
-  active = false;
   ultimatelyPointlessExertion = 0;
   @Input() record: RecordOfExistance;
 
@@ -43,7 +42,7 @@ export class CloningMachineComponent implements OnInit {
       await this.delayTheInevitable(this.registrar.record.dejaVu + 1, 10);
     }
     this.ultimatelyPointlessExertion = 0;
-    this.active = true;
+    this.record.triggerCloningMachine = true;
     this.registrar.recordPitifulExistance();
   }
 

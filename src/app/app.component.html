@@ -14,10 +14,7 @@
     <td *ngIf="record.triggerInfluence" rowspan=2>
         <app-existance-outsourcing [record]=record></app-existance-outsourcing>
     </td>
-    <td *ngIf="record.triggerCloningMachine">
-        <app-cloning-machine [record]=record></app-cloning-machine>
-    </td>
-    <td *ngIf="record.triggerOutsourcing" rowspan=2>
+    <td class="sticky" *ngIf="record.triggerOutsourcing" rowspan=3>
         <app-existance-outsourcing-status [record]=record></app-existance-outsourcing-status>
     </td>
   </tr>
@@ -28,8 +25,16 @@
     <td *ngIf="record.triggerMarriage" colspan=2>
       <app-sadboi-advance [record]=record></app-sadboi-advance>
     </td>
-    <td *ngIf="record.triggerTimeMachine">
-        <app-time-machine [record]=record></app-time-machine>
-    </td>
+  </tr>
+  <tr>
+      <td *ngIf="record.triggerCloningMachine">
+          <app-cloning-machine [record]=record></app-cloning-machine>
+      </td>
+      <td *ngIf="record.triggerTimeMachine">
+          <app-time-machine [record]=record></app-time-machine>
+      </td>
+      <td *ngIf="record.eternalSuffering > 0" colspan=2>
+          <app-distress-dispensary></app-distress-dispensary>
+      </td>
   </tr>
 </table>

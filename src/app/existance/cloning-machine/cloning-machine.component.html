@@ -1,32 +1,36 @@
 <div class="button-viewport">
   <div class="tooltip-zone">
-    <button *ngIf="!active" class="button" (click)="defyNature()" [disabled]='ultimatelyPointlessExertion!==0'>
+    <button *ngIf="!record.triggerCloningMachine" class="button" (click)="defyNature()" [disabled]='ultimatelyPointlessExertion!==0'>
       Defy Nature
     </button>
     <span class="tooltip">You're pretty sure you can build a cloning machine if you put in enough time...</span>
   </div>
   <div class="tooltip-zone">
-    <button *ngIf="active" class="button" (click)="createLife()" [disabled]='ultimatelyPointlessExertion!==0'>
+    <button *ngIf="record.triggerCloningMachine" class="button" (click)="createLife()" [disabled]='ultimatelyPointlessExertion!==0'>
       Create Life
     </button>
     <span class="tooltip">Time to test this thing out...</span>
   </div>
-    <div *ngIf="ultimatelyPointlessExertion > 0 && !active" class="progress-bar">
-        <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress">Building Cloning Machine</div>
+    <div class="progress-bar">
+        <label *ngIf="ultimatelyPointlessExertion > 0 && !record.triggerCloningMachine" class="progress-label">Building Cloning Machine</label>
+        <div *ngIf="ultimatelyPointlessExertion > 0 && !record.triggerCloningMachine" [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress"></div>
+        <label *ngIf="ultimatelyPointlessExertion > 0 && record.triggerCloningMachine" class="progress-label">Cloning...</label>
+        <div *ngIf="ultimatelyPointlessExertion > 0 && record.triggerCloningMachine" [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress"></div>
     </div>
-    <div *ngIf="ultimatelyPointlessExertion > 0 && active" class="progress-bar">
-        <div [ngStyle]="{'width.vw':.15*ultimatelyPointlessExertion}" class="progress">Cloning...</div>
+    <div *ngIf="record.triggerCloningMachine">
+      <label>Clones: {{ record.clones.toPrecision(3) }}</label>
     </div>
-    <div *ngIf="active">
+    <hr>
+    <div *ngIf="record.triggerCloningMachine">
         <label>Clone the First Loser You Think Of</label>
-        <button (click)="influence(9, $event)">Cost: {{ record.influencePrices[9] }} stress, {{ record.clonePrices[0] }} clones</button>
+        <button (click)="influence(9, $event)">Cost: {{ record.influencePrices[9].toPrecision(3) }} stress, {{ record.clonePrices[0].toPrecision(3) }} clones</button>
     </div>
     <div *ngIf="record.influenced[9] > 0">
         <label>Talk to a Clone About How Great Their Original Is</label>
-        <button (click)="influence(10, $event)">Cost: {{ record.influencePrices[10] }} stress, {{ record.clonePrices[1] }} clones</button>
+        <button (click)="influence(10, $event)">Cost: {{ record.influencePrices[10].toPrecision(3) }} stress, {{ record.clonePrices[1].toPrecision(3) }} clones</button>
     </div>
     <div *ngIf="record.influenced[10] > 0">
         <label>Get a Clone Therapy and Show the Original the Result</label>
-        <button (click)="influence(11, $event)">Cost: {{ record.influencePrices[11] }} stress, {{ record.clonePrices[2] }} clones</button>
+        <button (click)="influence(11, $event)">Cost: {{ record.influencePrices[11].toPrecision(3) }} stress, {{ record.clonePrices[2].toPrecision(3) }} clones</button>
     </div>
   </div>

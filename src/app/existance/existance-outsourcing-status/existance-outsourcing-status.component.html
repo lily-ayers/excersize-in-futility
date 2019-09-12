@@ -1,6 +1,6 @@
 <div class="status-box">
   <div class="tooltip-zone" *ngFor="let amount of record.influenced; let i = index">
-    <label *ngIf="amount >= 1">{{ influencedNames[i] }}: {{ amount }}</label>
+    <label *ngIf="amount >= 1">{{ influencedNames[i] }}: {{ amount.toPrecision(3) }}</label>
     <span class="tooltip">{{ influenceDetails[i] }}</span>
   </div>
 </div>

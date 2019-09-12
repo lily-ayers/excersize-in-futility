@@ -17,6 +17,7 @@ import { SadboiAdvanceComponent } from './sadboi-advance/sadboi-advance/sadboi-a
 import { HttpClientModule } from '@angular/common/http';
 import { SadboiColorComponent } from './sadboi-color/sadboi-color/sadboi-color.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DistressDispensaryComponent } from './existance/distress-dispensary/distress-dispensary.component';
 
 
 
@@ -33,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AscendExistanceComponent,
     BigNumPipe,
     SadboiAdvanceComponent,
-    SadboiColorComponent
+    SadboiColorComponent,
+    DistressDispensaryComponent
     ],
   imports: [
     BrowserModule,

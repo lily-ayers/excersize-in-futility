@@ -1,0 +1,10 @@
+<div class="dispensary-viewport">
+  <h1>
+    Welcome to the Dispensary of Distress! Pick your Poison!
+  </h1>
+  <div class="product" *ngFor="let item of products">
+    <button *ngIf="!item.bought" (click)="purchase(item)">{{ item.perk }} (Cost: {{ item.cost }})</button>
+    <button *ngIf="item.bought" (click)="purchase(item)">Restart w/ Purchase</button>
+    <button *ngIf="item.bought" (click)="item.bought = false">Cancel Purchase</button>
+  </div>
+</div>

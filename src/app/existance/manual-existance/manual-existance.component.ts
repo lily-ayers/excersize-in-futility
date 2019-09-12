@@ -26,7 +26,8 @@ export class ManualExistanceComponent implements OnInit {
 
   ngOnInit() {
   }
-  async attemptExistance() {
+
+  attemptExistance() {
     this.futileProgress = 1;
     this.record.stress += this.existManually();
     if (!this.sadboi.activateGame && this.record.triggerMarriage) {
@@ -40,7 +41,13 @@ export class ManualExistanceComponent implements OnInit {
       + ((this.record.multipliersOwned[4]) * 10)
       + ((this.record.multipliersOwned[5]) * 100)));
     gain += gain * (this.record.multipliersOwned[0] / 10);
-    gain += gain * (Math.pow(this.record.dejaVu, this.record.eternalSuffering + 1) / 10);
+    gain += gain * (this.record.dejaVu / 10);
+    if (this.record.perks.includes('Double All Stress')) {
+      gain *= 2;
+    }
+    if (this.record.perks.includes('Manual Stress + 20% of SPS')) {
+      gain += (this.registrar.influenceGains() / 10);
+    }
     return (gain / 4);
   }
 

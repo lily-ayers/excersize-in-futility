@@ -1,11 +1,36 @@
-<div class="button-viewport">
-    <button *ngIf="!active" class="button" (click)="ascendTheThirdDimension()" [disabled]='completeWasteOfEffort!==0'>
-      Ascend the Third Dimension
-    </button>
-    <button *ngIf="active" class="button" (click)="testItOnAPocketWatch()" [disabled]='completeWasteOfEffort!==0'>
-      Test it on a Pocket Watch
-    </button>
-    <div *ngIf="completeWasteOfEffort > 0" class="progress-bar">
-        <div [ngStyle]="{'width.vw':.15*completeWasteOfEffort}" class="progress">Building Time Machine</div>
-    </div>
-  </div>
+  <div class="button-viewport">
+      <div class="tooltip-zone">
+        <button *ngIf="!record.triggerTimeMachine" class="button" (click)="ascendTheThirdDimension()" [disabled]='completeWasteOfEffort!==0'>
+            Ascend the Third Dimension
+        </button>
+        <span class="tooltip">You're pretty sure you can build a cloning machine if you put in enough time...</span>
+      </div>
+      <div class="tooltip-zone">
+        <button *ngIf="record.triggerTimeMachine" class="button" (click)="testItOnAPocketWatch()" [disabled]='completeWasteOfEffort!==0'>
+            Test it on a Pocket Watch
+        </button>
+        <span class="tooltip">Time to test this thing out...</span>
+      </div>
+        <div class="progress-bar">
+            <label *ngIf="completeWasteOfEffort > 0 && !record.triggerTimeMachine" class="progress-label">Building Time Machine</label>
+            <div *ngIf="completeWasteOfEffort > 0 && !record.triggerTimeMachine" [ngStyle]="{'width.vw':.15*completeWasteOfEffort}" class="progress"></div>
+            <label *ngIf="completeWasteOfEffort > 0 && record.triggerTimeMachine" class="progress-label">Time-ing...</label>
+            <div *ngIf="completeWasteOfEffort > 0 && record.triggerTimeMachine" [ngStyle]="{'width.vw':.15*completeWasteOfEffort}" class="progress"></div>
+        </div>
+        <div *ngIf="record.triggerTimeMachine">
+          <label>Broken Pocket Watches: {{ record.brokenPocketWatches.toPrecision(3) }}</label>
+        </div>
+        <hr>
+        <div class="purchase" *ngIf="record.triggerTimeMachine">
+            <label>Clone the First Loser from the Past You Think Of</label>
+            <button (click)="influence(12, $event)">Cost: {{ record.influencePrices[12].toPrecision(3) }} stress, {{ record.clonePrices[3].toPrecision(3) }} clones, {{ record.watchPrices[0].toPrecision(3) }} watches</button>
+        </div>
+        <div class="purchase" *ngIf="record.influenced[12] > 0">
+            <label>Clone someone Less Lame</label>
+            <button (click)="influence(13, $event)">Cost: {{ record.influencePrices[13].toPrecision(3) }} stress, {{ record.clonePrices[4].toPrecision(3) }} clones, {{ record.watchPrices[1].toPrecision(3) }} watches</button>
+        </div>
+        <div class="purchase" *ngIf="record.influenced[13] > 0">
+            <label>Clone Someone Less Sexist</label>
+            <button (click)="influence(14, $event)">Cost: {{ record.influencePrices[14].toPrecision(3) }} stress, {{ record.clonePrices[5].toPrecision(3) }} clones, {{ record.watchPrices[2].toPrecision(3) }} watches</button>
+        </div>
+      </div>

@@ -1,24 +1,35 @@
 
 .button-viewport {
-  height: 40vh;
+  height: 53vh;
   border: 2px solid black;
   text-align: center;
   font-size: 1.2vw;
   top: 0;
   button {
     height: 3vh;
-    font-size: 1.2vw;
+    font-size: 1vw;
     margin-top: 1vh;
   }
   .progress-bar {
     height: 3vh;
     width: 15vw;
+    position: relative;
     background: slategrey;
     margin-top: 1vh;
     margin-left: 1.5vw;
+    .progress-label {
+      color: white;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     .progress {
       height: 3vh;
       background: darkblue!important;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
   .tooltip-zone .tooltip {
