@@ -59,6 +59,36 @@
                         "4"
                       ]
                    ]
+    },
+    {
+      "name": "groundhog",
+      "health": 60,
+      "strength": 30,
+      "defense": 40,
+      "obsession": 10,
+      "speed": 8,
+      "confidence": 50,
+      "intelligence": 10,
+      "gainsString": "(+10 All Stats!)",
+      "affectedStats": ["all"],
+      "statChange": [10],
+      "abilities": [
+                      [
+                        "body slams you.",
+                        "80",
+                        "2"
+                      ],
+                      [
+                        "nibbles on some berries in its pocket.",
+                        "100",
+                        "0"
+                      ],
+                      [
+                        "dives at you with teeth bared!",
+                        "60",
+                        "4"
+                      ]
+                   ]
     }
   ]
 }

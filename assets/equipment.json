@@ -9,6 +9,17 @@
       "defense": 2
     },
     {
+      "name": "duct tape mask",
+      "maxHealth": 75,
+      "defense": 35
+    },
+    {
+      "name": "x box",
+      "accuracy": 20,
+      "defense": 50,
+      "damage": 30
+    },
+    {
       "name": "NECK PIECES"
     },
     {
@@ -16,6 +27,12 @@
       "damage": 10,
       "accuracy": 20,
       "sensibility": 10
+    },
+    {
+      "name": "duct tape necklace",
+      "damage": 20,
+      "accuracy": 30,
+      "sensibility": 5
     },
     {
       "name": "CHEST PIECES"
@@ -31,6 +48,20 @@
       "sensibility": 15
     },
     {
+      "name": "ARMGUARD PIECES"
+    },
+    {
+      "name": "duct tape armguards",
+      "maxHealth": 25,
+      "defense": 20
+    },
+    {
+      "name": "your favorite tv show's merch armband",
+      "stoicism": 15,
+      "accuracy": 15,
+      "defense": 10
+    },
+    {
       "name": "RIGHT HAND PIECES"
     },
     {
@@ -41,6 +72,17 @@
       "name": "bent sabre",
       "strength": 20,
       "stoicism": -5
+    },
+    {
+      "name": "hand saw",
+      "strength": 90,
+      "stoicism": 15
+    },
+    {
+      "name": "sly butterfly knife",
+      "strength": 40,
+      "sensibility": 20,
+      "stoicism": 15
     },
     {
       "name": "LEFT HAND PIECES"
@@ -56,6 +98,18 @@
       "defense": 15
     },
     {
+      "name": "old-timey lantern",
+      "damage": 25,
+      "sensibility": 45
+    },
+    {
+      "name":"invisible man's cards",
+      "maxHealth": 40,
+      "defense": 20,
+      "sensibility": 30,
+      "stoicism": 25
+    },
+    {
       "name": "BELT PIECES"
     },
     {
@@ -65,6 +119,11 @@
       "accuracy": 35
     },
     {
+      "name": "duct tape belt",
+      "maxHealth": 65,
+      "accuracy": 45
+    },
+    {
       "name": "PANTS PIECES"
     },
     {
@@ -72,6 +131,11 @@
       "maxHealth": 50,
       "stoicism": 50,
       "sensibility": 35
+    },
+    {
+      "name": "duct tape pants",
+      "maxHealth": 60,
+      "stoicism": 70
     },
     {
       "name": "SHOES PIECES"
@@ -87,6 +151,12 @@
       "sensibility": 75,
       "defense": 75,
       "stoicism": -35
+    },
+    {
+      "name": "duct tape shoes",
+      "sensibility": 15,
+      "defense": 90,
+      "stoicism": 30
     }
   ]
 }

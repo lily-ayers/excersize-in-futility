@@ -102,13 +102,13 @@
     },
     {
       "message": "You punch Death. It doesn't do anything, but he admits you've got balls. He restores your life at a cost.",
-      "affectedStats": ["strength", "deaths", "healthfull"],
+      "affectedStats": ["strength", "deaths", "healthFull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
     {
       "message": "You challenge Death to a game of darts. You win your life back, but in the process you may have lost an eye or two.",
-      "affectedStats": ["accuracy", "deaths", "healthfull"],
+      "affectedStats": ["accuracy", "deaths", "healthFull"],
       "statChange": [-60, 1, 0],
       "followUps": [404404]
     },
@@ -119,25 +119,25 @@
     },
     {
       "message": "You honestly didn't even notice dying, and you refuse to notice Death trying to get your attention. He eventually gets fed up and steals some of your armor, but hey, you're alive!",
-      "affectedStats": ["defense", "deaths", "healthfull"],
+      "affectedStats": ["defense", "deaths", "healthFull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
     {
       "message": "Even death is impressed at your health bar, so he offers you your life back... for half of it. Yay?",
-      "affectedStats": ["maxHealth", "deaths", "healthfull"],
+      "affectedStats": ["maxHealth", "deaths", "healthFull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
     {
       "message": "You talk it out with death, and by the time you're done, he's joined your pyramid scheme. Unfortunately, being part of a pyramid scheme in the first place has lessened your sensibility",
-      "affectedStats": ["sensibility", "deaths", "healthfull"],
+      "affectedStats": ["sensibility", "deaths", "healthFull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
     {
       "message": "You just stare death down. At first he thinks you're kidding, but after a few minutes it gets suuuper uncomfortable. He kinda just backs away and leaves you to your business. As he does, you crack a smile, losing a significant amount of Stoicism",
-      "affectedStats": ["stoicism", "deaths", "healthfull"],
+      "affectedStats": ["stoicism", "deaths", "healthFull"],
       "statChange": [-50, 1, 0],
       "followUps": [404404]
     },
@@ -936,7 +936,7 @@
                                 "perk",
                                 "narrator's pet",
                                 "i thought we were friends...",
-                                "NEEDS FOLLOWUP"
+                                "147"
                               ]
                             ]
     },
@@ -1089,7 +1089,16 @@
       "followUps": [136, 137]
     },
     {
-      "message": "95",
+      "message": "You burrow into the earth, and find what looks to be a hatch... You wonder if there's a key to it somewhere... (Warning, Gutter currently has no events.)",
+      "actions": ["move along"],
+      "actionRequirements": [
+                              [
+                                "perk",
+                                "key to the gutter",
+                                "use the key",
+                                "169"
+                              ]
+                            ],
       "followUps": [404404]
     },
     {
@@ -1100,7 +1109,7 @@
     },
     {
       "message": "You take a nice mold-nap. Hoenstly it makes a decent pillow. Unfortunately when you wake up you start hallucinating.",
-      "followUps": ["NEEDS FOLLOWUP"]
+      "followUps": [148]
     },
     {
       "message": "You grab the second tool, it's a lantern, could be useful in your off-hand",
@@ -1114,8 +1123,16 @@
       "followUps": [141, 142, 143, 144, 145, 146]
     },
     {
-      "message": "There's nothing here.",
-      "followUps": [404404]
+      "message": "The City looms in the distance, just as far as it ever was.",
+      "actions": ["try turning around", "keep walking"],
+      "followUps": [173, 172],
+      "actionSkillCheck": [
+                            [
+                              "perk",
+                              "knowledge of the infinite",
+                              "171"
+                            ]
+                          ]
     },
     {
       "message": "You deftly layer the tape into a belt, wrapping it around your waist.",
@@ -1130,209 +1147,316 @@
       "followUps": [404404]
     },
     {
-      "message": "You deftly layer the tape into a belt, wrapping it around your waist.",
-      "equipmentType": ["armbands"],
-      "equipment": ["duct tape belt"],
+      "message": "You wrap tape around your forearms, bidding farewell to any arm hair you once sported. It will not survive removal.",
+      "equipmentType": ["armguards"],
+      "equipment": ["duct tape armguards"],
       "followUps": [404404]
     },
     {
-      "message": "94",
+      "message": "You cover your feet in duct tape. Better than nothing, you suppose.",
+      "equipmentType": ["shoes"],
+      "equipment": ["duct tape shoes"],
       "followUps": [404404]
     },
     {
-      "message": "95",
+      "message": "You coat every inch of your legs in duct tape, protecting your gentle skin from the outside world, but not from the discomfort of the tape itself.",
+      "equipmentType": ["pants"],
+      "equipment": ["duct tape pants"],
       "followUps": [404404]
     },
     {
-      "message": "96",
+      "message": "realizing it'll hurt to put the tape directly on your skin, you fold it on top of itself and craft a fashionable necklace. Clever!",
+      "equipmentType": ["neck"],
+      "equipment": ["duct tape necklace"],
       "followUps": [404404]
     },
     {
-      "message": "97",
+      "message": "You're right, I'm sorry, I was just upset. (Health Filled!)",
+      "affectedStats": ["healthFull"],
+      "statChange": [0],
       "followUps": [404404]
     },
     {
-      "message": "98",
+      "message": "You exit the dragon's mouth and reenter candyland.",
+      "actions": ["go bowling with billy", "enter a frog race"],
+      "followUps": [149, 151]
+    },
+    {
+      "message": "Billy pays for the first round, but dissolves into Diet Sprite afterwards, so you doubt he'll pay for another.",
+      "actions": ["bowl", "swim"],
+      "followUps": [152, 153]
+    },
+    {
+      "message": "A sign that says 'FREE XBOX' hangs crooked above a small wooden stand, manned by what seems to be an invisible person playing solitaire.",
+      "actions": ["ask about the xbox", "ask to play poker"],
+      "followUps": [174, 175]
+    },
+    {
+      "message": "Your frog has laser vision, so it really isn't a fair fight.",
+      "actions": ["take out the frog in first place", "take out all the other frogs"],
+      "followUps": [154, 155]
+    },
+    {
+      "message": "You swing the bowling ball, but your arm just spins in place. It keeps spinning faster until you become a sideways helicoptor.",
+      "actions": ["land on roof", "man the helicoptor guns!"],
+      "followUps": [156, 157]
+    },
+    {
+      "message": "You dive into the endless ocean of Diet Sprite, and the tingling sensation soothes your eyes. You actually feel refreshed. you swim back to the top and find yourself in an Oasis alongside the highway. Seems the water woke you up, what luck! (+20 Sensibility, Health Filled!)",
+      "affectedStats": ["sensibility", "healthFull"],
+      "statChange": [20, 0],
       "followUps": [404404]
     },
     {
-      "message": "149",
+      "message": "The frog in first place explodes, but you hardly notice from your frog throne. You hardly remember why you chsoe to smite him, he was so far beneath you he shouldn't have warranted your attention. You are the frog god, after all",
+      "actions": ["ribbit with benevolence", "ribbit with godly rage"],
+      "followUps": [158, 159]
+    },
+    {
+      "message": "The frogs all vanish, because heat makes things vanish, but since they never existed, you had 1/0 chance to win, so your winnings also cease to exist!",
+      "actions": ["reinvent gambling", "become the money"],
+      "followUps": [161, 162]
+    },
+    {
+      "message": "You bring your arm-copter down on a sideways roof. The roof is covered in sand, and as you feel fatigue set in on your spinning arm, you realize you're just laying in the sand. Nobody saw, though. (+20 Stoicism, +10 damage)",
+      "affectedStats": ["stoicism", "damage"],
+      "statChange": [20, 10],
       "followUps": [404404]
     },
     {
-      "message": "There's nothing here.",
+      "message": "You use your free hand to grab the sideways-turret of your side-ways helicopter (meaning the turret is upright, due to a double-negative), and begin firing into the mouth of the leviathan.",
+      "actions": ["fly into the leviathan's mouth", "flee the leviathan"],
+      "followUps": [164, 163]
+    },
+    {
+      "message": "You are a good frog god. The people love and respect you. You can tell because a frog sits upon your forehead. Well, as you blink away your hallucinations, you realize that part was real. Setting the little guy aside, you wipe your eyes, realizing you had not done so in 14 years. (+20 Accuracy)",
+      "affectedStats": ["accuracy"],
+      "statChange": [20],
       "followUps": [404404]
     },
     {
-      "message": "151",
+      "message": "The frogs fear you, as they should. You begin smiting frogs left and right, slamming your fists down upon them as you crawl towards them. You smite them all. Worn out, you stand up in the sand, looking at the trail of punch-marks you've left in the sand, trailing into the horizon. Must be over a mile long. Well, nobody can say you aren't determined when you're tripping. (+20 Damage, +10 Defense)",
+      "affectedStats": ["damage", "defense"],
+      "statChange": [20, 10],
       "followUps": [404404]
     },
     {
-      "message": "92",
+      "message": "You find some pre-workout. Time to get SWOLL (+2 Damage, +2 Defense)",
+      "affectedStats": ["damage, defense"],
+      "statChange": ["2, 2"],
       "followUps": [404404]
     },
     {
-      "message": "93",
+      "message": "Gambling is now synonymous with Chair, due to your rearranging of history. Codfish means gambling now, and what used to be codfish is now Pepsi. There is no Pepsi anymore, thank god. You think yourself right out of your hallucinations, lucky for you. (+20 Sensibility)",
+      "affectedStats": ["sensibility"],
+      "statChange": [20],
       "followUps": [404404]
     },
     {
-      "message": "94",
+      "message": "You rain down upon the cheering fans, each of whom takes a piece of you and puts it in their wallet. You exist omnisciently in each wallet, you persist your consciousness among each individual piece of money. just trying to comprehend this makes your head hurt. It also might have been the nasty fall you took. Who knows, but you've sobered up one way or another. (+20 Defense, +10 Stoicism, -20 Health)",
+      "affectedStats": ["defense", "stoicism", "health"],
+      "statChange": [20, 10, -20],
       "followUps": [404404]
     },
     {
-      "message": "95",
+      "message": "You escape the Leviathan, crashing into a sand dune only to find your helicopter... nonexistant. You snap out of it and wonder what really happenned... (+20 Sensibility, +10 Max Health)",
+      "affectedStats": ["sensibility", "maxHealth"],
+      "statChange": [20, 10],
       "followUps": [404404]
     },
     {
-      "message": "96",
+      "message": "You fly into the Leviathan's stomach, initiating battle with it's intestines!!!",
+      "actions": ["punch", "defend", "run"],
+      "followUps": [165, 165, 165]
+    },
+    {
+      "message": "You slip and slide on the gooey interior of the leviathan, failing to act.",
+      "actions": ["punch", "defend", "run"],
+      "followUps": [166, 166, 166]
+    },
+    {
+      "message": "It's no use, the Leviathan cannot be harmed!",
+      "actions": ["punch", "defend", "run"],
+      "followUps": [167, 167, 167]
+    },
+    {
+      "message": "You flail uselessly as the Leviathan dissolves you in its acids.",
+      "actions": ["punch", "defend", "run"],
+      "followUps": [168, 168, 168],
+      "actionRequirements": [
+                              [
+                                "perk",
+                                "knowledge of the key",
+                                "grab the key",
+                                "182"
+                              ]
+                            ]
+    },
+    {
+      "message": "You jerk too hard, knocking yourself awake. Looks like you were only dreaming. Or were you? you certainly aren't in the shed anymore. And why are you covered in slime? (+20 Sensibility, +20 Damage)",
+      "affectedStats": ["sensibility", "damage"],
+      "statChange": [20, 20],
       "followUps": [404404]
     },
     {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "159",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "161",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "169",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "171",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "179",
-      "followUps": [404404]
-    },
-    {
-      "message": "There's nothing here.",
-      "followUps": [404404]
-    },
-    {
-      "message": "181",
-      "followUps": [404404]
-    },
-    {
-      "message": "92",
-      "followUps": [404404]
-    },
-    {
-      "message": "93",
-      "followUps": [404404]
-    },
-    {
-      "message": "94",
-      "followUps": [404404]
-    },
-    {
-      "message": "95",
-      "followUps": [404404]
-    },
-    {
-      "message": "96",
-      "followUps": [404404]
-    },
-    {
-      "message": "97",
-      "followUps": [404404]
-    },
-    {
-      "message": "98",
-      "followUps": [404404]
-    },
-    {
-      "message": "189",
-      "followUps": [404404]
+      "message": "The hatch opens, revealing a complex tunnel system beneath the highway. It can't be worse than wandering aimlessly towards the Impossible City, can it? I guess we'll find out.",
+      "followUps": [200200]
     },
     {
       "message": "There's nothing here.",
+      "actions": ["still? i thought the dev replaced the nothing encounters in the highway?"],
+      "followUps": [185]
+    },
+    {
+      "message": "You wonder if this is one of those endless hallway tricks, so you try heading back to the gate. Sure enough, the gate is actually right behind you. Creepy. You can't get back through it, but at least now you know... (+20 Sensibility)",
+      "affectedStats": ["sensibility"],
+      "statChange": [20],
+      "perk": "knowledge of the infinite",
       "followUps": [404404]
     },
     {
-      "message": "190",
+      "message": "You don't really care if it's getting closer, going back where you came is a waste of time and effort. (+20 Stoicism)",
+      "affectedStats": ["stoicism"],
+      "statChange": [20],
       "followUps": [404404]
     },
     {
-      "message": "92",
+      "message": "You already know the highway is looping, but remembering it does keep your senses keen (+1 Accuracy, +1 Sensibility)",
+      "affectedStats": ["accuracy", "sensibility"],
+      "statChange": [1, 1],
       "followUps": [404404]
     },
     {
-      "message": "93",
+      "message": "He nods (you assume), mumbling 'Yeah, I got'm ex bawkses.' You see some dark liquid appear and zip into the ground, so you assume he just spit some tobacco. Gross.",
+      "actions": ["ask for one", "ask for tobacco"],
+      "followUps": [183, 184]
+    },
+    {
+      "message": "He chuckles, reshuffles his cards, and deals you in.",
+      "actions": ["play fair", "cheat"],
+      "actionRequirements": [
+                              [
+                                "accuracy",
+                                "200",
+                                "notice he's hiding a card",
+                                "178"
+                              ]
+                            ],
+      "followUps": [176, 177]
+    },
+    {
+      "message": "You lose outright, the invisible man chuckles and takes the fake money you put in the pot. You run along, no worse for wear.",
+      "followUps": [404404]
+    },
+    {
+      "message": "You end up tying with him, which is crazy since you had 5 aces. He congratulates you and tries to shake your hand, but you miss because he's invisible. It's awkward, but before you even know it (because, again, he's invisible), he leans in and whispers a secret.",
+      "actions": ["back away"],
+      "followUps": [179],
+      "actionRequirements": [
+                              [
+                                "all",
+                                "200",
+                                "listen",
+                                "181"
+                              ]
+                            ]
+    },
+    {
+      "message": "You point out the ace that's clearly visible, since his sleeves are invisible, and he gets upset, calling you a liar. After some verbal banter, you abscond and leave with his deck of cards.",
+      "equipmentType": ["leftHand"],
+      "equipment": ["invisible man's cards"],
+      "followUps": [404404]
+    },
+    {
+      "message": "You're right, an invisible man's secret is far too powerful for your weak ears you'd need at least (200 in all stats required) to even listen to him.",
+      "actions": ["fucking gatekeeper."],
+      "followUps": [404404]
+    },
+    {
+      "message": "You come across a cave beside the Highway. Looks dark.",
+      "actions": ["enter cave", "leave"],
+      "followUps": [193, 404404],
+      "actionSkillCheck": [
+                            [
+                              "perk",
+                              "fire punch",
+                              "192"
+                            ]
+                          ]
+    },
+    {
+      "message": "The invisible man tells you of a key to the Gutter, a vast complex of tunnels, that's hidden somewhere beyond the physical realm. 'When ye battle the unbattlable, that's yer chance to get the key.', he says, before vanishing (you assume he vanishes, he could just be really quiet).",
+      "perk": "knowledge of the key",
+      "followUps": [404404]
+    },
+    {
+      "message": "You grab the key from the Leviathan's gut, and immediately come to your senses. You did it. You have the key. but how?",
+      "perk": "key to the gutter",
+      "followUps": [404404]
+    },
+    {
+      "message": "'Sure, here ye go', he thrusts an x-shaped box into your hands and goes back to his game.",
+      "equipmentType": ["head"],
+      "equipment": ["x box"],
+      "followUps": [404404]
+    },
+    {
+      "message": "'Nah, it's mai tobaccer!' The invisible man seems spooked by your request, and runs away (you can tell by the cloud of sand left by his running). He left behind an invisible armband, though. You can pretend it's merch for your favorite tv show, who would be able to argue?",
+      "equipmentType": ["armguards"],
+      "equipment": ["your favorite tv show's merch armband"],
+      "followUps": [404404]
+    },
+    {
+      "message": "Apparently she didn't, guess this one's a red herring.",
+      "actions": ["red herring?"],
+      "followUps": [186]
+    },
+    {
+      "message": "Yes, a Red Herring. Like something, especially a clue, that is or is intended to be misleading or distracting.",
+      "actions": ["does that really apply here?"],
+      "followUps": [187]
+    },
+    {
+      "message": "I think it does, don't you?",
+      "actions": ["no, i'm certainly not distracted."],
+      "followUps": [188]
+    },
+    {
+      "message": "Oh? Well what are we doing now then?",
+      "actions": ["well i'm learning, so (+20 stoicism)"],
+      "followUps": [189]
+    },
+    {
+      "message": "Stoicis- Don't you mean Sensibility?",
+      "affectedStats": ["stoicism"],
+      "statChange": [20],
+      "actions": ["oh yeah, that too (+20 sensibility)"],
+      "followUps": [191]
+    },
+    {
+      "message": "A wild groundhog appears!",
+      "enemy": "groundhog",
+      "actions": ["ground it"],
+      "followUps": [999999]
+    },
+    {
+      "message": "You can't just keep doing that, quit it!",
+      "affectedStats": ["sensibility"],
+      "statChange": [20],
+      "actions": ["fine, party pooper"],
+      "followUps": [404404]
+    },
+    {
+      "message": "You got nibbled on by a Gru. (-20 Health)",
+      "affectedStats": ["health"],
+      "statChange": [-20],
+      "actions": ["you fucking nerd"],
+      "followUps": [404404]
+    },
+    {
+      "message": "The Gru shirks at the light of your flaming fists. Inside the cave you discover a sly butterfly knife!",
+      "equipmentType": ["rightHand"],
+      "equipment": ["sly butterfly knife"],
       "followUps": [404404]
     },
     {
