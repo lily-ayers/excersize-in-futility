@@ -7,7 +7,7 @@
   </div>
   <button *ngIf="this.record.stress >= 10 && !record.triggerMarriage" (click)="triggerSadboiBasic()">Buy a Digital PA to Track Your Misery (Cost: 10)</button>
   <div class="tooltip-zone">
-    <button *ngIf="(this.record.stress >= 1000) && record.triggerMarriage && !activatedGame" (click)="triggerSadboiAdvance()">Buy a Game to Ignore Your Responsibilities (Cost: 1000)</button>
+    <button *ngIf="(this.record.stress >= 1000) && record.triggerMarriage && !activatedGame" (click)="triggerSadboiAdvance()">Buy a Game to Ignore Your Responsibilities (Cost: 1e+3)</button>
     <span class="tooltip">WARNING: This game replaces your PA, so if you're, like, super attached to the sarcastic updates you won't want to buy this!</span>
   </div>
   <label>To HARD Reset, type HARD-RESET below and click enter</label>

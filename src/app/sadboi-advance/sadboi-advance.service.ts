@@ -40,7 +40,8 @@ export class SadboiAdvanceService {
   // 777777 means death
   // 987654321 means initial PA encounter (fix sadboi)
   // 989898 means equip new piece
-  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777, 989898, 987654321];
+  // 979797 means don't equip new piece
+  specialInstances = [666555, 909090, 404404, 200200, 999999, 777777, 989898, 987654321, 979797];
 
   constructor(private registrar: RegistrarService) {
     if (localStorage.getItem('EIF-sufferer')) {
@@ -285,6 +286,8 @@ export class SadboiAdvanceService {
       this.registrar.record.stress += 25;
     } else if (encounterID === 989898) {
       this.newEquipmentStats();
+      this.encounter(this.currentEncounter, 1);
+    } else if (encounterID === 979797) {
       this.encounter(this.currentEncounter, 1);
     }
   }
@@ -734,7 +737,7 @@ export class SadboiAdvanceService {
     } else if (this.sufferer.equipment[index].name !== equipment.name) {
       this.consoleHistory.push({ message: 'You found a ' + equipment.name, small: true });
       this.instanceActions = ['equip new item', 'keep old item'];
-      this.instanceFollowUps = [989898, this.currentEncounter];
+      this.instanceFollowUps = [989898, 979797];
       this.consoleHistory.push({ message: 'Looks like you already have something equipped in that slot, though...', small: true });
       this.printEquipmentStats(this.sufferer.equipment[index], false);
       this.printEquipmentStats(equipment, true);
@@ -750,7 +753,7 @@ export class SadboiAdvanceService {
   }
 
   printEquipmentStats(newEquipment: any, newItem: boolean) {
-    if (newItem) {
+    if (!newItem) {
       this.consoleHistory.push({ message: 'Equipped: ' + newEquipment.name });
     } else {
       this.consoleHistory.push({ message: 'New Item: ' + newEquipment.name });

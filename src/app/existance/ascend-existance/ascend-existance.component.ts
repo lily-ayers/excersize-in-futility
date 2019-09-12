@@ -19,12 +19,20 @@ export class AscendExistanceComponent implements OnInit {
   }
 
   ascend() {
-    this.sadboi.renewSufferer();
+    this.sadboi.consoleHistory = [
+      { message: 'Welcome to the Sadboi Personal Assistant! You now have 10 less stress! '
+      + '(Thank you for purchasing Sadboi Personal Assistant, for any bugs or errors, please contact 555-IAMASADBOI)' }
+    ];
+    this.sadboi.activateGame = false;
     this.registrar.ascend();
   }
 
   transcend() {
-    this.sadboi.renewSufferer();
+    this.sadboi.consoleHistory = [
+      { message: 'Welcome to the Sadboi Personal Assistant! You now have 10 less stress! '
+      + '(Thank you for purchasing Sadboi Personal Assistant, for any bugs or errors, please contact 555-IAMASADBOI)' }
+    ];
+    this.sadboi.activateGame = false;
     this.registrar.transcend();
   }
 }
