@@ -110,12 +110,6 @@ export class SadboiAdvanceService {
     } else if (input.toLowerCase().includes('retire')) {
       this.retire();
     } else if (input.toLowerCase().includes('purpose')) {
-      this.sufferer.accuracy += 100;
-      this.sufferer.defense += 100;
-      this.sufferer.maxHealth += 100;
-      this.sufferer.sensibility += 100;
-      this.sufferer.stoicism += 100;
-      this.sufferer.strength += 100;
       this.retireInfo();
     } else {
       this.consoleHistory.push({ message: 'You either cant or wont do that, whatever it is. Try the "help" command.' });
